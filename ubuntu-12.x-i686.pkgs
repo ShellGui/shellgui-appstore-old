@@ -303,13 +303,13 @@
       },
       "appstore": {
         "version": "0.1",
-        "size": "56K",
+        "size": "60K",
         "files": {
           "i18n/en/i18n.conf": "19cc45e27e163a4f3a13cce271b1687a",
           "i18n/zh-cn/i18n.conf": "9f64486130348ca63131e9e1c0272b5c",
           "config.conf": "a8db7c0899eac6a2645b612d77fc21b6",
           "icon.png": "a543974cd3c64268e743a38ef4ea7675",
-          "index.sh": "fd6f8add8db5d37062b0e545b340f935",
+          "index.sh": "a1ec942a09d6d48607df743ebca3dbfd",
           "app_types.sh": "729a13a9fdb7b9cb0c678a295b2f33bf"
         },
         "i18n": {
@@ -455,11 +455,11 @@
         "version": "0.1",
         "size": "52K",
         "files": {
-          "i18n/en/i18n.conf": "b141e568a14ed8e9bc0e6a0d843a1bae",
-          "i18n/zh-cn/i18n.conf": "8edcbe373932c91b684a7e9459630d14",
+          "i18n/en/i18n.conf": "303f4629b027150659146c422642223f",
+          "i18n/zh-cn/i18n.conf": "873394e20c091e0027f432161a0c9c83",
           "config.conf": "218454dc197884f2b4f79d6c97a9137c",
           "icon.png": "9e0b8a30c00913db7a4a411e0404aac2",
-          "index.sh": "d9380691f4eeca15a050d1b353222b64"
+          "index.sh": "89985b1c441ece0d450f0237cfac4d6a"
         },
         "i18n": {
           "en": {

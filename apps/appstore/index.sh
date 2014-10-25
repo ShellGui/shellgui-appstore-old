@@ -178,8 +178,8 @@ echo "<pre>"
 rm -f $DOCUMENT_ROOT/../tmp/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs 2>&1
 . $DOCUMENT_ROOT/apps/curl/curl_lib.sh
 curl_load
-curl $curl_args -L "https://github.com/ShellGui/shellgui-appstore/raw/master/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs" -o $DOCUMENT_ROOT/../tmp/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs 2>&1
-curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=downloads_rank" -o $DOCUMENT_ROOT/../tmp/downloads_rank.json 2>&1
+curl $curl_args -L "https://github.com/ShellGui/shellgui-appstore/raw/master/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs" -o $DOCUMENT_ROOT/../tmp/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs 2>&1 || wget --no-check-certificate "https://github.com/ShellGui/shellgui-appstore/raw/master/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs" -O $DOCUMENT_ROOT/../tmp/$distribution-$(echo "$sysinfo_data" | jq -r '.["sysinfo"]["hw_model"]').pkgs 2>&1
+curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=downloads_rank" -o $DOCUMENT_ROOT/../tmp/downloads_rank.json 2>&1 || wget --no-check-certificate "https://data-turbopi.rhcloud.com/test.php?action=downloads_rank" -O $DOCUMENT_ROOT/../tmp/downloads_rank.json 2>&1
 echo "</pre>"
 }
 warning()
@@ -254,19 +254,24 @@ do
 [ -d $(dirname $DOCUMENT_ROOT/../tmp/app_install_tmp/${file}) ] || mkdir -p $(dirname $DOCUMENT_ROOT/../tmp/app_install_tmp/${file})
 . $DOCUMENT_ROOT/apps/curl/curl_lib.sh
 curl_load
-curl $curl_args -L $url_prefix/apps/$FORM_dealapp/${file} -o $DOCUMENT_ROOT/../tmp/app_install_tmp/${file} 2>&1
-[ "`md5sum $DOCUMENT_ROOT/../tmp/app_install_tmp/${file} | awk {'print $1'}`" = "`echo "$pkgs_str" | jq -r '.["apps"][]["'"$FORM_dealapp"'"]["files"]["'"${file}"'"]' | grep -Po '[\w].*[\w]' | sed '/^null$/d'`" ]
+echo "Downloading $FORM_dealapp/${file}"
+curl $curl_args -L $url_prefix/apps/$FORM_dealapp/${file} -o $DOCUMENT_ROOT/../tmp/app_install_tmp/${file} 2>&1 || (wget --no-check-certificate "$url_prefix/apps/$FORM_dealapp/${file}" -O $DOCUMENT_ROOT/../tmp/app_install_tmp/${file} 2>&1)
+old_md5=`echo "$pkgs_str" | jq -r '.["apps"][]["'"$FORM_dealapp"'"]["files"]["'"${file}"'"]' | grep -Po '[\w].*[\w]' | sed '/^null$/d'`
+new_md5=`md5sum $DOCUMENT_ROOT/../tmp/app_install_tmp/${file} | awk {'print $1'}`
+echo "Compare $old_md5 $new_md5"
+[ "$old_md5" = "$new_md5" ]
 [ $? -ne 0 ] && echo "md5 wrong" && exit 1
 done
 find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.sh$" | xargs chmod +x
 find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.fw$" | xargs chmod +x
 find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.init$" | xargs chmod +x
+return 0
 }
 do_install()
 {
 do_download_app || (echo "Download fail" && exit 1) || exit 1
 mv $DOCUMENT_ROOT/../tmp/app_install_tmp/ $DOCUMENT_ROOT/apps/$FORM_dealapp
-curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1
+curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1 || wget -qO- --no-check-certificate "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1
 echo "install $FORM_dealapp success"
 }
 do_uninstall()
@@ -289,7 +294,7 @@ echo ${file} | grep "\.json$" && rm -f ${file}
 done
 cp -R $DOCUMENT_ROOT/../tmp/app_install_tmp/* $DOCUMENT_ROOT/apps/$FORM_dealapp
 rm -rf $DOCUMENT_ROOT/../tmp/app_install_tmp/
-curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1
+curl $curl_args -L "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1 || wget -qO- --no-check-certificate "https://data-turbopi.rhcloud.com/test.php?action=installapp&app=$FORM_dealapp" >/dev/null 2>&1
 echo "update $FORM_dealapp success"
 }
 do_info()

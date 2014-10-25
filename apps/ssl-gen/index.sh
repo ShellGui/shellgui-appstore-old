@@ -2,19 +2,21 @@
 
 main()
 {
-if
-[ -z "$SSL_SERVER_V_END" ]
-then
-decode_str=`openssl x509 -in $DOCUMENT_ROOT/../ssl/lighttpd.pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
-SSL_SERVER_V_START=`echo "$decode_str" | grep "Not Before" | sed 's/Not Before[ ]://'`
-SSL_SERVER_V_END=`echo "$decode_str" | grep "Not After" | sed 's/Not After[ ]://'`
+[ -d /data/ssl ] || mkdir /data/ssl
+
+[ -n "$FORM_server" ] || FORM_server="lighttpd"
+[ "$FORM_server" = "lighttpd"  ] && ssl_base_dir="$DOCUMENT_ROOT/../ssl/" || ssl_base_dir="/data/ssl/$FORM_server"
+
+decode_str=`openssl x509 -in $ssl_base_dir/"$FORM_server".pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
+SSL_SERVER_V_START=`echo "$decode_str" | grep "Not Before" | sed 's/Not Before[ ]*://'`
+SSL_SERVER_V_END=`echo "$decode_str" | grep "Not After" | sed 's/Not After[ ]*://'`
 SSL_SERVER_I_DN_C=`echo "$decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
 SSL_SERVER_S_DN_ST=`echo "$decode_str" | grep "stateOrProvinceName" | awk -F " = " {'print $2'}`
 SSL_SERVER_S_DN_L=`echo "$decode_str" | grep "localityName" | awk -F " = " {'print $2'}`
 SSL_SERVER_S_DN_O=`echo "$decode_str" | grep "organizationName" | awk -F " = " {'print $2'}`
 SSL_SERVER_S_DN_OU=`echo "$decode_str" | grep "organizationalUnitName" | awk -F " = " {'print $2'}`
 SSL_SERVER_S_DN_CN=`echo "$decode_str" | grep "commonName" | awk -F " = " {'print $2'}`
-fi
+
 remaining_day=$(expr $(expr $(date -d "$SSL_SERVER_V_END" +%s) - $(date +%s)) / 86400)
 if
 [ $remaining_day -gt 90 ]
@@ -51,6 +53,15 @@ $(function(){
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-fluid');
   });
 });
+function del_ssl(ssl_name)
+{
+if (confirm("Do you wan to del " + ssl_name)) {
+    var data = 'app=ssl-gen&action=del_ssl&ssl_name=' + ssl_name;
+    var url = 'index.cgi';
+	Ha.common.ajax(url, 'json', data, 'post', 'ajax-fluid');
+	setTimeout("window.location.reload();", 1000);
+  }
+}
 </script>
 EOF
 
@@ -61,6 +72,14 @@ cat <<EOF
 <legend>$_LANG_Certificate_generation</legend>
 <form id="build">
 <table class="table">
+<tr>
+<th>
+$_LANG_Save_as
+</th>
+<th>
+<input class="form-control" placeholder="xx.com" name="server" value="`[ "$FORM_server" != "lighttpd" ] && echo $FORM_server`">
+</th>
+</tr>
 <tr>
 <td>
 $_LANG_Country
@@ -145,6 +164,29 @@ $_LANG_Option
 </tr>
 </table>
 </form>
+
+<div id="ssl_manager">
+<table class="table">
+<legend>SSL Manager</legend>
+EOF
+ssl_list=`ls -l /data/ssl/ | grep "^d" | awk {'print $NF'}`
+if
+[ -n "$ssl_list" ]
+then
+
+for ssl_name in $ssl_list
+do
+cat <<EOF
+<tr><td>/data/ssl/${ssl_name}</td><td><a class="btn btn-primary" href="/index.cgi?app=ssl-gen&server=${ssl_name}" type="button">$_LANG_Edit</a></td><td><a class="btn btn-danger" onclick="del_ssl('${ssl_name}');"  type="button">$_LANG_Del</a></td></tr>
+EOF
+done
+else
+echo "there has no ssl"
+fi
+cat <<EOF
+</table>
+</div>
+
 		</div>
 		<div class="col-md-8">
 <legend>$_LANG_Current_certificate_file</legend>
@@ -165,7 +207,7 @@ $Tip
     <div id="prv-key" class="panel-collapse collapse">
       <div class="panel-body">
 <textarea style="width:100%;height:260px" name="private_key" class="bg-warning">
-`cat $DOCUMENT_ROOT/../ssl/private.key`
+`cat $ssl_base_dir/private.key`
 </textarea>
 	  </div>
     </div>
@@ -181,7 +223,7 @@ $Tip
 	  <div id="pub-key" class="panel-collapse collapse in">
 		  <div class="panel-body">
 <textarea style="width:100%;height:260px" name="public_csr" class="bg-warning">
-`cat $DOCUMENT_ROOT/../ssl/public.csr`
+`cat $ssl_base_dir/public.csr`
 </textarea>
 		  </div>
 	  </div>
@@ -199,8 +241,22 @@ $Tip
 
 EOF
 }
+del_ssl()
+{
+if
+[ -d /data/ssl/$FORM_server ]
+then
+rm -rf /data/ssl/$FORM_server
+(echo "Del $FORM_server success" | main.sbin output_json 0) || exit 0
+else
+(echo "Del Fail" | main.sbin output_json 1) || exit 1
+fi
+}
 build()
 {
+[ -n "$FORM_server" ] || FORM_server="lighttpd"
+[ "$FORM_server" = "lighttpd"  ] && ssl_base_dir="$DOCUMENT_ROOT/../ssl/" || ssl_base_dir="/data/ssl/$FORM_server"
+[ -d $ssl_base_dir ] || mkdir -p $ssl_base_dir
 ([ -n "$FORM_SSL_C" ] && [ $(expr length $(echo "$FORM_SSL_C")) -eq 2 ] || echo "$_LANG_Country""$_LANG_Need""2""$_LANG_Characters" | main.sbin output_json 1) || exit 1
 ([ -n "$FORM_SSL_C" ] && echo "$FORM_SSL_C" | main.sbin regx_str islang_en || echo "$_LANG_Country""$_LANG_Need""$_LANG_In_english" | main.sbin output_json 1) || exit 1
 ([ -n "$FORM_SSL_ST" ] || echo "$_LANG_Provinces""$_LANG_Cannt_empty" | main.sbin output_json 1) || exit 1
@@ -209,9 +265,9 @@ build()
 ([ -n "$FORM_SSL_OU" ] || echo "$_LANG_Organizational_unit""$_LANG_Cannt_empty" | main.sbin output_json 1) || exit 1
 ([ -n "$FORM_SSL_CN" ] || echo "$_LANG_Common_name""$_LANG_Cannt_empty" | main.sbin output_json 1) || exit 1
 
-old_decode_str=`openssl x509 -in $DOCUMENT_ROOT/../ssl/lighttpd.pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
-old_SSL_SERVER_V_START=`echo "$old_decode_str" | grep "Not Before" | sed 's/Not Before[ ]://'`
-old_SSL_SERVER_V_END=`echo "$old_decode_str" | grep "Not After" | sed 's/Not After[ ]://'`
+old_decode_str=`openssl x509 -in $ssl_base_dir/"$FORM_server".pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
+old_SSL_SERVER_V_START=`echo "$old_decode_str" | grep "Not Before" | sed 's/Not Before[ ]*://g'`
+old_SSL_SERVER_V_END=`echo "$old_decode_str" | grep "Not After" | sed 's/Not After[ ]*://'`
 old_SSL_SERVER_I_DN_C=`echo "$old_decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_ST=`echo "$old_decode_str" | grep "stateOrProvinceName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_L=`echo "$old_decode_str" | grep "localityName" | awk -F " = " {'print $2'}`
@@ -219,14 +275,14 @@ old_SSL_SERVER_S_DN_O=`echo "$old_decode_str" | grep "organizationName" | awk -F
 old_SSL_SERVER_S_DN_OU=`echo "$old_decode_str" | grep "organizationalUnitName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_CN=`echo "$old_decode_str" | grep "commonName" | awk -F " = " {'print $2'}`
 
-openssl req -new -newkey rsa:$FORM_SSL_SIZE -x509 -days $FORM_SSL_TIME -nodes -out $DOCUMENT_ROOT/../ssl/public.csr -keyout $DOCUMENT_ROOT/../ssl/private.key -subj "/C=$FORM_SSL_C/ST=`echo "$FORM_SSL_ST"`/L=`echo "$FORM_SSL_L"`/O=`echo "$FORM_SSL_O"`/OU=`echo "$FORM_SSL_OU"`/CN=`echo "$FORM_SSL_CN"`" -utf8 >/dev/null 2>&1
-cat $DOCUMENT_ROOT/../ssl/private.key $DOCUMENT_ROOT/../ssl/public.csr > $DOCUMENT_ROOT/../ssl/lighttpd.pem
+openssl req -new -newkey rsa:$FORM_SSL_SIZE -x509 -days $FORM_SSL_TIME -nodes -out $ssl_base_dir/public.csr -keyout $ssl_base_dir/private.key -subj "/C=$FORM_SSL_C/ST=`echo "$FORM_SSL_ST"`/L=`echo "$FORM_SSL_L"`/O=`echo "$FORM_SSL_O"`/OU=`echo "$FORM_SSL_OU"`/CN=`echo "$FORM_SSL_CN"`" -utf8 >/dev/null 2>&1
+cat $ssl_base_dir/private.key $ssl_base_dir/public.csr > $ssl_base_dir/"$FORM_server".pem
 if
 [ $? -eq 0 ]
 then
-new_decode_str=`openssl x509 -in $DOCUMENT_ROOT/../ssl/lighttpd.pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
-new_SSL_SERVER_V_START=`echo "$new_decode_str" | grep "Not Before" | sed 's/Not Before[ ]://'`
-new_SSL_SERVER_V_END=`echo "$new_decode_str" | grep "Not After" | sed 's/Not After[ ]://'`
+new_decode_str=`openssl x509 -in $ssl_base_dir/"$FORM_server".pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
+new_SSL_SERVER_V_START=`echo "$new_decode_str" | grep "Not Before" | sed 's/Not Before[ ]*://'`
+new_SSL_SERVER_V_END=`echo "$new_decode_str" | grep "Not After" | sed 's/Not After[ ]*://'`
 new_SSL_SERVER_I_DN_C=`echo "$new_decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
 new_SSL_SERVER_S_DN_ST=`echo "$new_decode_str" | grep "stateOrProvinceName" | awk -F " = " {'print $2'}`
 new_SSL_SERVER_S_DN_L=`echo "$new_decode_str" | grep "localityName" | awk -F " = " {'print $2'}`
@@ -268,9 +324,9 @@ fi
 }
 ssl_key_edit()
 {
-old_decode_str=`openssl x509 -in $DOCUMENT_ROOT/../ssl/lighttpd.pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
-old_SSL_SERVER_V_START=`echo "$old_decode_str" | grep "Not Before" | sed 's/Not Before[ ]://'`
-old_SSL_SERVER_V_END=`echo "$old_decode_str" | grep "Not After" | sed 's/Not After[ ]://'`
+old_decode_str=`openssl x509 -in $ssl_base_dir/"$FORM_server".pem -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
+old_SSL_SERVER_V_START=`echo "$old_decode_str" | grep "Not Before" | sed 's/Not Before[ ]*://'`
+old_SSL_SERVER_V_END=`echo "$old_decode_str" | grep "Not After" | sed 's/Not After[ ]*://'`
 old_SSL_SERVER_I_DN_C=`echo "$old_decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_ST=`echo "$old_decode_str" | grep "stateOrProvinceName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_L=`echo "$old_decode_str" | grep "localityName" | awk -F " = " {'print $2'}`
@@ -278,13 +334,13 @@ old_SSL_SERVER_S_DN_O=`echo "$old_decode_str" | grep "organizationName" | awk -F
 old_SSL_SERVER_S_DN_OU=`echo "$old_decode_str" | grep "organizationalUnitName" | awk -F " = " {'print $2'}`
 old_SSL_SERVER_S_DN_CN=`echo "$old_decode_str" | grep "commonName" | awk -F " = " {'print $2'}`
 
-echo "$FORM_private_key" > $DOCUMENT_ROOT/../ssl/private.key && \
-echo "$FORM_public_csr" > $DOCUMENT_ROOT/../ssl/public.csr
-cat $DOCUMENT_ROOT/../ssl/private.key $DOCUMENT_ROOT/../ssl/public.csr > $DOCUMENT_ROOT/../ssl/lighttpd.pem.tmp
+echo "$FORM_private_key" > $ssl_base_dir/private.key && \
+echo "$FORM_public_csr" > $ssl_base_dir/public.csr
+cat $ssl_base_dir/private.key $ssl_base_dir/public.csr > $ssl_base_dir/"$FORM_server".pem.tmp
 
-new_decode_str=`openssl x509 -in $DOCUMENT_ROOT/../ssl/lighttpd.pem.tmp -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
-new_SSL_SERVER_V_START=`echo "$new_decode_str" | grep "Not Before" | sed 's/Not Before[ ]://'`
-new_SSL_SERVER_V_END=`echo "$new_decode_str" | grep "Not After" | sed 's/Not After[ ]://'`
+new_decode_str=`openssl x509 -in $ssl_base_dir/"$FORM_server".pem.tmp -inform pem -noout -text -nameopt multiline,-esc_msb,utf8 | grep -E "countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq`
+new_SSL_SERVER_V_START=`echo "$new_decode_str" | grep "Not Before" | sed 's/Not Before[ ]*://'`
+new_SSL_SERVER_V_END=`echo "$new_decode_str" | grep "Not After" | sed 's/Not After[ ]*://'`
 new_SSL_SERVER_I_DN_C=`echo "$new_decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
 new_SSL_SERVER_S_DN_ST=`echo "$new_decode_str" | grep "stateOrProvinceName" | awk -F " = " {'print $2'}`
 new_SSL_SERVER_S_DN_L=`echo "$new_decode_str" | grep "localityName" | awk -F " = " {'print $2'}`
@@ -295,8 +351,8 @@ new_SSL_SERVER_S_DN_CN=`echo "$new_decode_str" | grep "commonName" | awk -F " = 
 if
 [ -n "$new_SSL_SERVER_V_START" ]
 then
-rm $DOCUMENT_ROOT/../ssl/lighttpd.pem
-mv $DOCUMENT_ROOT/../ssl/lighttpd.pem.tmp $DOCUMENT_ROOT/../ssl/lighttpd.pem
+rm $ssl_base_dir/"$FORM_server".pem
+mv $ssl_base_dir/"$FORM_server".pem.tmp $ssl_base_dir/"$FORM_server".pem
 main.sbin notice option="add" \
 				read="0" \
 				desc="_NOTICE_ssl_reimport" \
@@ -335,6 +391,7 @@ fi
 lang=`main.sbin get_client_lang`
 eval `cat $DOCUMENT_ROOT/apps/$FORM_app/i18n/$lang/i18n.conf`
 
+# [ -n "$FORM_server" ] && export is_main_page=1
 if
 [ $is_main_page = 1 ]
 then
