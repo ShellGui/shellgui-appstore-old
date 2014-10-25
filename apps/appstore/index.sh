@@ -259,6 +259,8 @@ curl $curl_args -L $url_prefix/apps/$FORM_dealapp/${file} -o $DOCUMENT_ROOT/../t
 [ $? -ne 0 ] && echo "md5 wrong" && exit 1
 done
 find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.sh$" | xargs chmod +x
+find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.fw$" | xargs chmod +x
+find $DOCUMENT_ROOT/../tmp/app_install_tmp/ -type f | grep "\.init$" | xargs chmod +x
 }
 do_install()
 {

@@ -196,9 +196,9 @@ eval `main.sbin pid_uptime $ipsec_pid`
 if
 grep -q "enable=1" $DOCUMENT_ROOT/apps/pptp-l2tp-server/S220ipsec.init
 then
-on_selected="selected=\"selected\""
+ipsec_on_selected="selected=\"selected\""
 else
-off_selected="selected=\"selected\""
+ipsec_off_selected="selected=\"selected\""
 fi
 cat <<EOF
 	<div class="controls">
@@ -223,8 +223,8 @@ cat <<EOF
 					<td>
 					$_LANG_ipsec_service
 						<select name="ipsec_enable">
-						  <option value="1" $on_selected>$_LANG_On</option>
-						  <option value="0" $off_selected>$_LANG_Off</option>
+						  <option value="1" $ipsec_on_selected>$_LANG_On</option>
+						  <option value="0" $ipsec_off_selected>$_LANG_Off</option>
 						</select>
 					</td>
 					<td>
@@ -252,9 +252,9 @@ eval `main.sbin pid_uptime $xl2tpd_pid`
 if
 grep -q "enable=1" $DOCUMENT_ROOT/apps/pptp-l2tp-server/S230xl2tpd.init
 then
-on_selected="selected=\"selected\""
+l2tp_on_selected="selected=\"selected\""
 else
-off_selected="selected=\"selected\""
+l2tp_off_selected="selected=\"selected\""
 fi
 cat <<EOF
 	<div class="controls">
@@ -279,8 +279,8 @@ cat <<EOF
 					<td>
 					$_LANG_xl2tpd_service
 						<select name="xl2tpd_enable">
-						  <option value="1" $on_selected>$_LANG_On</option>
-						  <option value="0" $off_selected>$_LANG_Off</option>
+						  <option value="1" $l2tp_on_selected>$_LANG_On</option>
+						  <option value="0" $l2tp_off_selected>$_LANG_Off</option>
 						</select>
 					</td>
 					<td>

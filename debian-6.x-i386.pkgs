@@ -166,7 +166,7 @@
           "i18n/zh-cn/i18n.conf": "84689324157f64f8691bdb2ca15c8774",
           "config.conf": "5758161abaa552ebb274f234c3fecf3f",
           "icon.png": "2d051e68ed158947f251b7e6d1735785",
-          "index.sh": "1f04f8d6f25df52b92f8a005b355b08e",
+          "index.sh": "e22e7cc74de9dff8831798530911a70d",
           "S210pptpd.init": "2924c00c2178d90568b673e010b531bc",
           "S220ipsec.init": "82294bb379e0a5d0e2cc773bf585d53d",
           "pptp-l2tp-server.json": "4329d1d8673c5b2baecbad101629c7e9",
@@ -309,7 +309,7 @@
           "i18n/zh-cn/i18n.conf": "9f64486130348ca63131e9e1c0272b5c",
           "config.conf": "a8db7c0899eac6a2645b612d77fc21b6",
           "icon.png": "a543974cd3c64268e743a38ef4ea7675",
-          "index.sh": "5355b995d2ea3b4bd7fb842d76be2585",
+          "index.sh": "fd6f8add8db5d37062b0e545b340f935",
           "app_types.sh": "729a13a9fdb7b9cb0c678a295b2f33bf"
         },
         "i18n": {
