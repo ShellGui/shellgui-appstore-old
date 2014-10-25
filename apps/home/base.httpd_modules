@@ -1,4 +1,0 @@
-mod_access
-mod_cgi
-mod_setenv
-mod_auth
