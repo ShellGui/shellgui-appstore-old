@@ -145,6 +145,7 @@ cd $DOCUMENT_ROOT/../sources/libevent-2.0.21-stable
 make && make install
 cd $DOCUMENT_ROOT/../sources/libiconv-1.14
 ./configure --prefix=/usr/local/phpextend
+echo "$distribution" | grep -iqE "centos-7" && sed -i '/gets is a security hole/d' srclib/stdio.h
 make && make install
 echo "/usr/local/phpextend/lib" > /etc/ld.so.conf.d/phpextend.conf
 ldconfig

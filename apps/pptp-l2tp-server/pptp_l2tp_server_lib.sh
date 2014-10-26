@@ -35,7 +35,7 @@ if
 echo "$OS" | grep -iq "centos"
 then
 release_ver=$(echo "$OS" | grep -Po '[0-9|\.][0-9|\.]*' | sed 's/\..*//')
-(yum update -y && echo -e y"\n" | rpm -Uhv http://poptop.sourceforge.net/yum/stable/rhel$release_ver/pptp-release-current.noarch.rpm && \
+(yum update -y && echo -e y"\n" | rpm -Uhv http://poptop.sourceforge.net/yum/stable/rhel$release_ver/pptp-release-current.noarch.rpm || rpm -Uvh http://download.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-1.noarch.rpm
 yum remove -y pppd && yum install -y ppp pptpd gmp-devel bison flex libpcap-devel policycoreutils lsof 2>&1) || exit 1
 chkconfig pptpd off >/dev/null 2>&1
 fi
@@ -88,7 +88,7 @@ tar zxf openswan-2.6.32.tar.gz
 tar zxf rp-l2tp-0.4.tar.gz
 tar zxf xl2tpd-1.3.0.tar.gz
 cd $DOCUMENT_ROOT/../sources/openswan-2.6.32
-echo "$OS" | grep -iqE "debian|ubuntu" && sed -i 's/WERROR:=.*/WERROR:=/g' $DOCUMENT_ROOT/../sources/openswan-2.6.32/programs/Makefile.program
+echo "$distribution" | grep -iqE "debian|ubuntu|centos-7" && sed -i 's/WERROR:=.*/WERROR:=/g' $DOCUMENT_ROOT/../sources/openswan-2.6.32/programs/Makefile.program
 make programs install
 
 cd $DOCUMENT_ROOT/../sources/rp-l2tp-0.4
