@@ -89,7 +89,7 @@ cat <<EOF > /usr/local/shadowsocks-libev/etc/server.json
 EOF
 cat <<EOF > /usr/local/shadowsocks-libev/etc/local.json
 {
-	"server":"0.0.0.0",
+	"server":"8.8.8.8",
 	"server_port":8388,
 	"local_port":1080,
 	"password":"shadowsocks-libev",
@@ -99,7 +99,7 @@ cat <<EOF > /usr/local/shadowsocks-libev/etc/local.json
 EOF
 cat <<EOF > /usr/local/shadowsocks-libev/etc/redir.json
 {
-	"server":"0.0.0.0",
+	"server":"8.8.8.8",
 	"server_port":8388,
 	"local_port":1080,
 	"password":"shadowsocks-libev",
