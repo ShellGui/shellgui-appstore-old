@@ -113,7 +113,7 @@
       },
       "aria2": {
         "version": "0.1",
-        "size": "556K",
+        "size": "548K",
         "files": {
           "i18n/en/i18n.conf": "a90318f185324668a2e53086725f1b36",
           "i18n/zh-cn/i18n.conf": "fe692f88a0effd25c0217a32b50b90e4",
@@ -425,7 +425,7 @@
           "index.sh": "b39866a492e221126d2ab2babff220da",
           "base.httpd_modules": "8777f0e5c65513456a3d4d603764a756",
           "brandwidth.tpl.sh": "9338dc3229454b14626e3a7b43ee1a3d",
-          "distributions_lib.sh": "976b2efb72d50f3508890efb94be4008",
+          "distributions_lib.sh": "b076892df1b7642919c1f155c32b07ba",
           "base.httpd_others": "4d53adf254912564927e7aea3d0f9313",
           "imgs/wifi.png": "33b595e5e146810409e6bcc0adc75e3d",
           "imgs/mem.png": "801fa44fe63c4d29f0dde72e81190a6d",
