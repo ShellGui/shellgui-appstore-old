@@ -66,7 +66,7 @@
         "files": {
           "i18n/en/i18n.conf": "dce1f846f0c3c55260ee42156cc29ecc",
           "i18n/zh-cn/i18n.conf": "66defa09a654812306e89724f430fbb1",
-          "config.conf": "5758161abaa552ebb274f234c3fecf3f",
+          "config.conf": "82512feca7abed6075683c1998be3509",
           "icon.png": "0a70fa0a6195963fd5a587778c3c3fa7",
           "index.sh": "0bf7335beaa5dc96236e147e14030fe5"
         },
@@ -113,7 +113,7 @@
       },
       "aria2": {
         "version": "0.1",
-        "size": "548K",
+        "size": "556K",
         "files": {
           "i18n/en/i18n.conf": "a90318f185324668a2e53086725f1b36",
           "i18n/zh-cn/i18n.conf": "fe692f88a0effd25c0217a32b50b90e4",
@@ -456,11 +456,11 @@
         "version": "0.1",
         "size": "52K",
         "files": {
-          "i18n/en/i18n.conf": "303f4629b027150659146c422642223f",
-          "i18n/zh-cn/i18n.conf": "873394e20c091e0027f432161a0c9c83",
+          "i18n/en/i18n.conf": "739e443738ba7eec6e9f226ccc06300d",
+          "i18n/zh-cn/i18n.conf": "d652a1a4cf316b29e599d47807f57196",
           "config.conf": "218454dc197884f2b4f79d6c97a9137c",
           "icon.png": "9e0b8a30c00913db7a4a411e0404aac2",
-          "index.sh": "89985b1c441ece0d450f0237cfac4d6a"
+          "index.sh": "f37c23c2a847ca5173f0da2aa588345d"
         },
         "i18n": {
           "en": {
