@@ -12,7 +12,7 @@
         "files": {
           "i18n/en/i18n.conf": "3803fd9e5ea23c6c00d63877ac06bf2d",
           "i18n/zh-cn/i18n.conf": "12234d93862b2751e37ba902ebff4239",
-          "config.conf": "5758161abaa552ebb274f234c3fecf3f",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
           "vhost.sh": "9b36fc24451cdf94ece490745b2a25de",
           "icon.png": "3638d6ba14ca423d449295b34effcf37",
@@ -66,7 +66,7 @@
         "files": {
           "i18n/en/i18n.conf": "dce1f846f0c3c55260ee42156cc29ecc",
           "i18n/zh-cn/i18n.conf": "66defa09a654812306e89724f430fbb1",
-          "config.conf": "82512feca7abed6075683c1998be3509",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
           "icon.png": "0a70fa0a6195963fd5a587778c3c3fa7",
           "index.sh": "0bf7335beaa5dc96236e147e14030fe5"
         },
@@ -91,7 +91,7 @@
         "files": {
           "i18n/en/i18n.conf": "001128fb583e994604b6f5dfa8ff7013",
           "i18n/zh-cn/i18n.conf": "40d9bc36850ab4d5e54e0731a5c8103d",
-          "config.conf": "82512feca7abed6075683c1998be3509",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
           "icon.png": "2c30d0369d43f71fc551fc94fce55992",
           "index.sh": "72bf6382b7dab53be479c57dbde62f16",
           "brand-info.conf": "cee801c6e642037265a8d2145d57ced6"
@@ -113,11 +113,11 @@
       },
       "aria2": {
         "version": "0.1",
-        "size": "548K",
+        "size": "552K",
         "files": {
           "i18n/en/i18n.conf": "a90318f185324668a2e53086725f1b36",
           "i18n/zh-cn/i18n.conf": "fe692f88a0effd25c0217a32b50b90e4",
-          "config.conf": "82512feca7abed6075683c1998be3509",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
           "icon.png": "ee68dddbb6e097987266077d681aa683",
           "index.sh": "d578b0a74ebbdc51f766b0ebceb9d040",
           "aria2.httpd_proxy": "88f62302f92c02651a2d8051cf449984",
@@ -164,7 +164,7 @@
         "files": {
           "i18n/en/i18n.conf": "4f493785d40904659c69eb166303c13a",
           "i18n/zh-cn/i18n.conf": "84689324157f64f8691bdb2ca15c8774",
-          "config.conf": "5758161abaa552ebb274f234c3fecf3f",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "icon.png": "2d051e68ed158947f251b7e6d1735785",
           "index.sh": "e22e7cc74de9dff8831798530911a70d",
           "S210pptpd.init": "2924c00c2178d90568b673e010b531bc",
@@ -195,7 +195,7 @@
         "files": {
           "i18n/en/i18n.conf": "bc7c7be95f0e124be37f20a37b68e3c4",
           "i18n/zh-cn/i18n.conf": "f7f3f07f5642fb93ea3ac3cc3d9be167",
-          "config.conf": "5758161abaa552ebb274f234c3fecf3f",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "shadowsocks_libev.json": "e7a2893616b299c6c50f74f3d8ceb3f6",
           "transparent_proxy_dest.conf": "694ea1d720d960a7b0885a5d3928eeae",
           "icon.png": "d7cb733603d0864041d6b36eae2ff7e7",
@@ -229,7 +229,7 @@
         "files": {
           "i18n/en/i18n.conf": "d8d97e5a0f808d4ba7b522e4522f1113",
           "i18n/zh-cn/i18n.conf": "ce35fb259c6e2da0082bbf47628ae517",
-          "config.conf": "a8db7c0899eac6a2645b612d77fc21b6",
+          "config.conf": "00d884be97a2b09099203f6e065db0e8",
           "icon.png": "76778fde9cf9f96ce71b09ee579f381c",
           "index.sh": "41882a69abad5956131dd2ba6187ab28"
         },
@@ -254,7 +254,7 @@
         "files": {
           "i18n/en/i18n.conf": "b540b78275aa552df3cc09903a0f8288",
           "i18n/zh-cn/i18n.conf": "1fbf3edf2bb25c8f58c489aecb75b245",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "1ec30a88288d28ee416c145759793484",
           "index.sh": "ee1002e907561bc276361c48c318759f",
           "notice_lib.sh": "94576065a6861d4006c0922bddd26383"
@@ -280,7 +280,7 @@
         "files": {
           "i18n/en/i18n.conf": "5a372fd00bdc19b1ace5f282d0e653b9",
           "i18n/zh-cn/i18n.conf": "faa9d1ec26816966b808856236a64637",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "c607077ad8744ae375fdeeb8b1c6b711",
           "index.sh": "5029bd1d3344bc84b89e21860f662ddb",
           "user.sh": "6bae7c3b420af73b5432c0356531498d",
@@ -307,7 +307,7 @@
         "files": {
           "i18n/en/i18n.conf": "19cc45e27e163a4f3a13cce271b1687a",
           "i18n/zh-cn/i18n.conf": "9f64486130348ca63131e9e1c0272b5c",
-          "config.conf": "a8db7c0899eac6a2645b612d77fc21b6",
+          "config.conf": "00d884be97a2b09099203f6e065db0e8",
           "icon.png": "a543974cd3c64268e743a38ef4ea7675",
           "index.sh": "a1ec942a09d6d48607df743ebca3dbfd",
           "app_types.sh": "729a13a9fdb7b9cb0c678a295b2f33bf"
@@ -333,7 +333,7 @@
         "files": {
           "i18n/en/i18n.conf": "80ab9127389f7e5b1092ddd91634e192",
           "i18n/zh-cn/i18n.conf": "fddc2512dd39af426b11279fbd2864d2",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "bf161c505561a1b391d2b346d0d02fa0",
           "index.sh": "cf839fd444f806f9492d5882a8bbbfcb",
           "F100backstage-setting.fw": "be57b288e6db534eb71a8840e0f564a4"
@@ -359,7 +359,7 @@
         "files": {
           "i18n/en/i18n.conf": "9599487b4e29603ea5870ccc6bbef615",
           "i18n/zh-cn/i18n.conf": "5d8b7c97076c91841dfe28bf4bf04fd7",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "f7e831189adaa87c6e67e8ecd04edbb4",
           "index.sh": "f6bc4c88375801e17e1e49477f7910d1",
           "crontabs/root": "8e5df86bfcfcb38a40f74762d2e1aee8",
@@ -386,7 +386,7 @@
         "files": {
           "i18n/en/i18n.conf": "8e889b18dfbf6d837a90d2d49b9bf882",
           "i18n/zh-cn/i18n.conf": "f65810697cc9bd8f29c188be4d09e4dc",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "cf1d3506f344330efc491a03cd49d41b",
           "index.sh": "c83a5a370d8529a5d90dbadb038806a8",
           "sysinfo_lib.sh": "c64aa785127e6ba8b04d129e25f97be1",
@@ -418,7 +418,7 @@
         "files": {
           "i18n/en/i18n.conf": "3fff85ffa97aef8e128e8db2043435aa",
           "i18n/zh-cn/i18n.conf": "bde5ec1083dc11ea59bb3f25e1bb42a9",
-          "config.conf": "a8db7c0899eac6a2645b612d77fc21b6",
+          "config.conf": "00d884be97a2b09099203f6e065db0e8",
           "home.conf": "6d3397a4009a75e6afe3747b541a7ffe",
           "base.httpd_htpass": "c7c01ae32a83b014f586aeb61415b9f0",
           "icon.png": "4a5b40cc1f5ead6a8f44b1939e3ba3d5",
@@ -458,7 +458,7 @@
         "files": {
           "i18n/en/i18n.conf": "739e443738ba7eec6e9f226ccc06300d",
           "i18n/zh-cn/i18n.conf": "d652a1a4cf316b29e599d47807f57196",
-          "config.conf": "218454dc197884f2b4f79d6c97a9137c",
+          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "icon.png": "9e0b8a30c00913db7a4a411e0404aac2",
           "index.sh": "f37c23c2a847ca5173f0da2aa588345d"
         },
@@ -485,7 +485,7 @@
         "files": {
           "i18n/en/i18n.conf": "420ae5bf4270618ada6d15b58844bc62",
           "i18n/zh-cn/i18n.conf": "af5a7d03df1cbafce09ed59b07ced2a6",
-          "config.conf": "6f7b5363aedd4e1d1633db8e8a7e8c6d",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
           "icon.png": "ac34719ae397713f1ef629861255cdee",
           "index.sh": "9b99cb28a032494878f3c895364a74a0",
           "S101mysql.init": "5f51feabe0d0a44db2637acea05a3717",
@@ -512,7 +512,7 @@
         "files": {
           "i18n/en/i18n.conf": "485d47804d53373076adf358373b632b",
           "i18n/zh-cn/i18n.conf": "796776b6a0a52b079672e6c225ae0947",
-          "config.conf": "6f7b5363aedd4e1d1633db8e8a7e8c6d",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
           "icon.png": "89a5ea28e8c0fc32b701f0716a71a4b4",
           "index.sh": "d2b2b0031e89441c8b50d39718280dbe",
           "php_lib.sh": "5a444b115be13057cf4d98139bf8a097"
@@ -538,7 +538,7 @@
         "files": {
           "i18n/en/i18n.conf": "0c6841a91d0c8b8e59e3b9020fb871a7",
           "i18n/zh-cn/i18n.conf": "74ee0c27badd2b3d529379a7df816af5",
-          "config.conf": "6f3cbd0e12a3b2e2f83fd3ac1c591ed4",
+          "config.conf": "85c6a5aa89a7f85ee7678b9d4c51d6e2",
           "icon.png": "b78e743d750a20ef0cb01830f93341a6",
           "index.sh": "745d9b06e2b5a0bfc3f60cdaa60caf48",
           "curl_lib.sh": "d38a43cdc4744bce89d91d8bb22ca9f0",
@@ -565,7 +565,7 @@
         "files": {
           "i18n/en/i18n.conf": "8ac569acb49bc33275fa69c6fc9a6c4c",
           "i18n/zh-cn/i18n.conf": "d9556c6264a3a9ece080f8b34cb8c95e",
-          "config.conf": "6f7b5363aedd4e1d1633db8e8a7e8c6d",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
           "icon.png": "156fe1198fb639c30f9674c972179156",
           "xcache.conf": "4141b5178acbb65838ba875684534943",
           "opcache.conf": "a47db66014ee1148a0cb0465870c0b25",
@@ -593,7 +593,7 @@
         "files": {
           "i18n/en/i18n.conf": "1dd57b771f97276270f7c77c31bbe2ad",
           "i18n/zh-cn/i18n.conf": "3d9f665a7f7eb6b6d32f76a72fb501af",
-          "config.conf": "dc81578005ee5c8411ac9e67f5240771",
+          "config.conf": "4f586c1cc97c8b31f1301dac76cd0844",
           "icon.png": "0d5064e2b193262585cf66c8ca66db8d",
           "index.sh": "b53dc4290a43a967c6fc415724e2ff5c",
           "net_diag.sh": "7aa1336282d193bd46e4c2d3631d2f55"
@@ -619,7 +619,7 @@
         "files": {
           "i18n/en/i18n.conf": "d5d5ecd7bc5ee2061a92691a44a6efe5",
           "i18n/zh-cn/i18n.conf": "75e469a1f30625e587d68bc584d55ec7",
-          "config.conf": "dc81578005ee5c8411ac9e67f5240771",
+          "config.conf": "4f586c1cc97c8b31f1301dac76cd0844",
           "icon.png": "81244fa840697490cf4100dd8afdb152",
           "index.sh": "453e5a09964595a38468e2a7c2eb2d2e"
         },
@@ -644,7 +644,7 @@
         "files": {
           "i18n/en/i18n.conf": "e7789d218c59cb65bc588df51ba12345",
           "i18n/zh-cn/i18n.conf": "1a0c539a6ecd453a15fa42e7195ccfeb",
-          "config.conf": "6f7b5363aedd4e1d1633db8e8a7e8c6d",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
           "icon.png": "65b28cf0f1111f7c5a014eefe8eda2da",
           "index.sh": "7810569b8b901915039816e89b8d096b",
           "imagemagick_lib.sh": "d6431a6057cb26f144e628496dc5bf53"
@@ -673,7 +673,7 @@
           "base-firewall.conf": "c6ce067a1a30f5ef355c2f7861490661",
           "i18n/en/i18n.conf": "f3cc3202a260ff8926f74e36819de50b",
           "i18n/zh-cn/i18n.conf": "df8cda884073d085bf5d50a7daf8ad48",
-          "config.conf": "7740b98fc2c3bb402db7db834423b57e",
+          "config.conf": "ad5cc4db503ced34c66eab009c088762",
           "icon.png": "cfd82c8bea82f630c288b3b752a960a1",
           "index.sh": "3dcf76103239bc5da448abe17bfb96c6",
           "base_firewall_lib.sh": "8a78f0b9de327e1d481be3b71c269085"
@@ -699,7 +699,7 @@
         "files": {
           "i18n/en/i18n.conf": "f3346b6e448fef47f6b5cf4d6c5a1fc0",
           "i18n/zh-cn/i18n.conf": "390c740a431bbc88d2643968ca213532",
-          "config.conf": "902a8fa9d2858446a2af8a12a18c71f8",
+          "config.conf": "fa313505e9637195a2c531acdca61fa6",
           "icon.png": "288902224144786270f2ff220661d723",
           "index.sh": "3678bb60720f1a769595ab44ea26f239"
         },
@@ -724,7 +724,7 @@
         "files": {
           "i18n/en/i18n.conf": "777b1154482b9a57bbf4adb59ad96e92",
           "i18n/zh-cn/i18n.conf": "a8746aea6e1538473391a5a6ea2c505a",
-          "config.conf": "7740b98fc2c3bb402db7db834423b57e",
+          "config.conf": "ad5cc4db503ced34c66eab009c088762",
           "icon.png": "a8ab65bedd36d8f78ac6c09d6368b039",
           "index.sh": "58da2cbe3b9c31bba6d9eb23746f4ff8",
           "netzone_lib.sh": "c005f853f3c4e1e604c1de380fa424eb",

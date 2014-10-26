@@ -1,7 +1,7 @@
 {
   "info": {
-    "distribution": "ubuntu-14.x",
-    "platform": "i386",
+    "distribution": "centos-7.x",
+    "platform": "i686",
     "url_prefix": "https://raw.githubusercontent.com/ShellGui/shellgui-appstore/master/"
   },
   "apps": {
