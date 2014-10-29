@@ -65,7 +65,8 @@ if
 [ "$(md5sum $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz | awk {'print $1'})" != "02f5e13f03399b62aad9be4030cfd42b" ]
 then
 rm -f $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c "https://download.openswan.org/openswan/old/openswan-2.6/openswan-2.6.32.tar.gz" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+$DOCUMENT_ROOT/../bin/aria2c https://download.openswan.org/openswan/old/openswan-2.6/openswan-2.6.32.tar.gz https://www.freeswan.org/old-openswan/openswan-2.6.32.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+[ $0 -ne 0 ] || download_pptp_l2tp
 fi
 if
 [ "$(md5sum $DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz | awk {'print $1'})" != "0e45d11cb4fa6c56cce6b1d119733ed9" ]
@@ -77,7 +78,7 @@ if
 [ "$(md5sum $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz | awk {'print $1'})" != "28264284552c442b24cf421755a2bb48" ]
 then
 rm -f $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c "https://www.xelerance.com/wp-content/uploads/software/xl2tpd/xl2tpd-1.3.0.tar.gz" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+$DOCUMENT_ROOT/../bin/aria2c https://www.xelerance.com/wp-content/uploads/software/xl2tpd/xl2tpd-1.3.0.tar.gz ftp://mirror.linux.org.au/gentoo/gentoo/distfiles/xl2tpd-1.3.0.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
 fi
 }
 make_pptp_l2tp()
