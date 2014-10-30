@@ -2,65 +2,178 @@
 
 download_php_ext()
 {
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/imagick-3.1.2.tgz | awk {'print $1'})" != "f2fd71b026debe056e0ec8d76c2ffe94" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/imagick-3.1.2.tgz
-aria2c http://pecl.php.net/get/imagick-3.1.2.tgz \
-http://soft.vpser.net/web/imagick/imagick-3.1.2.tgz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/MagickWandForPHP-1.0.9-2.tar.gz | awk {'print $1'})" != "76190a585a9f6b90c9884ebd150c64b3" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/MagickWandForPHP-1.0.9-2.tar.gz
-aria2c http://www.magickwand.org/download/php/releases/MagickWandForPHP-1.0.9-2.tar.bz2 \
-http://mirrors-usa.go-parts.com/mirrors/ImageMagick/php/MagickWandForPHP-1.0.9-2.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/memcache-3.0.8.tgz | awk {'print $1'})" != "24505e9b263d2c77f8ae5e9b4725e7d1" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/memcache-3.0.8.tgz
-aria2c http://pecl.php.net/get/memcache-3.0.8.tgz \
-http://pecl.php.net/get/memcache-3.0.8.tgz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/igbinary-1.2.1.tgz | awk {'print $1'})" != "04a2474ff5eb99c7d0007bf9f4e8a6ec" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/igbinary-1.2.1.tgz
-aria2c http://pecl.php.net/get/igbinary-1.2.1.tgz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/redis-2.2.5.tgz | awk {'print $1'})" != "60151c2a837cd4a94f420d45e6114b0b" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/redis-2.2.5.tgz
-aria2c http://pecl.php.net/get/redis-2.2.5.tgz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/xcache-3.2.0.tar.gz | awk {'print $1'})" != "8b0a6f27de630c4714ca261480f34cda" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/xcache-3.2.0.tar.gz
-aria2c http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86.tar.gz | awk {'print $1'})" != "c269ee885323aa43b94784d222499423" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86.tar.gz
-aria2c http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86-64.tar.gz | awk {'print $1'})" != "471f19ccc7cff907e6e67e6bbf3c23c3" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86-64.tar.gz
-aria2c http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2 | awk {'print $1'})" != "331a87fb27e100a88b3845d34582f769" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2
-aria2c http://jp1.php.net/distributions/php-5.5.16.tar.bz2 \
-http://mirrors.sohu.com/php/php-5.5.16.tar.bz2 \
-http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+
+export download_json='{
+"file_name":"imagick-3.1.2.tgz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/imagick-3.1.2.tgz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"f2fd71b026debe056e0ec8d76c2ffe94",
+	"download_urls":{
+	"php":"http://pecl.php.net/get/imagick-3.1.2.tgz",
+	"vpser":"http://soft.vpser.net/web/imagick/imagick-3.1.2.tgz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/imagick-3.1.2.tgz | awk {'print $1'})" != "f2fd71b026debe056e0ec8d76c2ffe94" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/imagick-3.1.2.tgz
+# aria2c http://pecl.php.net/get/imagick-3.1.2.tgz \
+# http://soft.vpser.net/web/imagick/imagick-3.1.2.tgz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"MagickWandForPHP-1.0.9-2.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/MagickWandForPHP-1.0.9-2.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"76190a585a9f6b90c9884ebd150c64b3",
+	"download_urls":{
+	"magickwand":"http://www.magickwand.org/download/php/releases/MagickWandForPHP-1.0.9-2.tar.bz2",
+	"go-parts":"http://mirrors-usa.go-parts.com/mirrors/ImageMagick/php/MagickWandForPHP-1.0.9-2.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/MagickWandForPHP-1.0.9-2.tar.gz | awk {'print $1'})" != "76190a585a9f6b90c9884ebd150c64b3" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/MagickWandForPHP-1.0.9-2.tar.gz
+# aria2c http://www.magickwand.org/download/php/releases/MagickWandForPHP-1.0.9-2.tar.bz2 \
+# http://mirrors-usa.go-parts.com/mirrors/ImageMagick/php/MagickWandForPHP-1.0.9-2.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"memcache-3.0.8.tgz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/memcache-3.0.8.tgz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"24505e9b263d2c77f8ae5e9b4725e7d1",
+	"download_urls":{
+	"php":"http://pecl.php.net/get/memcache-3.0.8.tgz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/memcache-3.0.8.tgz | awk {'print $1'})" != "24505e9b263d2c77f8ae5e9b4725e7d1" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/memcache-3.0.8.tgz
+# aria2c http://pecl.php.net/get/memcache-3.0.8.tgz \
+# http://pecl.php.net/get/memcache-3.0.8.tgz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"igbinary-1.2.1.tgz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/igbinary-1.2.1.tgz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"04a2474ff5eb99c7d0007bf9f4e8a6ec",
+	"download_urls":{
+	"php":"http://pecl.php.net/get/igbinary-1.2.1.tgz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/igbinary-1.2.1.tgz | awk {'print $1'})" != "04a2474ff5eb99c7d0007bf9f4e8a6ec" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/igbinary-1.2.1.tgz
+# aria2c http://pecl.php.net/get/igbinary-1.2.1.tgz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"redis-2.2.5.tgz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/redis-2.2.5.tgz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"60151c2a837cd4a94f420d45e6114b0b",
+	"download_urls":{
+	"php":"http://pecl.php.net/get/redis-2.2.5.tgz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/redis-2.2.5.tgz | awk {'print $1'})" != "60151c2a837cd4a94f420d45e6114b0b" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/redis-2.2.5.tgz
+# aria2c http://pecl.php.net/get/redis-2.2.5.tgz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"xcache-3.2.0.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/xcache-3.2.0.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"8b0a6f27de630c4714ca261480f34cda",
+	"download_urls":{
+	"php":"http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/xcache-3.2.0.tar.gz | awk {'print $1'})" != "8b0a6f27de630c4714ca261480f34cda" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/xcache-3.2.0.tar.gz
+# aria2c http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"ioncube_loaders_lin_x86.tar.gz",
+"downloader":"curl wget aria2",
+"save_dest":"$DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"indefinite",
+	"download_urls":{
+	"php":"http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86.tar.gz | awk {'print $1'})" != "c269ee885323aa43b94784d222499423" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86.tar.gz
+# aria2c http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"ioncube_loaders_lin_x86-64.tar.gz",
+"downloader":"curl wget aria2",
+"save_dest":"$DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86-64.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"indefinite",
+	"download_urls":{
+	"php":"http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86-64.tar.gz | awk {'print $1'})" != "471f19ccc7cff907e6e67e6bbf3c23c3" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/ioncube_loaders_lin_x86-64.tar.gz
+# aria2c http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz  --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+export download_json='{
+"file_name":"php-5.5.16.tar.bz2",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"331a87fb27e100a88b3845d34582f769",
+	"download_urls":{
+	"php":"http://jp1.php.net/distributions/php-5.5.16.tar.bz2",
+	"sohu":"http://mirrors.sohu.com/php/php-5.5.16.tar.bz2",
+	"internode":"http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2 | awk {'print $1'})" != "331a87fb27e100a88b3845d34582f769" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2
+# aria2c http://jp1.php.net/distributions/php-5.5.16.tar.bz2 \
+# http://mirrors.sohu.com/php/php-5.5.16.tar.bz2 \
+# http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 make_php_ext()
 {

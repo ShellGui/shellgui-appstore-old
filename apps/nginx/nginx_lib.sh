@@ -352,12 +352,24 @@ chmod +x /etc/init.d/nginx
 
 download_nginx()
 {
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/nginx-1.6.2.tar.gz | awk {'print $1'})" != "d1b55031ae6e4bce37f8776b94d8b930" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/nginx-1.6.2.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c http://nginx.org/download/nginx-1.6.2.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"nginx-1.6.2.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/nginx-1.6.2.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"d1b55031ae6e4bce37f8776b94d8b930",
+	"download_urls":{
+	"nginx.org":"http://nginx.org/download/nginx-1.6.2.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/nginx-1.6.2.tar.gz | awk {'print $1'})" != "d1b55031ae6e4bce37f8776b94d8b930" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/nginx-1.6.2.tar.gz
+# $DOCUMENT_ROOT/../bin/aria2c http://nginx.org/download/nginx-1.6.2.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 
 make_nginx()

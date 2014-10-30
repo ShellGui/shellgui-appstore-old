@@ -61,25 +61,67 @@ fi
 
 download_pptp_l2tp()
 {
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz | awk {'print $1'})" != "02f5e13f03399b62aad9be4030cfd42b" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c https://download.openswan.org/openswan/old/openswan-2.6/openswan-2.6.32.tar.gz https://www.freeswan.org/old-openswan/openswan-2.6.32.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-[ $0 -ne 0 ] || download_pptp_l2tp
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz | awk {'print $1'})" != "0e45d11cb4fa6c56cce6b1d119733ed9" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c "http://nchc.dl.sourceforge.net/project/rp-l2tp/rp-l2tp/0.4/rp-l2tp-0.4.tar.gz" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz | awk {'print $1'})" != "28264284552c442b24cf421755a2bb48" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz
-$DOCUMENT_ROOT/../bin/aria2c https://www.xelerance.com/wp-content/uploads/software/xl2tpd/xl2tpd-1.3.0.tar.gz ftp://mirror.linux.org.au/gentoo/gentoo/distfiles/xl2tpd-1.3.0.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"openswan-2.6.32.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"02f5e13f03399b62aad9be4030cfd42b",
+	"download_urls":{
+	"openswan":"https://download.openswan.org/openswan/old/openswan-2.6/openswan-2.6.32.tar.gz",
+	"freeswan":"https://www.freeswan.org/old-openswan/openswan-2.6.32.tar.gz"
+	}
+}'
+main.sbin download
+
+export download_json='{
+"file_name":"rp-l2tp-0.4.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"0e45d11cb4fa6c56cce6b1d119733ed9",
+	"download_urls":{
+	"github":"http://nchc.dl.sourceforge.net/project/rp-l2tp/rp-l2tp/0.4/rp-l2tp-0.4.tar.gz"
+	}
+}'
+main.sbin download
+
+export download_json='{
+"file_name":"xl2tpd-1.3.0.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"28264284552c442b24cf421755a2bb48",
+	"download_urls":{
+	"www.xelerance.com":"https://www.xelerance.com/wp-content/uploads/software/xl2tpd/xl2tpd-1.3.0.tar.gz",
+	"mirror.linux.org":"ftp://mirror.linux.org.au/gentoo/gentoo/distfiles/xl2tpd-1.3.0.tar.gz"
+	}
+}'
+main.sbin download
+
+
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz | awk {'print $1'})" != "02f5e13f03399b62aad9be4030cfd42b" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/openswan-2.6.32.tar.gz
+# $DOCUMENT_ROOT/../bin/aria2c https://download.openswan.org/openswan/old/openswan-2.6/openswan-2.6.32.tar.gz https://www.freeswan.org/old-openswan/openswan-2.6.32.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# [ $0 -ne 0 ] || download_pptp_l2tp
+# fi
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz | awk {'print $1'})" != "0e45d11cb4fa6c56cce6b1d119733ed9" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/rp-l2tp-0.4.tar.gz
+# $DOCUMENT_ROOT/../bin/aria2c "http://nchc.dl.sourceforge.net/project/rp-l2tp/rp-l2tp/0.4/rp-l2tp-0.4.tar.gz" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz | awk {'print $1'})" != "28264284552c442b24cf421755a2bb48" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/xl2tpd-1.3.0.tar.gz
+# $DOCUMENT_ROOT/../bin/aria2c https://www.xelerance.com/wp-content/uploads/software/xl2tpd/xl2tpd-1.3.0.tar.gz ftp://mirror.linux.org.au/gentoo/gentoo/distfiles/xl2tpd-1.3.0.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 make_pptp_l2tp()
 {

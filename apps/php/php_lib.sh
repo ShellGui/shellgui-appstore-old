@@ -22,78 +22,197 @@ fi
 download_php()
 {
 # jpegsrc.v9.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/jpegsrc.v9.tar.gz | awk {'print $1'})" != "b397211ddfd506b92cd5e02a22ac924d" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/jpegsrc.v9.tar.gz
-aria2c http://fossies.org/linux/misc/jpegsrc.v9.tar.gz \
-http://www.ijg.org/files/jpegsrc.v9.tar.gz \
-ftp://ftp2.de.debian.org/fink-distfiles/jpegsrc.v9.tar.gz \
-http://download.videolan.org/contrib/jpegsrc.v9.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"jpegsrc.v9.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/jpegsrc.v9.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"b397211ddfd506b92cd5e02a22ac924d",
+	"download_urls":{
+	"misc":"http://fossies.org/linux/misc/jpegsrc.v9.tar.gz",
+	"ijg":"http://www.ijg.org/files/jpegsrc.v9.tar.gz",
+	"debian":"ftp://ftp2.de.debian.org/fink-distfiles/jpegsrc.v9.tar.gz",
+	"videolan":"http://download.videolan.org/contrib/jpegsrc.v9.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/jpegsrc.v9.tar.gz | awk {'print $1'})" != "b397211ddfd506b92cd5e02a22ac924d" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/jpegsrc.v9.tar.gz
+# aria2c http://fossies.org/linux/misc/jpegsrc.v9.tar.gz \
+# http://www.ijg.org/files/jpegsrc.v9.tar.gz \
+# ftp://ftp2.de.debian.org/fink-distfiles/jpegsrc.v9.tar.gz \
+# http://download.videolan.org/contrib/jpegsrc.v9.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # libpng-1.6.3.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/libpng-1.6.3.tar.gz | awk {'print $1'})" != "98b652b6c174c35148f1f5f513fe490d" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/libpng-1.6.3.tar.gz
-aria2c http://prdownloads.sourceforge.net/libpng/libpng-1.6.3.tar.gz \
-ftp://ftp.u-aizu.ac.jp/pub/graphics/image/ImageMagick/simplesystems.org/libpng/png/src/history/libpng16/libpng-1.6.3.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"libpng-1.6.3.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/libpng-1.6.3.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"98b652b6c174c35148f1f5f513fe490d",
+	"download_urls":{
+	"sourceforge":"http://prdownloads.sourceforge.net/libpng/libpng-1.6.3.tar.gz",
+	"u-aizu":"ftp://ftp.u-aizu.ac.jp/pub/graphics/image/ImageMagick/simplesystems.org/libpng/png/src/history/libpng16/libpng-1.6.3.tar.gz"
+	}
+}'
+main.sbin download
+
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/libpng-1.6.3.tar.gz | awk {'print $1'})" != "98b652b6c174c35148f1f5f513fe490d" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/libpng-1.6.3.tar.gz
+# aria2c http://prdownloads.sourceforge.net/libpng/libpng-1.6.3.tar.gz \
+# ftp://ftp.u-aizu.ac.jp/pub/graphics/image/ImageMagick/simplesystems.org/libpng/png/src/history/libpng16/libpng-1.6.3.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # freetype-2.4.12.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/freetype-2.4.12.tar.gz | awk {'print $1'})" != "e3057079a9bb96d7ebf9afee3f724653" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/freetype-2.4.12.tar.gz
-aria2c http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz \
-http://nongnu.askapache.com/freetype/freetype-2.4.12.tar.gz \
-http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"freetype-2.4.12.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/freetype-2.4.12.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"e3057079a9bb96d7ebf9afee3f724653",
+	"download_urls":{
+	"askapache":"http://nongnu.askapache.com/freetype/freetype-2.4.12.tar.gz",
+	"savannah":"http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/freetype-2.4.12.tar.gz | awk {'print $1'})" != "e3057079a9bb96d7ebf9afee3f724653" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/freetype-2.4.12.tar.gz
+# aria2c http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz \
+# http://nongnu.askapache.com/freetype/freetype-2.4.12.tar.gz \
+# http://download.savannah.gnu.org/releases/freetype/freetype-2.4.12.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # mhash-0.9.9.9.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/mhash-0.9.9.9.tar.gz | awk {'print $1'})" != "ee66b7d5947deb760aeff3f028e27d25" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/mhash-0.9.9.9.tar.gz
-aria2c http://nchc.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz \
-http://superb-dca2.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz \
-http://soft.vpser.net/web/mhash/mhash-0.9.9.9.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"mhash-0.9.9.9.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/mhash-0.9.9.9.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"ee66b7d5947deb760aeff3f028e27d25",
+	"download_urls":{
+	"sourceforge":"http://nchc.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz",
+	"sourceforge":"http://superb-dca2.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz",
+	"vpser":"http://soft.vpser.net/web/mhash/mhash-0.9.9.9.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/mhash-0.9.9.9.tar.gz | awk {'print $1'})" != "ee66b7d5947deb760aeff3f028e27d25" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/mhash-0.9.9.9.tar.gz
+# aria2c http://nchc.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz \
+# http://superb-dca2.dl.sourceforge.net/project/mhash/mhash/0.9.9.9/mhash-0.9.9.9.tar.gz \
+# http://soft.vpser.net/web/mhash/mhash-0.9.9.9.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # libmcrypt-2.5.8.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/libmcrypt-2.5.8.tar.gz | awk {'print $1'})" != "0821830d930a86a5c69110837c55b7da" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/libmcrypt-2.5.8.tar.gz
-aria2c http://softlayer.dl.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.5.8.tar.gz \
-http://downloads.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz \
-http://softlayer-dal.dl.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"libmcrypt-2.5.8.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/libmcrypt-2.5.8.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"0821830d930a86a5c69110837c55b7da",
+	"download_urls":{
+	"sourceforge":"http://softlayer.dl.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.5.8.tar.gz",
+	"sourceforge":"http://downloads.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz",
+	"sourceforge":"http://softlayer-dal.dl.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/libmcrypt-2.5.8.tar.gz | awk {'print $1'})" != "0821830d930a86a5c69110837c55b7da" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/libmcrypt-2.5.8.tar.gz
+# aria2c http://softlayer.dl.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.5.8.tar.gz \
+# http://downloads.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz \
+# http://softlayer-dal.dl.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # libevent-2.0.21-stable.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/libevent-2.0.21-stable.tar.gz | awk {'print $1'})" != "b2405cc9ebf264aa47ff615d9de527a2" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/libevent-2.0.21-stable.tar.gz
-aria2c http://cloud.github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz \
-ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/libevent-2.0.21-stable.tar.gz \
-https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"libevent-2.0.21-stable.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/libevent-2.0.21-stable.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"b2405cc9ebf264aa47ff615d9de527a2",
+	"download_urls":{
+	"github":"http://cloud.github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz",
+	"netbsd":"ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/libevent-2.0.21-stable.tar.gz",
+	"github":"https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/libevent-2.0.21-stable.tar.gz | awk {'print $1'})" != "b2405cc9ebf264aa47ff615d9de527a2" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/libevent-2.0.21-stable.tar.gz
+# aria2c http://cloud.github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz \
+# ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/libevent-2.0.21-stable.tar.gz \
+# https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # libiconv-1.14.tar.gz
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/libiconv-1.14.tar.gz | awk {'print $1'})" != "e34509b1623cec449dfeb73d7ce9c6c6" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/libiconv-1.14.tar.gz
-aria2c http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz \
-http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz \
-http://mirror.anl.gov/pub/gnu/libiconv/libiconv-1.14.tar.gz \
-http://ftp.yz.yamagata-u.ac.jp/pub/GNU/libiconv/libiconv-1.14.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"libiconv-1.14.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/libiconv-1.14.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"e34509b1623cec449dfeb73d7ce9c6c6",
+	"download_urls":{
+	"gnu.org":"http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz",
+	"anl.gov":"http://mirror.anl.gov/pub/gnu/libiconv/libiconv-1.14.tar.gz",
+	"jp":"http://ftp.yz.yamagata-u.ac.jp/pub/GNU/libiconv/libiconv-1.14.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/libiconv-1.14.tar.gz | awk {'print $1'})" != "e34509b1623cec449dfeb73d7ce9c6c6" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/libiconv-1.14.tar.gz
+# aria2c http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz \
+# http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz \
+# http://mirror.anl.gov/pub/gnu/libiconv/libiconv-1.14.tar.gz \
+# http://ftp.yz.yamagata-u.ac.jp/pub/GNU/libiconv/libiconv-1.14.tar.gz --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
+
 # php-5.5.16.tar.bz2
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2 | awk {'print $1'})" != "331a87fb27e100a88b3845d34582f769" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2
-aria2c http://jp1.php.net/distributions/php-5.5.16.tar.bz2 \
-http://mirrors.sohu.com/php/php-5.5.16.tar.bz2 \
-http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"php-5.5.16.tar.bz2",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"331a87fb27e100a88b3845d34582f769",
+	"download_urls":{
+	"php":"http://jp1.php.net/distributions/php-5.5.16.tar.bz2",
+	"sohu":"http://mirrors.sohu.com/php/php-5.5.16.tar.bz2",
+	"internode":"http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2 | awk {'print $1'})" != "331a87fb27e100a88b3845d34582f769" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/php-5.5.16.tar.bz2
+# aria2c http://jp1.php.net/distributions/php-5.5.16.tar.bz2 \
+# http://mirrors.sohu.com/php/php-5.5.16.tar.bz2 \
+# http://mirror.internode.on.net/pub/php/php-5.5.16.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 
 make_php()

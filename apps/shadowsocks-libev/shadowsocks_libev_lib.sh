@@ -21,10 +21,22 @@ fi
 download_shadowsocks_libev()
 {
 rm -f $DOCUMENT_ROOT/../sources/shadowsocks-libev-master.zip
-. $DOCUMENT_ROOT/apps/curl/curl_lib.sh
-curl_load no_max_time=1
-curl $curl_args -L https://github.com/madeye/shadowsocks-libev/archive/master.zip -o $DOCUMENT_ROOT/../sources/shadowsocks-libev-master.zip 2>&1
+# . $DOCUMENT_ROOT/apps/curl/curl_lib.sh
+# curl_load no_max_time=1
+# curl $curl_args -L https://github.com/madeye/shadowsocks-libev/archive/master.zip -o $DOCUMENT_ROOT/../sources/shadowsocks-libev-master.zip 2>&1
 
+export download_json='{
+"file_name":"shadowsocks-libev-master.zip",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/shadowsocks-libev-master.zip",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"indefinite",
+	"download_urls":{
+	"github":"https://github.com/madeye/shadowsocks-libev/archive/master.zip"
+	}
+}'
+main.sbin download
 }
 make_shadowsocks_libev()
 {
@@ -32,13 +44,13 @@ cd $DOCUMENT_ROOT/../sources/
 rm -rf shadowsocks-libev-master
 unzip shadowsocks-libev-master.zip
 cd shadowsocks-libev-master
-if
-echo "$OS" | grep -iq "centos"
-then
+# if
+# echo "$OS" | grep -iq "centos"
+# then
 ./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=openssl --with-openssl=/usr/include/openssl/
-else 
-./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=polarssl --with-polarssl=/usr/include/polarssl
-fi
+# else 
+# ./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=polarssl --with-polarssl=/usr/include/polarssl
+# fi
 make && make install
 }
 do_install_shadowsocks_libev()

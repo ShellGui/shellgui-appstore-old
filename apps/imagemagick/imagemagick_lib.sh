@@ -2,15 +2,30 @@
 
 download_imagemagick()
 {
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/ImageMagick-6.8.9-8.tar.bz2 | awk {'print $1'})" != "7e96f55156d72ce59c76ec93362ec72a" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/ImageMagick-6.8.9-8.tar.bz2
-aria2c http://www.imagemagick.org/download/ImageMagick-6.8.9-8.tar.bz2 \
-http://ftp.vim.org/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 \
-http://ftp.vim.org/pub/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 \
-http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"ImageMagick-6.8.9-8.tar.bz2",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/ImageMagick-6.8.9-8.tar.bz2",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"7e96f55156d72ce59c76ec93362ec72a",
+	"download_urls":{
+	"imagemagick":"http://www.imagemagick.org/download/ImageMagick-6.8.9-8.tar.bz2",
+	"vim":"http://ftp.vim.org/ImageMagick/ImageMagick-6.8.9-8.tar.bz2",
+	"vim":"http://ftp.vim.org/pub/ImageMagick/ImageMagick-6.8.9-8.tar.bz2",
+	"sunet":"http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-6.8.9-8.tar.bz2"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/ImageMagick-6.8.9-8.tar.bz2 | awk {'print $1'})" != "7e96f55156d72ce59c76ec93362ec72a" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/ImageMagick-6.8.9-8.tar.bz2
+# aria2c http://www.imagemagick.org/download/ImageMagick-6.8.9-8.tar.bz2 \
+# http://ftp.vim.org/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 \
+# http://ftp.vim.org/pub/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 \
+# http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/ImageMagick-6.8.9-8.tar.bz2 --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 make_imagemagick()
 {

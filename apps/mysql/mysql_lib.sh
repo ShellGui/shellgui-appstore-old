@@ -1,19 +1,27 @@
 #!/bin/sh
 
-packagename="mysql"
-version="5.6.14"
-arch="tar.gz"
-download_url1="http://downloads.skysql.com/archives/mysql-5.6/"
-download_url2="http://cdn.mysql.com/Downloads/MySQL-5.6/"
-download_url3="ftp://ftp.tw.freebsd.org/pub/distfiles/"
 download_mysql()
 {
-if
-[ "$(md5sum $DOCUMENT_ROOT/../sources/$packagename-$version.$arch | awk {'print $1'})" != "52224ce51dbf6ffbcef82be30688cc04" ]
-then
-rm -f $DOCUMENT_ROOT/../sources/$packagename-$version.$arch
-$DOCUMENT_ROOT/../bin/aria2c "$download_url1$packagename-$version.$arch" "$download_url2$packagename-$version.$arch" "$download_url3$packagename-$version.$arch" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
-fi
+export download_json='{
+"file_name":"mysql-5.6.14.tar.gz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/mysql-5.6.14.tar.gz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"52224ce51dbf6ffbcef82be30688cc04",
+	"download_urls":{
+	"skysql":"http://downloads.skysql.com/archives/mysql-5.6/mysql-5.6.14.tar.gz",
+	"mysql":"http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.14.tar.gz",
+	"freebsd":"ftp://ftp.tw.freebsd.org/pub/distfiles/mysql-5.6.14.tar.gz"
+	}
+}'
+main.sbin download
+# if
+# [ "$(md5sum $DOCUMENT_ROOT/../sources/$packagename-$version.$arch | awk {'print $1'})" != "52224ce51dbf6ffbcef82be30688cc04" ]
+# then
+# rm -f $DOCUMENT_ROOT/../sources/$packagename-$version.$arch
+# $DOCUMENT_ROOT/../bin/aria2c "$download_url1$packagename-$version.$arch" "$download_url2$packagename-$version.$arch" "$download_url3$packagename-$version.$arch" --dir=$DOCUMENT_ROOT/../sources/ 2>&1
+# fi
 }
 
 install_mysql_dependence()
