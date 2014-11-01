@@ -5,6 +5,250 @@
     "url_prefix": "https://raw.githubusercontent.com/ShellGui/shellgui-appstore/master/"
   },
   "apps": {
+    "Network": {
+      "dnscrypt-proxy": {
+        "version": "0.1",
+        "size": "56K",
+        "files": {
+          "icon.png": "231179e6cdc3d16f2b725d56218c3780",
+          "S400dnscryptc.init": "535e3def17376b9ceb783ab681306643",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "dnscrypt_proxy_lib.sh": "89fae8583f03ae3769a4b2d2d5e9fbee",
+          "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
+          "i18n/zh-cn/i18n.conf": "193deaba3d8ea799c891748c447d790f",
+          "index.sh": "bdd43c60760ca07db866508126a02adb"
+        },
+        "i18n": {
+          "en": {
+            "name": "DNScrypt-proxy",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "DNScrypt-proxy",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "网络"
+          }
+        }
+      },
+      "shadowsocks-libev": {
+        "version": "0.1",
+        "size": "100K",
+        "files": {
+          "icon.png": "d7cb733603d0864041d6b36eae2ff7e7",
+          "transparent_proxy_dest.conf": "694ea1d720d960a7b0885a5d3928eeae",
+          "S702shadowsocks_redir.init": "884c62b80de3c742f4036b95e3335d52",
+          "S701shadowsocks_local.init": "a7821adfa00e09a25b47f1206616deee",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "shadowsocks_libev.json": "e7a2893616b299c6c50f74f3d8ceb3f6",
+          "shadowsocks_libev_lib.sh": "787d2563f67ede69734fc93a23388894",
+          "i18n/en/i18n.conf": "bc7c7be95f0e124be37f20a37b68e3c4",
+          "i18n/zh-cn/i18n.conf": "f7f3f07f5642fb93ea3ac3cc3d9be167",
+          "S700shadowsocks_server.init": "d89977ad76f8dfcb9603408260425f74",
+          "F250shadowsocks_server.fw": "f5d0028a50a0ec378cb2d7dc8ef89e73",
+          "index.sh": "1d2a7d8d8ca4f6e0a960ef55aaa54fc7"
+        },
+        "i18n": {
+          "en": {
+            "name": "Shadowsocks-libev",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "Shadowsocks-libev",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "Network"
+          }
+        }
+      },
+      "pptp-l2tp-server": {
+        "version": "0.1",
+        "size": "100K",
+        "files": {
+          "icon.png": "2d051e68ed158947f251b7e6d1735785",
+          "pptp-l2tp-server.json": "4329d1d8673c5b2baecbad101629c7e9",
+          "F200pptp-l2tp-server.fw": "9f2ca718ad86d1b36822565e23d66216",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "pptp_l2tp_server_lib.sh": "4c2f2db8287572a76da0ba74cb6c6050",
+          "S230xl2tpd.init": "34480faabe556ea6cfc864dc4b9ad8d9",
+          "S210pptpd.init": "2924c00c2178d90568b673e010b531bc",
+          "i18n/en/i18n.conf": "4f493785d40904659c69eb166303c13a",
+          "i18n/zh-cn/i18n.conf": "84689324157f64f8691bdb2ca15c8774",
+          "S220ipsec.init": "82294bb379e0a5d0e2cc773bf585d53d",
+          "index.sh": "e22e7cc74de9dff8831798530911a70d"
+        },
+        "i18n": {
+          "en": {
+            "name": "PPTP-L2TP Server",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "PPTP-L2TP服务",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "网络"
+          }
+        }
+      },
+      "aria2": {
+        "version": "0.1",
+        "size": "548K",
+        "files": {
+          "icon.png": "ee68dddbb6e097987266077d681aa683",
+          "js/jquery.jsonrpc.js": "1a600fce436a210141c1b73e8b3117b7",
+          "js/jquery.Storage.js": "4cbcd26e8b274b3bebcd581c720c1a5a",
+          "js/bootstrap.min.js": "71e1bf948efa4f08605d8d555c96bad9",
+          "js/aria2.js": "471e3566d53b1d65e4d1693a4ee49e0f",
+          "js/jquery-1.7.2.min.js": "b8d64d0bc142b3f670cc0611b0aebcae",
+          "js/mustache.js": "520533cc03b38f0daa6d80abe468858b",
+          "js/peerid.js": "e997a3a0c124427b882b140a09fcfa99",
+          "js/jquery.base64.min.js": "0e0645f8b1c2b9e45470add2df1214b4",
+          "js/yaaw.js": "ca8f7aa48c2bcd5ded930f9474409d0e",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
+          "img/glyphicons-halflings-white.png": "9bbc6e9602998a385c2ea13df56470fd",
+          "img/glyphicons-halflings.png": "74b801ed8644409a1d166bbf33ac3d95",
+          "img/favicon.ico": "8858a06c2f263a47c7c5b432a2be5dd9",
+          "css/bootstrap-responsive.min.css": "18ed48e7f042c4e06d38103e6d302bac",
+          "css/bootstrap.min.css": "24077a7b6605ee8c2a44f3cb71cc7998",
+          "css/main.css": "70b485aa6074d41f4080839dcd64cbf5",
+          "aria2_lib.sh": "b0d1e5fd0a3459352017e590c0191a95",
+          "aria2.httpd_modules": "ce23e847f8bbd415080ffd48b01e35a2",
+          "aria2.conf": "4ccd083153bfa2927fb7c9c07be49a25",
+          "aria2.httpd_proxy": "88f62302f92c02651a2d8051cf449984",
+          "S800aria2c.init": "88d56fb3fbeb65b0dd0120c44543535d",
+          "yaaw.cgi": "dff4a7a6153ed59bf3b16e810cb661a5",
+          "i18n/en/i18n.conf": "a90318f185324668a2e53086725f1b36",
+          "i18n/zh-cn/i18n.conf": "fe692f88a0effd25c0217a32b50b90e4",
+          "aria2.session": "d41d8cd98f00b204e9800998ecf8427e",
+          "index.sh": "d578b0a74ebbdc51f766b0ebceb9d040"
+        },
+        "i18n": {
+          "en": {
+            "name": "Aria2",
+            "desc": "Aria2 downloader",
+            "detail": "A powerfull downloader",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "Aria2",
+            "desc": "Aria2 下载利器",
+            "detail": "Aria2是一个Unix下支持多线程、多源地址的下载利器",
+            "type": "网络"
+          }
+        }
+      },
+      "resolv-conf-edit": {
+        "version": "0.1",
+        "size": "40K",
+        "files": {
+          "icon.png": "0a70fa0a6195963fd5a587778c3c3fa7",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
+          "i18n/en/i18n.conf": "dce1f846f0c3c55260ee42156cc29ecc",
+          "i18n/zh-cn/i18n.conf": "66defa09a654812306e89724f430fbb1",
+          "index.sh": "0bf7335beaa5dc96236e147e14030fe5"
+        },
+        "i18n": {
+          "en": {
+            "name": "resolv.conf file edit",
+            "desc": "Edit hosts file",
+            "detail": "Edit the server hosts file",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "resolv.conf文件编辑",
+            "desc": "编辑hosts文件",
+            "detail": "编辑服务器hosts文件",
+            "type": "网络"
+          }
+        }
+      },
+      "nginx": {
+        "version": "0.1",
+        "size": "288K",
+        "files": {
+          "icon.png": "3638d6ba14ca423d449295b34effcf37",
+          "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
+          "conf_tpl/host_others_tpl/010others.tpl": "1aaad7722ef557b1efbb812f7fc83773",
+          "conf_tpl/host_file_cache_tpl/020js_css.tpl": "9819779037b73f15bfb207e332d94616",
+          "conf_tpl/host_file_cache_tpl/010gif_jpg_jpeg_png_bmp_swf.tpl": "2a44a47f5a28d7b1d69e9bd3cd37dfb6",
+          "conf_tpl/host_cgi_fgi_tpl/010php_tcp.tpl": "30747c64fa8eca375e52e84ac7ad074e",
+          "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "nginx_lib.sh": "4abf101e9b9bcc39ddf9fa8ba9fd0f24",
+          "rewrite/ecshop.conf": "d14c7de2a45b9f15143afe228b742c98",
+          "rewrite/discuz.conf": "81692472d4707e059d63ce0154098598",
+          "rewrite/SHOPEX.conf": "4c7f802b005c9f126146764d3ede25ce",
+          "rewrite/HDWIKI.conf": "a5c48b48eeb9a0c68964a2b05652ef57",
+          "rewrite/jishigou.conf": "c54b5842f193e0158194737430838915",
+          "rewrite/SaBlog.conf": "b09e7a865e128e95ab9bbbc362430cbf",
+          "rewrite/magento.conf": "fa23987145f9743b597b9e34e72101dc",
+          "rewrite/typecho.conf": "342b2ae297957184fce72ffc0613a4dc",
+          "rewrite/wordpress.conf": "405ba252ef96d2332544cf537ede349f",
+          "rewrite/PHPCMS.conf": "7c9515799a78861dad9ddb1dfaa83e01",
+          "rewrite/phpwind.conf": "c80593ad98ed35d09197ddeff4c0fb10",
+          "rewrite/anwsion.conf": "2ea18ac92a4f8bf7dedee9d4dcadade0",
+          "vhost.sh": "9b36fc24451cdf94ece490745b2a25de",
+          "i18n/en/i18n.conf": "3803fd9e5ea23c6c00d63877ac06bf2d",
+          "i18n/zh-cn/i18n.conf": "12234d93862b2751e37ba902ebff4239",
+          "nginx_log_split.sh": "b50ff3d36baeae428bcfaeea4d9713a1",
+          "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
+          "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",
+          "imgs/lang_jsp.png": "5973f12aae45af35e573992ee146e67f",
+          "imgs/lang_pl.png": "9abb8de994f4e1f2f4b5e09d3571fb04",
+          "imgs/lang_php.png": "7a7bcef065c359f2f8effd2d9acd1abf",
+          "imgs/lang_html.png": "0c9f6bf0c68cda7cca9286704d62791f",
+          "log_tpl/main": "ddca2893aedc5035cc614285721de8e8",
+          "log_tpl/proxy": "040205c9c75b1bad027c81d868e8ddb0",
+          "index.sh": "06764779ac226b856b4a7444d8c03d71"
+        },
+        "i18n": {
+          "en": {
+            "name": "Nginx",
+            "desc": "Nginx web server",
+            "detail": "Nginx web server program",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "Nginx web服务",
+            "desc": "Nginx web 服务",
+            "detail": "Nginx web 服务程序",
+            "type": "网络"
+          }
+        }
+      },
+      "brand-info": {
+        "version": "0.1",
+        "size": "44K",
+        "files": {
+          "icon.png": "2c30d0369d43f71fc551fc94fce55992",
+          "brand-info.conf": "cee801c6e642037265a8d2145d57ced6",
+          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
+          "i18n/en/i18n.conf": "001128fb583e994604b6f5dfa8ff7013",
+          "i18n/zh-cn/i18n.conf": "40d9bc36850ab4d5e54e0731a5c8103d",
+          "index.sh": "72bf6382b7dab53be479c57dbde62f16"
+        },
+        "i18n": {
+          "en": {
+            "name": "Brand info",
+            "desc": "Setting of display brandwidth percent in home index",
+            "detail": "Setting of display brandwidth percent in home index",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "带宽显示管理",
+            "desc": "首页带宽显示设置",
+            "detail": "首页带宽显示设置",
+            "type": "网络"
+          }
+        }
+      }
+    },
     "Application": {
       "php-ext": {
         "version": "0.1",
@@ -273,223 +517,6 @@
         }
       }
     },
-    "Network": {
-      "shadowsocks-libev": {
-        "version": "0.1",
-        "size": "100K",
-        "files": {
-          "icon.png": "d7cb733603d0864041d6b36eae2ff7e7",
-          "transparent_proxy_dest.conf": "694ea1d720d960a7b0885a5d3928eeae",
-          "S702shadowsocks_redir.init": "884c62b80de3c742f4036b95e3335d52",
-          "S701shadowsocks_local.init": "a7821adfa00e09a25b47f1206616deee",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "shadowsocks_libev.json": "e7a2893616b299c6c50f74f3d8ceb3f6",
-          "shadowsocks_libev_lib.sh": "787d2563f67ede69734fc93a23388894",
-          "i18n/en/i18n.conf": "bc7c7be95f0e124be37f20a37b68e3c4",
-          "i18n/zh-cn/i18n.conf": "f7f3f07f5642fb93ea3ac3cc3d9be167",
-          "S700shadowsocks_server.init": "d89977ad76f8dfcb9603408260425f74",
-          "F250shadowsocks_server.fw": "f5d0028a50a0ec378cb2d7dc8ef89e73",
-          "index.sh": "1d2a7d8d8ca4f6e0a960ef55aaa54fc7"
-        },
-        "i18n": {
-          "en": {
-            "name": "Shadowsocks-libev",
-            "desc": "test desc",
-            "detail": "test detail",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "Shadowsocks-libev",
-            "desc": "测试描述",
-            "detail": "测试详尽",
-            "type": "Network"
-          }
-        }
-      },
-      "pptp-l2tp-server": {
-        "version": "0.1",
-        "size": "100K",
-        "files": {
-          "icon.png": "2d051e68ed158947f251b7e6d1735785",
-          "pptp-l2tp-server.json": "4329d1d8673c5b2baecbad101629c7e9",
-          "F200pptp-l2tp-server.fw": "9f2ca718ad86d1b36822565e23d66216",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "pptp_l2tp_server_lib.sh": "4c2f2db8287572a76da0ba74cb6c6050",
-          "S230xl2tpd.init": "34480faabe556ea6cfc864dc4b9ad8d9",
-          "S210pptpd.init": "2924c00c2178d90568b673e010b531bc",
-          "i18n/en/i18n.conf": "4f493785d40904659c69eb166303c13a",
-          "i18n/zh-cn/i18n.conf": "84689324157f64f8691bdb2ca15c8774",
-          "S220ipsec.init": "82294bb379e0a5d0e2cc773bf585d53d",
-          "index.sh": "e22e7cc74de9dff8831798530911a70d"
-        },
-        "i18n": {
-          "en": {
-            "name": "PPTP-L2TP Server",
-            "desc": "test desc",
-            "detail": "test detail",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "PPTP-L2TP服务",
-            "desc": "测试描述",
-            "detail": "测试详尽",
-            "type": "网络"
-          }
-        }
-      },
-      "aria2": {
-        "version": "0.1",
-        "size": "548K",
-        "files": {
-          "icon.png": "ee68dddbb6e097987266077d681aa683",
-          "js/jquery.jsonrpc.js": "1a600fce436a210141c1b73e8b3117b7",
-          "js/jquery.Storage.js": "4cbcd26e8b274b3bebcd581c720c1a5a",
-          "js/bootstrap.min.js": "71e1bf948efa4f08605d8d555c96bad9",
-          "js/aria2.js": "471e3566d53b1d65e4d1693a4ee49e0f",
-          "js/jquery-1.7.2.min.js": "b8d64d0bc142b3f670cc0611b0aebcae",
-          "js/mustache.js": "520533cc03b38f0daa6d80abe468858b",
-          "js/peerid.js": "e997a3a0c124427b882b140a09fcfa99",
-          "js/jquery.base64.min.js": "0e0645f8b1c2b9e45470add2df1214b4",
-          "js/yaaw.js": "ca8f7aa48c2bcd5ded930f9474409d0e",
-          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
-          "img/glyphicons-halflings-white.png": "9bbc6e9602998a385c2ea13df56470fd",
-          "img/glyphicons-halflings.png": "74b801ed8644409a1d166bbf33ac3d95",
-          "img/favicon.ico": "8858a06c2f263a47c7c5b432a2be5dd9",
-          "css/bootstrap-responsive.min.css": "18ed48e7f042c4e06d38103e6d302bac",
-          "css/bootstrap.min.css": "24077a7b6605ee8c2a44f3cb71cc7998",
-          "css/main.css": "70b485aa6074d41f4080839dcd64cbf5",
-          "aria2_lib.sh": "b0d1e5fd0a3459352017e590c0191a95",
-          "aria2.httpd_modules": "ce23e847f8bbd415080ffd48b01e35a2",
-          "aria2.conf": "4ccd083153bfa2927fb7c9c07be49a25",
-          "aria2.httpd_proxy": "88f62302f92c02651a2d8051cf449984",
-          "S800aria2c.init": "88d56fb3fbeb65b0dd0120c44543535d",
-          "yaaw.cgi": "dff4a7a6153ed59bf3b16e810cb661a5",
-          "i18n/en/i18n.conf": "a90318f185324668a2e53086725f1b36",
-          "i18n/zh-cn/i18n.conf": "fe692f88a0effd25c0217a32b50b90e4",
-          "aria2.session": "d41d8cd98f00b204e9800998ecf8427e",
-          "index.sh": "d578b0a74ebbdc51f766b0ebceb9d040"
-        },
-        "i18n": {
-          "en": {
-            "name": "Aria2",
-            "desc": "Aria2 downloader",
-            "detail": "A powerfull downloader",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "Aria2",
-            "desc": "Aria2 下载利器",
-            "detail": "Aria2是一个Unix下支持多线程、多源地址的下载利器",
-            "type": "网络"
-          }
-        }
-      },
-      "resolv-conf-edit": {
-        "version": "0.1",
-        "size": "40K",
-        "files": {
-          "icon.png": "0a70fa0a6195963fd5a587778c3c3fa7",
-          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
-          "i18n/en/i18n.conf": "dce1f846f0c3c55260ee42156cc29ecc",
-          "i18n/zh-cn/i18n.conf": "66defa09a654812306e89724f430fbb1",
-          "index.sh": "0bf7335beaa5dc96236e147e14030fe5"
-        },
-        "i18n": {
-          "en": {
-            "name": "resolv.conf file edit",
-            "desc": "Edit hosts file",
-            "detail": "Edit the server hosts file",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "resolv.conf文件编辑",
-            "desc": "编辑hosts文件",
-            "detail": "编辑服务器hosts文件",
-            "type": "网络"
-          }
-        }
-      },
-      "nginx": {
-        "version": "0.1",
-        "size": "288K",
-        "files": {
-          "icon.png": "3638d6ba14ca423d449295b34effcf37",
-          "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
-          "conf_tpl/host_others_tpl/010others.tpl": "1aaad7722ef557b1efbb812f7fc83773",
-          "conf_tpl/host_file_cache_tpl/020js_css.tpl": "9819779037b73f15bfb207e332d94616",
-          "conf_tpl/host_file_cache_tpl/010gif_jpg_jpeg_png_bmp_swf.tpl": "2a44a47f5a28d7b1d69e9bd3cd37dfb6",
-          "conf_tpl/host_cgi_fgi_tpl/010php_tcp.tpl": "30747c64fa8eca375e52e84ac7ad074e",
-          "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "nginx_lib.sh": "4abf101e9b9bcc39ddf9fa8ba9fd0f24",
-          "rewrite/ecshop.conf": "d14c7de2a45b9f15143afe228b742c98",
-          "rewrite/discuz.conf": "81692472d4707e059d63ce0154098598",
-          "rewrite/SHOPEX.conf": "4c7f802b005c9f126146764d3ede25ce",
-          "rewrite/HDWIKI.conf": "a5c48b48eeb9a0c68964a2b05652ef57",
-          "rewrite/jishigou.conf": "c54b5842f193e0158194737430838915",
-          "rewrite/SaBlog.conf": "b09e7a865e128e95ab9bbbc362430cbf",
-          "rewrite/magento.conf": "fa23987145f9743b597b9e34e72101dc",
-          "rewrite/typecho.conf": "342b2ae297957184fce72ffc0613a4dc",
-          "rewrite/wordpress.conf": "405ba252ef96d2332544cf537ede349f",
-          "rewrite/PHPCMS.conf": "7c9515799a78861dad9ddb1dfaa83e01",
-          "rewrite/phpwind.conf": "c80593ad98ed35d09197ddeff4c0fb10",
-          "rewrite/anwsion.conf": "2ea18ac92a4f8bf7dedee9d4dcadade0",
-          "vhost.sh": "9b36fc24451cdf94ece490745b2a25de",
-          "i18n/en/i18n.conf": "3803fd9e5ea23c6c00d63877ac06bf2d",
-          "i18n/zh-cn/i18n.conf": "12234d93862b2751e37ba902ebff4239",
-          "nginx_log_split.sh": "b50ff3d36baeae428bcfaeea4d9713a1",
-          "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
-          "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",
-          "imgs/lang_jsp.png": "5973f12aae45af35e573992ee146e67f",
-          "imgs/lang_pl.png": "9abb8de994f4e1f2f4b5e09d3571fb04",
-          "imgs/lang_php.png": "7a7bcef065c359f2f8effd2d9acd1abf",
-          "imgs/lang_html.png": "0c9f6bf0c68cda7cca9286704d62791f",
-          "log_tpl/main": "ddca2893aedc5035cc614285721de8e8",
-          "log_tpl/proxy": "040205c9c75b1bad027c81d868e8ddb0",
-          "index.sh": "06764779ac226b856b4a7444d8c03d71"
-        },
-        "i18n": {
-          "en": {
-            "name": "Nginx",
-            "desc": "Nginx web server",
-            "detail": "Nginx web server program",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "Nginx web服务",
-            "desc": "Nginx web 服务",
-            "detail": "Nginx web 服务程序",
-            "type": "网络"
-          }
-        }
-      },
-      "brand-info": {
-        "version": "0.1",
-        "size": "44K",
-        "files": {
-          "icon.png": "2c30d0369d43f71fc551fc94fce55992",
-          "brand-info.conf": "cee801c6e642037265a8d2145d57ced6",
-          "config.conf": "a56bc88512eb91b4aa322c0de54b215b",
-          "i18n/en/i18n.conf": "001128fb583e994604b6f5dfa8ff7013",
-          "i18n/zh-cn/i18n.conf": "40d9bc36850ab4d5e54e0731a5c8103d",
-          "index.sh": "72bf6382b7dab53be479c57dbde62f16"
-        },
-        "i18n": {
-          "en": {
-            "name": "Brand info",
-            "desc": "Setting of display brandwidth percent in home index",
-            "detail": "Setting of display brandwidth percent in home index",
-            "type": "Network"
-          },
-          "zh-cn": {
-            "name": "带宽显示管理",
-            "desc": "首页带宽显示设置",
-            "detail": "首页带宽显示设置",
-            "type": "网络"
-          }
-        }
-      }
-    },
     "System": {
       "notice": {
         "version": "0.1",
@@ -497,7 +524,7 @@
         "files": {
           "icon.png": "1ec30a88288d28ee416c145759793484",
           "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
-          "notice_lib.sh": "94576065a6861d4006c0922bddd26383",
+          "notice_lib.sh": "938d4360d256a6b61d2fed374f32300b",
           "i18n/en/i18n.conf": "b540b78275aa552df3cc09903a0f8288",
           "i18n/zh-cn/i18n.conf": "1fbf3edf2bb25c8f58c489aecb75b245",
           "index.sh": "ee1002e907561bc276361c48c318759f"
@@ -599,7 +626,7 @@
         "files": {
           "icon.png": "4a5b40cc1f5ead6a8f44b1939e3ba3d5",
           "distributions_lib.sh": "b076892df1b7642919c1f155c32b07ba",
-          "main.sbin": "5d581cd0cc35642888cdfb79da3e0acd",
+          "main.sbin": "b6cbbb8cd96097598b36885bbbb2a704",
           "base.httpd_cgi": "6e0e8fce06b2a6f2ef837fd26969037b",
           "home.conf": "6d3397a4009a75e6afe3747b541a7ffe",
           "base.httpd_htpass": "c7c01ae32a83b014f586aeb61415b9f0",
