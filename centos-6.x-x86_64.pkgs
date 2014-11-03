@@ -8,14 +8,13 @@
     "Network": {
       "dnsmasq": {
         "version": "0.1",
-        "size": "124K",
+        "size": "64K",
         "files": {
           "icon.png": "51da875285e95a02e87433a09fde8a5f",
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
-          "S390dnsmasq.init": "4c05b9865e7052fd2d888fea8e5c8da5",
-          "dnsmasq.d/use_dnscrypt.conf": "65c55980b0c102c2f3058b0df725b492",
+          "S390dnsmasq.init": "c9e24c28f1ccdcbfd1101519b2827975",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
           "dnsmasq_lib.sh": "807ea52aedbbe5cc31dd039e3eb47171",
@@ -43,7 +42,7 @@
           "icon.png": "231179e6cdc3d16f2b725d56218c3780",
           "S400dnscryptc.init": "09c7a43a33895d213d69b1e1d288c6b0",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "dnscrypt_proxy_lib.sh": "6fb968db4617cf05a9fcc200ea16e92e",
+          "dnscrypt_proxy_lib.sh": "60972fdbb9fac37f740a596147093487",
           "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
           "i18n/zh-cn/i18n.conf": "193deaba3d8ea799c891748c447d790f",
           "index.sh": "87258f3e6b965e542bdec8c8f17cca47"
