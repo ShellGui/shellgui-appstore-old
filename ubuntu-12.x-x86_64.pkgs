@@ -43,7 +43,7 @@
           "icon.png": "231179e6cdc3d16f2b725d56218c3780",
           "S400dnscryptc.init": "09c7a43a33895d213d69b1e1d288c6b0",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "dnscrypt_proxy_lib.sh": "7cb1ec9fc3910bc6c7c10fe3d648a62b",
+          "dnscrypt_proxy_lib.sh": "3edfc87364477b20386875f267e780b4",
           "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
           "i18n/zh-cn/i18n.conf": "193deaba3d8ea799c891748c447d790f",
           "index.sh": "bdd43c60760ca07db866508126a02adb"

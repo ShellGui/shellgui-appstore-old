@@ -51,11 +51,9 @@ tar zxvf dnscrypt-proxy-1.4.1.tar.gz
 
 
 cd $DOCUMENT_ROOT/../sources/libsodium-1.0.0
-./configure --prefix=/usr/local/libsodium
+./configure
 make && make install
 
-echo "/usr/local/libsodium/lib" > /etc/ld.so.conf.d/libsodium.conf
-ldconfig
 cd $DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.1
 ./configure --prefix=/usr/local/dnscrypt-proxy
 make && make install && useradd dnscrypt-proxy -m
