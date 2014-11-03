@@ -64,7 +64,12 @@ do
 echo "no-dhcp-interface=$wan_zone_dev" >> /var/dnsmasq/dnsmasq.conf
 done
 
-ps aux | grep -v grep | grep "dnsmasq" | grep "^nobody" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /root/dnsmasq.conf -k
+for pid in `netstat -tulnp | grep ":53[ ]" | awk {'print $NF'} | awk -F "/" {'print $1'}`
+do
+kill -9 ${pid}
+done
+
+ps aux | grep -v grep | grep "dnsmasq" | grep "^nobody" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /var/dnsmasq/dnsmasq.conf -k
 else
 killall dnsmasq || pkill dnsmasq
 fi

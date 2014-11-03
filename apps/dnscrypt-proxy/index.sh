@@ -1,7 +1,7 @@
 #!/bin/sh
 main()
 {
-dnscrypt_proxy_pid=`ps aux | grep -v grep | grep "dnscrypt-proxy" | grep "^dnscryp" | sed -n 1p | awk {'print $2'}`
+dnscrypt_proxy_pid=`ps aux | grep -v grep | grep "dnscrypt-proxy" | grep "local-address" | sed -n 1p | awk {'print $2'}`
 if
 echo $dnscrypt_proxy_pid | grep -qE '[0-9]'
 then

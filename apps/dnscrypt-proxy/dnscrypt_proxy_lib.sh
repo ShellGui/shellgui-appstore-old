@@ -55,6 +55,7 @@ cd $DOCUMENT_ROOT/../sources/libsodium-1.0.0
 make && make install
 
 cd $DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.1
+ldconfig -p | grep "libsodium.so" || exit 1
 ./configure --prefix=/usr/local/dnscrypt-proxy
 make && make install && useradd dnscrypt-proxy -m
 return 0
