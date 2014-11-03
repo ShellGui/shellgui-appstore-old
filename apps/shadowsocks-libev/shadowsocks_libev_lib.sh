@@ -241,8 +241,8 @@ main.sbin fw_init
 else
 main.sbin notice option="add" \
 				read="0" \
-				desc="_NOTICE_Shadowsocks_libev_local_redir_service_disable" \
-				detail="_NOTICE_Shadowsocks_libev_local_redir_service_disable" \
+				desc="_NOTICE_Shadowsocks_libev_redir_service_disable" \
+				detail="_NOTICE_Shadowsocks_libev_redir_service_disable" \
 				uniqid="" \
 				time="" \
 				ergen="yellow" \
