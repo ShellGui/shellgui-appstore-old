@@ -7,7 +7,7 @@ start()
 {
 [ -z "$DOCUMENT_ROOT" ] && export DOCUMENT_ROOT=`main.sbin where_DOCUMENT_ROOT`
 if
-[ -x /usr/local/dnscrypt-proxy/sbin/dnscrypt-proxy ]
+[ ! -x /usr/local/dnscrypt-proxy/sbin/dnscrypt-proxy ]
 then
 main.sbin notice option="add" \
 				read="0" \
