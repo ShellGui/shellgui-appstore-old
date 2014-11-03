@@ -1,7 +1,7 @@
 #!/bin/sh
 enable=0
 bind_ip="0.0.0.0"
-bind_port=53
+bind_port=5353
 resolv_name="dnscrypt.eu-nl"
 start()
 {

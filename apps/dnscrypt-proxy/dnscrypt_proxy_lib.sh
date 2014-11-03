@@ -68,6 +68,7 @@ echo "Nothing to do"
 
 do_install_dnscrypt_proxy()
 {
+[ ! -x /usr/local/sbin/dnsmasq ] && echo "dnscrypt-dnsmasq need install" && exit 1
 check_dnscrypt_proxy_installed && echo "dnscrypt-proxy binary installed" && exit 1
 touch $DOCUMENT_ROOT/../tmp/dnscrypt_proxy_ins_detail.log
 main.sbin pregress_schedule option="add" task="_PS_Install_dnscrypt_proxy" schedule="{\"_PS_1_Download_Sources\":\"0\",\"_PS_2_Make_install_DNScrypt_proxy_Dependence\":\"0\",\"_PS_3_Make_install_DNScrypt_proxy\":\"0\",\"_PS_4_Config_DNScrypt_proxy\":\"0\",\"_PS_5_DNScrypt_proxy_finished_Installtion\":\"0\"}" detail_file="$DOCUMENT_ROOT/../tmp/dnscrypt_proxy_ins_detail.log" app="dnscrypt-proxy" status="working"

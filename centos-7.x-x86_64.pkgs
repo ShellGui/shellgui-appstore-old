@@ -6,14 +6,44 @@
   },
   "apps": {
     "Network": {
+      "dnsmasq": {
+        "version": "0.1",
+        "size": "124K",
+        "files": {
+          "icon.png": "51da875285e95a02e87433a09fde8a5f",
+          "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
+          "S390dnsmasq.init": "69218cb7db8e91aef8aa3b818a032edf",
+          "dnsmasq.d/use_dnscrypt.conf": "65c55980b0c102c2f3058b0df725b492",
+          "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
+          "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
+          "dnsmasq_lib.sh": "807ea52aedbbe5cc31dd039e3eb47171",
+          "index.sh": "70e15773ba0eaf90d8460af993e660ee"
+        },
+        "i18n": {
+          "en": {
+            "name": "DNSmasq",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "DNSmasq",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "网络"
+          }
+        }
+      },
       "dnscrypt-proxy": {
         "version": "0.1",
         "size": "56K",
         "files": {
           "icon.png": "231179e6cdc3d16f2b725d56218c3780",
-          "S400dnscryptc.init": "535e3def17376b9ceb783ab681306643",
+          "S400dnscryptc.init": "09c7a43a33895d213d69b1e1d288c6b0",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
-          "dnscrypt_proxy_lib.sh": "89fae8583f03ae3769a4b2d2d5e9fbee",
+          "dnscrypt_proxy_lib.sh": "7cb1ec9fc3910bc6c7c10fe3d648a62b",
           "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
           "i18n/zh-cn/i18n.conf": "193deaba3d8ea799c891748c447d790f",
           "index.sh": "bdd43c60760ca07db866508126a02adb"
@@ -442,9 +472,9 @@
         "size": "76K",
         "files": {
           "icon.png": "cfd82c8bea82f630c288b3b752a960a1",
-          "base-firewall.conf": "c6ce067a1a30f5ef355c2f7861490661",
+          "base-firewall.conf": "96ff03facce6b6911e210faf772cf7d8",
           "config.conf": "ad5cc4db503ced34c66eab009c088762",
-          "base_firewall_lib.sh": "c999da7158f17124c73d262f452baaca",
+          "base_firewall_lib.sh": "e5d2bd5dfbac98c5451e1c66b2a2e274",
           "i18n/en/i18n.conf": "f3cc3202a260ff8926f74e36819de50b",
           "i18n/zh-cn/i18n.conf": "df8cda884073d085bf5d50a7daf8ad48",
           "index.sh": "3dcf76103239bc5da448abe17bfb96c6"
