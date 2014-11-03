@@ -8,13 +8,14 @@
     "Network": {
       "dnsmasq": {
         "version": "0.1",
-        "size": "64K",
+        "size": "72K",
         "files": {
           "icon.png": "51da875285e95a02e87433a09fde8a5f",
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
           "S390dnsmasq.init": "c9e24c28f1ccdcbfd1101519b2827975",
+          "dnsmasq.d/test.conf": "f3ae5691943bcb5c3c1da923e181ba47",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
           "dnsmasq_lib.sh": "807ea52aedbbe5cc31dd039e3eb47171",
@@ -68,7 +69,7 @@
         "files": {
           "icon.png": "d7cb733603d0864041d6b36eae2ff7e7",
           "transparent_proxy_dest.conf": "694ea1d720d960a7b0885a5d3928eeae",
-          "S702shadowsocks_redir.init": "884c62b80de3c742f4036b95e3335d52",
+          "S702shadowsocks_redir.init": "2b2f62f8b6b0726566016a14e6e24769",
           "S701shadowsocks_local.init": "a7821adfa00e09a25b47f1206616deee",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "shadowsocks_libev.json": "e7a2893616b299c6c50f74f3d8ceb3f6",
