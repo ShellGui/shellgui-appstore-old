@@ -8,11 +8,10 @@
     "Network": {
       "dnsmasq": {
         "version": "0.1",
-        "size": "76K",
+        "size": "72K",
         "files": {
           "icon.png": "51da875285e95a02e87433a09fde8a5f",
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
-          "S390dnsmasq.init~": "f9a4e034122b74c1bda278a9f7a7f250",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
           "S390dnsmasq.init": "0604d3c375ead9a085c377ed6d8b4bdf",
@@ -39,7 +38,7 @@
       },
       "dnscrypt-proxy": {
         "version": "0.1",
-        "size": "72K",
+        "size": "60K",
         "files": {
           "icon.png": "231179e6cdc3d16f2b725d56218c3780",
           "S400dnscryptc.init": "3a4eb8eed20f7b623c7246777e5e8a0a",
@@ -47,7 +46,6 @@
           "dnscrypt_proxy_lib.sh": "4daf085a3a09f7b2b150102c7a1384a3",
           "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
           "i18n/zh-cn/i18n.conf": "193deaba3d8ea799c891748c447d790f",
-          "dnscrypt_proxy_lib.sh~": "4daf085a3a09f7b2b150102c7a1384a3",
           "index.sh": "87258f3e6b965e542bdec8c8f17cca47"
         },
         "i18n": {
@@ -124,6 +122,34 @@
             "name": "PPTP-L2TP服务",
             "desc": "测试描述",
             "detail": "测试详尽",
+            "type": "网络"
+          }
+        }
+      },
+      "dns-fix": {
+        "version": "0.1",
+        "size": "188K",
+        "files": {
+          "icon.png": "662a18cfe3a46df8d8abad3f5434e982",
+          "config.conf": "e5cdbe9be5218724b686b972e738c0f8",
+          "root.cron": "b09b40fbe1aa12f1b026f3bad27c74e3",
+          "i18n/en/i18n.conf": "2dbb970fc2b5fb42c24ff597de5c8a85",
+          "i18n/zh-cn/i18n.conf": "85e251c14791939fd72432254ab922ec",
+          "S501dns-fix.init": "21c977e363057f27140f0f81179c3552",
+          "domainlist.txt": "45600597f50b8bfa7b00e491f7f6e886",
+          "index.sh": "e6f6ccf06bd021f22a46559101d3c81b"
+        },
+        "i18n": {
+          "en": {
+            "name": "DNS Fix",
+            "desc": "Work with some DNS Server Lose record",
+            "detail": "Work with some DNS Server Lose record",
+            "type": "Network"
+          },
+          "zh-cn": {
+            "name": "DNS 补全",
+            "desc": "解析某些DNS服务器不能解析的域名",
+            "detail": "在某些DNS服务器不能解析某些域名的情况下,连接DNScrypt-proxy解析这些域名",
             "type": "网络"
           }
         }
