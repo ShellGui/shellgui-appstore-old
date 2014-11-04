@@ -68,11 +68,8 @@ for pid in `netstat -tulnp | grep ":53[ ]" | awk {'print $NF'} | awk -F "/" {'pr
 do
 kill -9 ${pid}
 done
-while true
-do
-ps aux | grep -v grep | grep "dnsmasq" | grep "^nobody" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /var/dnsmasq/dnsmasq.conf -k &
+ps aux | grep -v grep | grep "dnsmasq.*dnsmasq.conf" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /var/dnsmasq/dnsmasq.conf -k
 
-done
 else
 killall dnsmasq || pkill dnsmasq
 fi
