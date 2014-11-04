@@ -75,7 +75,7 @@ cat <<EOF > $DOCUMENT_ROOT/apps/dns-fix/root.cron
 0 0 $FORM_update_cycle * * eval \`$DOCUMENT_ROOT/../bin/main.sbin shellgui_env\` && $DOCUMENT_ROOT/apps/dns-fix/S501dns-fix.init update && $DOCUMENT_ROOT/apps/dns-fix/S501dns-fix.init analyse && $DOCUMENT_ROOT/apps/dnsmasq/S390dnsmasq.init
 EOF
 $DOCUMENT_ROOT/apps/scheduled/S300scheduled.init >/dev/null 2>&1
-
+$DOCUMENT_ROOT/apps/dns-fix/S501dns-fix.init >/dev/null 2>&1
 if
 [ $? -eq 0 ]
 then

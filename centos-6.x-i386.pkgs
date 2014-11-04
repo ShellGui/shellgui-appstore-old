@@ -14,7 +14,7 @@
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
-          "S390dnsmasq.init": "0604d3c375ead9a085c377ed6d8b4bdf",
+          "S390dnsmasq.init": "c4a9cdc18ce37b85ca1fe4a48fa2b0cf",
           "dnsmasq.d/test.conf": "f3ae5691943bcb5c3c1da923e181ba47",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
@@ -135,9 +135,9 @@
           "root.cron": "b09b40fbe1aa12f1b026f3bad27c74e3",
           "i18n/en/i18n.conf": "2dbb970fc2b5fb42c24ff597de5c8a85",
           "i18n/zh-cn/i18n.conf": "85e251c14791939fd72432254ab922ec",
-          "S501dns-fix.init": "21c977e363057f27140f0f81179c3552",
+          "S501dns-fix.init": "bb7240f45c68850b8e927ea7e30489e0",
           "domainlist.txt": "45600597f50b8bfa7b00e491f7f6e886",
-          "index.sh": "e6f6ccf06bd021f22a46559101d3c81b"
+          "index.sh": "00055a93eff0e6e2c17b568cbd98618b"
         },
         "i18n": {
           "en": {
