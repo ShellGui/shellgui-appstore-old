@@ -14,7 +14,7 @@
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
-          "S390dnsmasq.init": "c9e24c28f1ccdcbfd1101519b2827975",
+          "S390dnsmasq.init": "accbb6008e8c03a7ed0ff6e47e2fa82e",
           "dnsmasq.d/test.conf": "f3ae5691943bcb5c3c1da923e181ba47",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
@@ -474,7 +474,7 @@
           "icon.png": "cfd82c8bea82f630c288b3b752a960a1",
           "base-firewall.conf": "96ff03facce6b6911e210faf772cf7d8",
           "config.conf": "ad5cc4db503ced34c66eab009c088762",
-          "base_firewall_lib.sh": "e5d2bd5dfbac98c5451e1c66b2a2e274",
+          "base_firewall_lib.sh": "0d810b04b3ce25b98f2d291da562bf22",
           "i18n/en/i18n.conf": "f3cc3202a260ff8926f74e36819de50b",
           "i18n/zh-cn/i18n.conf": "df8cda884073d085bf5d50a7daf8ad48",
           "index.sh": "3dcf76103239bc5da448abe17bfb96c6"

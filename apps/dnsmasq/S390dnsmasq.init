@@ -1,5 +1,5 @@
 #!/bin/sh
-enable=0
+enable=1
 start()
 {
 [ -z "$DOCUMENT_ROOT" ] && export DOCUMENT_ROOT=`main.sbin where_DOCUMENT_ROOT`
@@ -19,6 +19,7 @@ fi
 if
 [ $enable -eq 1 ]
 then
+rm -rf /tmp/dnsmasq.d
 mkdir -p /tmp/dnsmasq.d
 mkdir -p /var/dnsmasq/
 cp $DOCUMENT_ROOT/apps/dnsmasq/dnsmasq.d/* /tmp/dnsmasq.d
@@ -67,8 +68,11 @@ for pid in `netstat -tulnp | grep ":53[ ]" | awk {'print $NF'} | awk -F "/" {'pr
 do
 kill -9 ${pid}
 done
+while true
+do
+ps aux | grep -v grep | grep "dnsmasq" | grep "^nobody" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /var/dnsmasq/dnsmasq.conf -k &
 
-ps aux | grep -v grep | grep "dnsmasq" | grep "^nobody" || $DOCUMENT_ROOT/../bin/busybox start-stop-daemon -S -b -x dnsmasq -- -C /var/dnsmasq/dnsmasq.conf -k
+done
 else
 killall dnsmasq || pkill dnsmasq
 fi
