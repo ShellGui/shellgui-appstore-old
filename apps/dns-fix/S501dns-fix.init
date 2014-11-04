@@ -26,6 +26,7 @@ str=`cat $DOCUMENT_ROOT/apps/dns-fix/domainlist.txt | openssl enc -base64 -d`
 str=`echo "$str" | sed '/!--.*--Other-/,$d' | sed '1,/!--.*--AA-/d' | grep -vE "^!|/|\||\*" | grep -v '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'`
 str=`echo "$str" | grep "\." | sed 's/^www\.//g'`
 str=`echo "$str" | sed '/^$/d' | sed 's/^/\./g' | sed 's/^[\.][\.]*/\./g' | sort -n | uniq`
+[ -d /tmp/dnsmasq.d/ ] || mkdir /tmp/dnsmasq.d/
 echo "$str" | sed 's/^/server=\//g' | sed "s/$/\/127.0.0.1\#$bind_port/g" > /tmp/dnsmasq.d/dns-fix.conf
 }
 

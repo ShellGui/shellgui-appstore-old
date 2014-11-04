@@ -135,7 +135,7 @@
           "root.cron": "b09b40fbe1aa12f1b026f3bad27c74e3",
           "i18n/en/i18n.conf": "2dbb970fc2b5fb42c24ff597de5c8a85",
           "i18n/zh-cn/i18n.conf": "85e251c14791939fd72432254ab922ec",
-          "S501dns-fix.init": "bb7240f45c68850b8e927ea7e30489e0",
+          "S501dns-fix.init": "246d1190d344deb7a8685dd0130a1d28",
           "domainlist.txt": "45600597f50b8bfa7b00e491f7f6e886",
           "index.sh": "00055a93eff0e6e2c17b568cbd98618b"
         },
