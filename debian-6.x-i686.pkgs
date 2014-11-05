@@ -41,7 +41,7 @@
         "size": "60K",
         "files": {
           "icon.png": "231179e6cdc3d16f2b725d56218c3780",
-          "S400dnscryptc.init": "3a4eb8eed20f7b623c7246777e5e8a0a",
+          "S400dnscryptc.init": "ee18d774e6e40051bb942f2d7e29045f",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnscrypt_proxy_lib.sh": "4daf085a3a09f7b2b150102c7a1384a3",
           "i18n/en/i18n.conf": "2b1891db8650b27c9482b41b838616b6",
