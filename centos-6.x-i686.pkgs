@@ -14,7 +14,7 @@
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "dnsmasq_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
-          "S390dnsmasq.init": "dec41e212b4a069d7688a34669c2ac76",
+          "S390dnsmasq.init": "85dceed8c2db8e66a3ffe964344beea6",
           "dnsmasq.d/test.conf": "f3ae5691943bcb5c3c1da923e181ba47",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
@@ -308,6 +308,34 @@
       }
     },
     "Application": {
+      "shellinabox": {
+        "version": "0.1",
+        "size": "60K",
+        "files": {
+          "icon.png": "e74f9f0505652749968662accc388987",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
+          "i18n/en/i18n.conf": "5c0d132fad5ae3b791c3e606b1a559ae",
+          "i18n/zh-cn/i18n.conf": "17c69cbad51bd8472bc0b19abc93d7ba",
+          "shellinabox_lib.sh": "00d3d70471691d7edb65253d1d258a33",
+          "S990shellinabox.init": "00b3e0eca700ad7b24daf5b3d06c14c5",
+          "shellinabox.httpd_proxy": "113c7c54ef06c76399e812db0973c9db",
+          "index.sh": "af8154e2cf43cf8786dd39116de16ca8"
+        },
+        "i18n": {
+          "en": {
+            "name": "Shellinabox",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Application"
+          },
+          "zh-cn": {
+            "name": "终端",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "应用程序"
+          }
+        }
+      },
       "php-ext": {
         "version": "0.1",
         "size": "72K",

@@ -8,9 +8,9 @@ if
 then
 main.sbin notice option="add" \
 				read="0" \
-				desc="_NOTICE_dnscrypt_proxy_binary_need_install" \
-				detail="_NOTICE_dnscrypt_proxy_binary_need_install" \
-				uniqid="dnscrypt_proxy_binary_need_install" \
+				desc="_NOTICE_dnsmasq_binary_need_install" \
+				detail="_NOTICE_dnsmasq_binary_need_install" \
+				uniqid="dnsmasq_binary_need_install" \
 				time="" \
 				ergen="red" \
 				dest="dnsmasq" \
