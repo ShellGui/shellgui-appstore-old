@@ -319,7 +319,7 @@
           "shellinabox_lib.sh": "00d3d70471691d7edb65253d1d258a33",
           "S990shellinabox.init": "00b3e0eca700ad7b24daf5b3d06c14c5",
           "shellinabox.httpd_proxy": "113c7c54ef06c76399e812db0973c9db",
-          "index.sh": "af8154e2cf43cf8786dd39116de16ca8"
+          "index.sh": "a8937cc0dfd09b004787071afe4671ae"
         },
         "i18n": {
           "en": {
@@ -750,7 +750,7 @@
         "version": "0.1",
         "size": "88K",
         "files": {
-          "icon.png": "3d5b45d8fa97605d13d81f142c08351b",
+          "icon.png": "d0754f1cc8ac51b59db018980b1a26c0",
           "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
           "unknow.png": "d0754f1cc8ac51b59db018980b1a26c0",
           "debian.png": "b07bcc6d3717a93694911fc11e846e9f",

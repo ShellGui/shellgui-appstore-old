@@ -103,7 +103,7 @@ cat <<EOF
 		</form>
 	</div>
 <div class="col-md-12">
-	<iframe src="/shellinabox/" id="iframeshellinabox" name="iframepage" frameBorder=0 scrolling=no width="100%" style="min-height:500px"></iframe>
+	<iframe src="/shellinabox/" id="iframeshellinabox" name="iframepage" frameBorder=0 scrolling=no  style="min-height:500px;min-width:800px"></iframe>
 </div>
 </div>
 EOF
