@@ -197,6 +197,8 @@ done
 
 access_control_setting()
 {
+echo "$FORM_vsftpd_user_list" > /etc/ftpusers
+unset FORM_vsftpd_user_list
 edit_config_file
 }
 

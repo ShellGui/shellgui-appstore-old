@@ -205,7 +205,15 @@ cat <<EOF
 
 </div>
 <div class="col-md-6">
-x
+<legend>Available ftp local users</legend>
+EOF
+users=`grep -vE "^[a-zA-Z0-9-]*:(\\!|\\$|\\*):" /etc/shadow | awk -F ":" '{print $1}'`
+for user in `grep -E "^[a-zA-Z0-9-]*$" /etc/ftpusers`
+do
+users=`echo "$users" | grep -v "^${user}$"`
+done
+echo "$users"
+cat <<EOF
 </div>
 
 

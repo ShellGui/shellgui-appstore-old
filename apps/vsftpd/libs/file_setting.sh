@@ -19,7 +19,7 @@ cat <<EOF
 		userlist_file
 		</div>
 		<div class="col-md-4">
-			<input type="text" class="form-control" placeholder="Enter Path to File" name="userlist_file" value="`[ -n "$userlist_file" ] && echo "$userlist_file" || echo "/etc/vsftpd.user_list"`">
+			<input type="text" class="form-control" placeholder="Enter Path to File" name="userlist_file" value="`[ -n "$userlist_file" ] && echo "$userlist_file" || echo "/etc/ftpusers"`">
 		</div>
 		<div class="col-md-4">
 		#定义限制/允许用户登录的文件
