@@ -848,13 +848,13 @@
         }
       },
       "dns-fix": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "188K",
         "files": {
           "root.cron": "b09b40fbe1aa12f1b026f3bad27c74e3",
           "icon.png": "662a18cfe3a46df8d8abad3f5434e982",
-          "config.conf": "e5cdbe9be5218724b686b972e738c0f8",
-          "S501dns-fix.init": "246d1190d344deb7a8685dd0130a1d28",
+          "config.conf": "e0ce69e3b3df94ef5b9ad72af0b20e42",
+          "S501dns-fix.init": "4d3ae95799d6602a6e9f341e398d8d7c",
           "domainlist.txt": "45600597f50b8bfa7b00e491f7f6e886",
           "index.sh": "00055a93eff0e6e2c17b568cbd98618b",
           "i18n/zh-cn/i18n.conf": "85e251c14791939fd72432254ab922ec",

@@ -38,7 +38,15 @@ if
 [ -f $DOCUMENT_ROOT/apps/dns-fix/domainlist.txt ]
 then
 analyse
+if
+ps aux | grep "dnsmasq.init"
+then
+sleep 2
+start
+return
+else
 $DOCUMENT_ROOT/apps/dnsmasq/S390dnsmasq.init
+fi
 else
 update
 analyse
