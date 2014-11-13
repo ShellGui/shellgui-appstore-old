@@ -1,0 +1,24 @@
+#!/bin/sh
+start()
+{
+[ -z "$DOCUMENT_ROOT" ] && export DOCUMENT_ROOT=`main.sbin where_DOCUMENT_ROOT`
+if
+[ -x /usr/sbin/vsftpd ]
+then
+main.sbin notice option="add" \
+				read="0" \
+				desc="_NOTICE_vsftpd_binary_need_install" \
+				detail="_NOTICE_vsftpd_binary_need_install" \
+				uniqid="vsftpd_binary_need_install" \
+				time="" \
+				ergen="red" \
+				dest="vsftpd" \
+				dest_type="app" >/dev/null 2>&1
+fi
+service vsftpd start
+}
+stop()
+{
+service vsftpd stop
+}
+[ -z "$1" ] && start || $1
