@@ -120,12 +120,12 @@
         }
       },
       "appstore": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "60K",
         "files": {
           "icon.png": "a543974cd3c64268e743a38ef4ea7675",
-          "config.conf": "00d884be97a2b09099203f6e065db0e8",
-          "index.sh": "da94237384269b459f8aeb9c78e82fc1",
+          "config.conf": "297120d2eef8d8d242a3413623999b5f",
+          "index.sh": "e0e8c5d6c241c3da983d1e9c88c57620",
           "app_types.sh": "f1f7c85c0ba219025e8c6c097ceac743",
           "i18n/zh-cn/i18n.conf": "1a9d6d47a3780ed89fc767bb985c0f97",
           "i18n/en/i18n.conf": "6641b55ab37f93bb7d41147e25c6453a"
@@ -848,12 +848,12 @@
         }
       },
       "dns-fix": {
-        "version": "0.11",
+        "version": "0.1",
         "size": "188K",
         "files": {
           "root.cron": "b09b40fbe1aa12f1b026f3bad27c74e3",
           "icon.png": "662a18cfe3a46df8d8abad3f5434e982",
-          "config.conf": "e0ce69e3b3df94ef5b9ad72af0b20e42",
+          "config.conf": "e5cdbe9be5218724b686b972e738c0f8",
           "S501dns-fix.init": "4d3ae95799d6602a6e9f341e398d8d7c",
           "domainlist.txt": "45600597f50b8bfa7b00e491f7f6e886",
           "index.sh": "00055a93eff0e6e2c17b568cbd98618b",
