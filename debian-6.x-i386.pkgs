@@ -212,12 +212,12 @@
         }
       },
       "ssl-gen": {
-        "version": "0.1",
-        "size": "52K",
+        "version": "0.11",
+        "size": "56K",
         "files": {
           "icon.png": "9e0b8a30c00913db7a4a411e0404aac2",
-          "config.conf": "9c2edbbba8f9db59bf91c7a7fd1f4459",
-          "index.sh": "f37c23c2a847ca5173f0da2aa588345d",
+          "config.conf": "752c0eebd87f649f1711ff518ecd68b3",
+          "index.sh": "74e56995396b3812ed6e776a612edc67",
           "i18n/zh-cn/i18n.conf": "d652a1a4cf316b29e599d47807f57196",
           "i18n/en/i18n.conf": "739e443738ba7eec6e9f226ccc06300d"
         },
