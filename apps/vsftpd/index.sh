@@ -157,6 +157,15 @@ $(function(){
 //	setTimeout("window.location.reload();", 3000);
   });
 });
+$(function(){
+  $('#wan_dest').on('submit', function(e){
+    e.preventDefault();
+    var data = "app=vsftpd&"+$(this).serialize();
+    var url = 'index.cgi';
+    Ha.common.ajax(url, 'json', data, 'post', 'wan_dest');
+//	setTimeout("window.location.reload();", 3000);
+  });
+});
 </script>
 EOF
 
@@ -215,9 +224,27 @@ done
 echo "$users"
 cat <<EOF
 </div>
-
-
 <div class="col-md-12">
+EOF
+netzone_str=`cat $DOCUMENT_ROOT/apps/netzone/netzone.conf`
+eval `cat $DOCUMENT_ROOT/apps/vsftpd/vsftpd_extra.conf`
+
+cat <<EOF
+<form class="form-inline" role="form" id="wan_dest">
+<label>Enable PASV Port From</label>
+EOF
+for dest in `echo "$netzone_str" | jq '.["wan_zone"] | keys' | grep -Po '[\w].*[\w]'`
+do
+wan_used=`echo "$dest_wan" | grep -Po '[\w].*[\w]'`
+cat <<EOF
+<label class="checkbox-inline">
+<input type="checkbox" name="wan_zone_${dest}" value="${dest}" `echo "$wan_used" | grep -qE "[ ]*${dest}[ ]*" && echo checked`>${dest}</label>
+EOF
+done
+cat <<EOF
+<input type="hidden" name="action" value="wan_dest">
+<button class="btn btn-primary" id="_submit" type="submit">$_LANG_Save</button>
+</form>
 
 <ul class="nav nav-tabs" role="tablist">
   <li role="presentation" class="active"><a href="#tab_global_setting" role="tab" data-toggle="tab">$_LANG_global_setting</a></li>

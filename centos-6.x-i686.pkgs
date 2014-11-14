@@ -749,9 +749,10 @@
       },
       "vsftpd": {
         "version": "0.1",
-        "size": "136K",
+        "size": "152K",
         "files": {
-          "vsftpd_lib.sh": "75e5517bc374fdd42e1b93a1c3a819f3",
+          "vsftpd_extra.conf": "0a01ddbca767c1cac92247b5b9869b42",
+          "vsftpd_lib.sh": "ca1e401168cc59a864e7ff9da6253fbc",
           "vsftpd_base.conf": "b57fc93082dd0a812a5c183a0e974dec",
           "icon.png": "fd4a2ab1d3f5d93eab203fdb125c867b",
           "S990vsftpd.init": "030e65055d4a8492930dcad6bcb46bab",
@@ -771,9 +772,10 @@
           "libs/anonymous_setting.sh": "99408f3d84bbd88fb8e7d991479f13b2",
           "libs/user_options_setting.sh": "eafdb5f7c70d1155ba3b868634247967",
           "vsftpd_setting.conf": "84e59e8a9cdcaf5e50fbb51c52bd7f9b",
-          "index.sh": "f1b5c35ba23c736716846144c6e8d18a",
+          "index.sh": "cacefa91f9b31149f8bbaee3631b6cf4",
           "i18n/zh-cn/i18n.conf": "ac941f81e48413078f89c394a4044f3d",
-          "i18n/en/i18n.conf": "16f33fe679bdb945aad80dbf5cb9a4cf"
+          "i18n/en/i18n.conf": "16f33fe679bdb945aad80dbf5cb9a4cf",
+          "F210vsftpd-server.fw": "d0b8fd1d0156a9db353a42d43636861f"
         },
         "i18n": {
           "zh-cn": {

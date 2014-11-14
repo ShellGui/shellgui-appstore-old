@@ -68,7 +68,15 @@ make_vsftpd()
 groupadd ftp
 useradd ftp -g ftp -s /usr/sbin/nologin -d /data/ftp -M -c "FTP User"
 mkdir -p /data/ftp
-# chown root.root /data/ftp
+chown ftp.ftp /data/ftp
+
+for var in anon_root pasv_min_port pasv_max_port
+do
+sed -i "/^${var}=/d" /etc/vsftpd.conf
+done
+echo "anon_root=/data/ftp" >>/etc/vsftpd.conf
+echo "pasv_min_port=10100" >>/etc/vsftpd.conf
+echo "pasv_max_port=10190" >>/etc/vsftpd.conf
 # cp RedHat/vsftpd.pam /etc/pam.d/ftp
 }
 config_vsftpd()
@@ -268,6 +276,14 @@ edit_config_file
 user_options_setting()
 {
 edit_config_file
+}
+
+wan_dest()
+{
+dest=`env | grep "^FORM_wan_zone_" | awk -F "=" {'print $2'} | tr '\n' ' '`
+sed -i '/^dest_wan=/d' $DOCUMENT_ROOT/apps/vsftpd/vsftpd_extra.conf
+echo "dest_wan=\"$dest\"" >> $DOCUMENT_ROOT/apps/vsftpd/vsftpd_extra.conf
+(echo "Success" | main.sbin output_json 0) || exit 0
 }
 
 . $DOCUMENT_ROOT/apps/sysinfo/sysinfo_lib.sh
