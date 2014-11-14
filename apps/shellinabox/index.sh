@@ -103,7 +103,13 @@ cat <<EOF
 		</form>
 	</div>
 <div class="col-md-12">
+EOF
+
+ps aux | grep -v grep | grep -q "shellinaboxd" && cat <<EOF
 	<iframe src="/shellinabox/" id="iframeshellinabox" name="iframepage" frameBorder=0 scrolling=no  style="min-height:500px;min-width:800px"></iframe>
+EOF
+
+cat <<EOF
 </div>
 </div>
 EOF

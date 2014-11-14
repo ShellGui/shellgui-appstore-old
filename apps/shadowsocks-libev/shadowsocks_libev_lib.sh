@@ -55,7 +55,7 @@ make && make install
 }
 do_install_shadowsocks_libev()
 {
-check_shadowsocks_libev_installed && echo "shadowsocks-libev binary installed" && exit 1
+check_shadowsocks_libev_installed && echo "shadowsocks-libev binary installed" && main.sbin notice option="unmark_uniq" uniqid="Shadowsocks_libev_binary_need_install" >/dev/null 2>&1 && exit 1
 touch $DOCUMENT_ROOT/../tmp/shadowsocks_libev_ins_detail.log
 main.sbin pregress_schedule option="add" task="_PS_Install_Shadowsocks_libev" schedule="{\"_PS_1_Download_Sources\":\"0\",\"_PS_2_Make_install_Shadowsocks_libev_Dependence\":\"0\",\"_PS_3_Make_install_Shadowsocks_libev\":\"0\",\"_PS_4_Config_Shadowsocks_libev\":\"0\",\"_PS_5_Shadowsocks_libev_finished_Installtion\":\"0\"}" detail_file="$DOCUMENT_ROOT/../tmp/shadowsocks_libev_ins_detail.log" app="shadowsocks-libev" status="working"
 main.sbin pregress_schedule option="change_pregress" task="_PS_Install_Shadowsocks_libev" pregress_now="10"
