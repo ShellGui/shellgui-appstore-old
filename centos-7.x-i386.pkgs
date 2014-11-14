@@ -504,12 +504,12 @@
         }
       },
       "mysql": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "68K",
         "files": {
           "icon.png": "ac34719ae397713f1ef629861255cdee",
-          "config.conf": "2c8b24050e76758f403875c16f0efb01",
-          "mysql_lib.sh": "a57337c660608ae778961c069b3483ae",
+          "config.conf": "d0889bd0e2e9f928fffea5cca12cc93f",
+          "mysql_lib.sh": "2ab301a2227becb21e51e166bb74695e",
           "index.sh": "9b99cb28a032494878f3c895364a74a0",
           "i18n/zh-cn/i18n.conf": "af5a7d03df1cbafce09ed59b07ced2a6",
           "i18n/en/i18n.conf": "420ae5bf4270618ada6d15b58844bc62",

@@ -46,11 +46,11 @@ fi
 make_mysql()
 {
 cd $DOCUMENT_ROOT/../sources/
-rm -rf $packagename-$version
+rm -rf mysql-5.6.14
 
-tar zxvf $packagename-$version.$arch
+tar zxvf mysql-5.6.14.tar.gz
 
-cd $DOCUMENT_ROOT/../sources/$packagename-$version
+cd $DOCUMENT_ROOT/../sources/mysql-5.6.14
 eval `cat $DOCUMENT_ROOT/../tmp/mysql.config.tmp`
 [ -n "$use_jemalloc" ] || jemalloc_used="-DCMAKE_EXE_LINKER_FLAGS=\"-ljemalloc\" -DWITH_SAFEMALLOC=OFF"
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql/ \
