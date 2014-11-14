@@ -3,6 +3,7 @@
 main()
 {
 check_nginx_installed || warning
+[ -d $DOCUMENT_ROOT/apps/nginx/extra_config ] || mkdir $DOCUMENT_ROOT/apps/nginx/extra_config
 if
 [ ! -f $DOCUMENT_ROOT/apps/nginx/nginx_config.json ]
 then

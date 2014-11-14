@@ -624,7 +624,7 @@
           "conf_tpl/host_cgi_fgi_tpl/010php_tcp.tpl": "30747c64fa8eca375e52e84ac7ad074e",
           "conf_tpl/host_file_cache_tpl/010gif_jpg_jpeg_png_bmp_swf.tpl": "2a44a47f5a28d7b1d69e9bd3cd37dfb6",
           "conf_tpl/host_file_cache_tpl/020js_css.tpl": "9819779037b73f15bfb207e332d94616",
-          "index.sh": "06764779ac226b856b4a7444d8c03d71",
+          "index.sh": "88ebf4739beae6e39eb1d5c451d6b598",
           "i18n/zh-cn/i18n.conf": "12234d93862b2751e37ba902ebff4239",
           "i18n/en/i18n.conf": "3803fd9e5ea23c6c00d63877ac06bf2d",
           "vhost.sh": "9b36fc24451cdf94ece490745b2a25de"
