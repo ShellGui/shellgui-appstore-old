@@ -18,7 +18,7 @@ do_filter_zone_wan_input()
 {
 # echo "filter_zone_wan_input do nothing"
 echo "[vsftpd] filter_zone_wan_input"
-eval `grep -E "pasv_min_port=|pasv_max_port=" /etc/vsftpd.conf`
+eval `grep -E "pasv_min_port=|pasv_max_port=" $vsftpd_config_dir/vsftpd.conf`
 echo "$dest_wan" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t filter -A input_${wan_zone}_rule -p tcp -m tcp --dport $pasv_min_port:$pasv_max_port -m comment --comment "Allow-VSFTPD" -j ACCEPT
 
 }

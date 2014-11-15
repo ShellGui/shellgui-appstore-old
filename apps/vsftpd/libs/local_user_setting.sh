@@ -58,7 +58,7 @@ cat <<EOF
 				chroot_list_file
 			</div>
 			<div class="col-md-4">
-				<input type="text" class="form-control" placeholder="Enter Path to File" name="chroot_list_file" value="`[ -n "$chroot_list_file" ] && echo "$chroot_list_file" || echo "/etc/vsftpd.chroot_list"`">
+				<input type="text" class="form-control" placeholder="Enter Path to File" name="chroot_list_file" value="`[ -n "$chroot_list_file" ] && echo "$chroot_list_file" || echo "$vsftpd_config_dir/vsftpd.chroot_list"`">
 			</div>
 			<div class="col-md-4">
 				#指定限制的用户文件,里面的用户将被chroot
@@ -96,7 +96,7 @@ cat <<EOF
 		</div>
 		
 		<div class="row">
-		1、当chroot_list_enable=YES，chroot_local_user=YES时，在/etc /vsftpd.chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。 2、当chroot_list_enable=YES，chroot_local_user=NO时，在/etc/vsftpd.chroot_list 文件中列出的用户，不能切换到其他目录；未在文件中列出的用户，可以切换到其他目录。 3、当chroot_list_enable=NO，chroot_local_user=YES时，所有的用户均不能切换到其他目录。 4、当chroot_list_enable=NO，chroot_local_user=NO时，所有的用户均可以切换到其他目录。
+		1、当chroot_list_enable=YES，chroot_local_user=YES时，在 $vsftpd_config_dir/vsftpd.chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。 2、当chroot_list_enable=YES，chroot_local_user=NO时，在$vsftpd_config_dir/vsftpd.chroot_list 文件中列出的用户，不能切换到其他目录；未在文件中列出的用户，可以切换到其他目录。 3、当chroot_list_enable=NO，chroot_local_user=YES时，所有的用户均不能切换到其他目录。 4、当chroot_list_enable=NO，chroot_local_user=NO时，所有的用户均可以切换到其他目录。
 		</div>
 
 		<div class="row">

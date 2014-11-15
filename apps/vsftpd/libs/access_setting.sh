@@ -24,10 +24,10 @@ cat <<EOF
 
 		<div class="row">
 			<div class="col-md-4">
-			/etc/ftpusers
+			$vsftpd_config_dir/ftpusers
 			</div>
 			<div class="col-md-4">
-				<textarea style="width:100%;height:140px" name="vsftpd_user_list" placeholder="root" class="bg-warning">`cat /etc/ftpusers`</textarea>
+				<textarea style="width:100%;height:140px" name="vsftpd_user_list" placeholder="root" class="bg-warning">`cat $vsftpd_config_dir/ftpusers`</textarea>
 			</div>
 			<div class="col-md-4">
 			#用于保存不允许进行FTP登录的本地用户帐号。就是vsftp用户的黑名单

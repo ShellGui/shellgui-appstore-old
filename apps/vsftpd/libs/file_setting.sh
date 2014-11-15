@@ -7,7 +7,7 @@ cat <<EOF
 		chroot_list_file
 		</div>
 		<div class="col-md-4">
-			<input type="text" class="form-control" placeholder="Enter Path to File" name="chroot_list_file" value="`[ -n "$chroot_list_file" ] && echo "$chroot_list_file" || echo "/etc/vsftpd.chroot_list"`">
+			<input type="text" class="form-control" placeholder="Enter Path to File" name="chroot_list_file" value="`[ -n "$chroot_list_file" ] && echo "$chroot_list_file" || echo "$vsftpd_config_dir/vsftpd.chroot_list"`">
 		</div>
 		<div class="col-md-4">
 		#定义不能更改用户主目录的文件 
@@ -19,7 +19,7 @@ cat <<EOF
 		userlist_file
 		</div>
 		<div class="col-md-4">
-			<input type="text" class="form-control" placeholder="Enter Path to File" name="userlist_file" value="`[ -n "$userlist_file" ] && echo "$userlist_file" || echo "/etc/ftpusers"`">
+			<input type="text" class="form-control" placeholder="Enter Path to File" name="userlist_file" value="`[ -n "$userlist_file" ] && echo "$userlist_file" || echo "$vsftpd_config_dir/ftpusers"`">
 		</div>
 		<div class="col-md-4">
 		#定义限制/允许用户登录的文件
@@ -31,7 +31,7 @@ cat <<EOF
 		banned_email_file
 		</div>
 		<div class="col-md-4">
-			<input type="text" class="form-control" placeholder="Enter Path to File" name="banned_email_file" value="`[ -n "$banned_email_file" ] && echo "$banned_email_file" || echo "/etc/vsftpd.banned_emails"`">
+			<input type="text" class="form-control" placeholder="Enter Path to File" name="banned_email_file" value="`[ -n "$banned_email_file" ] && echo "$banned_email_file" || echo "$vsftpd_config_dir/vsftpd.banned_emails"`">
 		</div>
 		<div class="col-md-4">
 		#禁止使用的匿名用户登陆时作为密码的电子邮件地址

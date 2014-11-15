@@ -170,7 +170,7 @@ $(function(){
 EOF
 
 check_vsftpd_installed || warning
-eval `cat /etc/vsftpd.conf | grep -v "#"`
+eval `cat $vsftpd_config_dir/vsftpd.conf | grep -v "#"`
 
 cat <<EOF
 <div class="col-md-6">
@@ -217,7 +217,7 @@ cat <<EOF
 <legend>Available ftp local users</legend>
 EOF
 users=`grep -vE "^[a-zA-Z0-9-]*:(\\!|\\$|\\*):" /etc/shadow | awk -F ":" '{print $1}'`
-for user in `grep -E "^[a-zA-Z0-9-]*$" /etc/ftpusers`
+for user in `grep -E "^[a-zA-Z0-9-]*$" $vsftpd_config_dir/ftpusers`
 do
 users=`echo "$users" | grep -v "^${user}$"`
 done
@@ -414,6 +414,23 @@ lang=`main.sbin get_client_lang`
 eval `cat $DOCUMENT_ROOT/apps/$FORM_app/i18n/$lang/i18n.conf` >/dev/null 2>&1
 . $DOCUMENT_ROOT/apps/sysinfo/sysinfo_lib.sh >/dev/null 2>&1
 . $DOCUMENT_ROOT/apps/vsftpd/vsftpd_lib.sh >/dev/null 2>&1
+
+if
+echo "$OS" | grep -iq "centos"
+then
+vsftpd_config_dir=/etc/vsftpd
+fi
+if
+echo "$OS" | grep -iq "ubuntu"
+then
+vsftpd_config_dir=/etc
+fi
+if
+echo "$OS" | grep -iq "debian"
+then
+vsftpd_config_dir=/etc
+fi
+
 if
 [ $is_main_page = 1 ]
 then

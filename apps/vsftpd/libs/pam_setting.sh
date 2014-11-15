@@ -22,10 +22,10 @@ cat <<EOF
 			pam_service_name
 			</div>
 			<div class="col-md-4">
-				<input type="text" class="form-control" placeholder="Enter Path to File" name="pam_service_name" value="`[ -n "$pam_service_name" ] && echo "$pam_service_name" || echo "/etc/pam.d/vsftpd"`">
+				<input type="text" class="form-control" placeholder="Enter Path to File" name="pam_service_name" value="`[ -n "$pam_service_name" ] && echo "$pam_service_name" || echo "$vsftpd_config_dir/pam.d/vsftpd"`">
 			</div>
 			<div class="col-md-4">
-			#设置PAM使用的名称，默认值为/etc/pam.d/vsftpd。
+			#设置PAM使用的名称，默认值为$vsftpd_config_dir/pam.d/vsftpd。
 			</div>
 		</div>
 

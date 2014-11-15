@@ -70,13 +70,14 @@ useradd ftp -g ftp -s /usr/sbin/nologin -d /data/ftp -M -c "FTP User"
 mkdir -p /data/ftp
 chown ftp.ftp /data/ftp
 
-for var in anon_root pasv_min_port pasv_max_port
+for var in anon_root pasv_min_port pasv_max_port userlist_file
 do
-sed -i "/^${var}=/d" /etc/vsftpd.conf
+sed -i "/^${var}=/d" $vsftpd_config_dir/vsftpd.conf
 done
-echo "anon_root=/data/ftp" >>/etc/vsftpd.conf
-echo "pasv_min_port=10100" >>/etc/vsftpd.conf
-echo "pasv_max_port=10190" >>/etc/vsftpd.conf
+echo "anon_root=/data/ftp" >>$vsftpd_config_dir/vsftpd.conf
+echo "pasv_min_port=10100" >>$vsftpd_config_dir/vsftpd.conf
+echo "pasv_max_port=10190" >>$vsftpd_config_dir/vsftpd.conf
+echo " userlist_file=/etc/ftpusers" >>$vsftpd_config_dir/vsftpd.conf
 # cp RedHat/vsftpd.pam /etc/pam.d/ftp
 }
 config_vsftpd()
@@ -197,9 +198,9 @@ edit_config_file()
 {
 for var in `env | grep "^FORM_.*=" | grep -vE "^FORM_app=|^FORM_action=" | sed -e 's/^FORM_//g' -e 's/=.*//g'`
 do
-sed -i "/^${var}=/d" /etc/vsftpd.conf
+sed -i "/^${var}=/d" $vsftpd_config_dir/vsftpd.conf
 value=$(eval echo '$'FORM_${var})
-[ -n "$value" ] && echo "${var}=$value" >>/etc/vsftpd.conf
+[ -n "$value" ] && echo "${var}=$value" >>$vsftpd_config_dir/vsftpd.conf
 done
 }
 
@@ -227,8 +228,8 @@ edit_config_file
 
 infomation_setting()
 {
-sed -i '/^ftpd_banner=/d' /etc/vsftpd.conf
-[ -n "$FORM_ftpd_banner" ] && echo "ftpd_banner=\"$FORM_ftpd_banner\"" >>/etc/vsftpd.conf
+sed -i '/^ftpd_banner=/d' $vsftpd_config_dir/vsftpd.conf
+[ -n "$FORM_ftpd_banner" ] && echo "ftpd_banner=\"$FORM_ftpd_banner\"" >>$vsftpd_config_dir/vsftpd.conf
 unset FORM_ftpd_banner
 edit_config_file
 }

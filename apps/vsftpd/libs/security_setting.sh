@@ -205,7 +205,7 @@ cat <<EOF
 			rsa_private_key_file
 			</div>
 			<div class="col-md-4">
-				<input type="text" class="form-control" placeholder="Enter Count" name="max_per_ip" value="`[ -n "$rsa_private_key_file" ] && echo "$rsa_private_key_file" || echo "/etc/config/vsftpd_privkey.pem"`">
+				<input type="text" class="form-control" placeholder="Enter Count" name="max_per_ip" value="`[ -n "$rsa_private_key_file" ] && echo "$rsa_private_key_file" || echo "$vsftpd_config_dir/config/vsftpd_privkey.pem"`">
 			</div>
 			<div class="col-md-4">
 			#rsa 私钥文件位置
