@@ -216,7 +216,7 @@ cat <<EOF
 <div class="col-md-6">
 <legend>Available ftp local users</legend>
 EOF
-users=`grep -vE "^[a-zA-Z0-9-]*:(\\!|\\$|\\*):" /etc/shadow | awk -F ":" '{print $1}'`
+users=`grep -vE "^[a-zA-Z0-9-]*:(\\!|\\$|\\*)*:" /etc/shadow | awk -F ":" '{print $1}'`
 for user in `grep -E "^[a-zA-Z0-9-]*$" $vsftpd_config_dir/ftpusers`
 do
 users=`echo "$users" | grep -v "^${user}$"`

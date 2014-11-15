@@ -770,7 +770,7 @@
           "libs/file_setting.sh": "fed79d488c52a24a2428baaf23ae92df",
           "libs/anonymous_setting.sh": "99408f3d84bbd88fb8e7d991479f13b2",
           "libs/user_options_setting.sh": "eafdb5f7c70d1155ba3b868634247967",
-          "index.sh": "da31943f6c835499ffd3418ee11130f8",
+          "index.sh": "da9fa03efebc60753480d24870a1203e",
           "i18n/zh-cn/i18n.conf": "ac941f81e48413078f89c394a4044f3d",
           "i18n/en/i18n.conf": "16f33fe679bdb945aad80dbf5cb9a4cf",
           "F210vsftpd-server.fw": "6e29dcad954007b5b21762317d85d477"
