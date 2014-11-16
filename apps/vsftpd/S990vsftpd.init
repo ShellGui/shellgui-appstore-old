@@ -15,6 +15,7 @@ main.sbin notice option="add" \
 				dest="vsftpd" \
 				dest_type="app" >/dev/null 2>&1
 fi
+stop
 service vsftpd start
 vsftpd_pid=`ps aux | grep "vsftpd[ ]*" | grep -v grep  | grep "^root" | sed -n 1p | awk {'print $2'}`
 [ -z "$vsftpd_pid" ] && vsftpd &
@@ -22,5 +23,7 @@ vsftpd_pid=`ps aux | grep "vsftpd[ ]*" | grep -v grep  | grep "^root" | sed -n 1
 stop()
 {
 service vsftpd stop
+vsftpd_pid=`ps aux | grep "vsftpd[ ]*" | grep -v grep  | grep "^root" | sed -n 1p | awk {'print $2'}`
+[ -n "$vsftpd_pid" ] && (killall vsftpd || pkill vsftpd)
 }
 [ -z "$1" ] && start || $1

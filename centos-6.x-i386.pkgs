@@ -754,7 +754,7 @@
           "vsftpd_extra.conf": "0a01ddbca767c1cac92247b5b9869b42",
           "vsftpd_lib.sh": "d5e4516d8c9ac5cf624f0ecf5f14b7c5",
           "icon.png": "fd4a2ab1d3f5d93eab203fdb125c867b",
-          "S990vsftpd.init": "4b23364697d3f9ddccb3122032e4cbf7",
+          "S990vsftpd.init": "64e0445e49fcb08a4e7404242b4859f6",
           "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
           "libs/server_setting.sh": "97a3bb167e4e2223bbc566220557450c",
           "libs/pam_setting.sh": "22a31773eb99af42d7737a11c36e35dc",
