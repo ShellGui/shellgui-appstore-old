@@ -1,7 +1,7 @@
 #!/bin/sh
 main()
 {
-vsftpd_pid=`ps aux | grep "/usr/sbin/vsftpd" | grep -v grep  | grep "^root" | sed -n 1p | awk {'print $2'}`
+vsftpd_pid=`ps aux | grep "vsftpd[ ]*" | grep -v grep  | grep "^root" | sed -n 1p | awk {'print $2'}`
 echo "$vsftpd_pid" >/tmp/1
 if
 echo $vsftpd_pid | grep -qE '[0-9]'
