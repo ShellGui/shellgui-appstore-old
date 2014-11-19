@@ -875,6 +875,35 @@
           }
         }
       },
+      "openvpn": {
+        "version": "0.1",
+        "size": "80K",
+        "files": {
+          "icon.png": "09becf955738a591429ecc0a15b13f5b",
+          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "index.sh": "d4eb99bdc970c475e64d6a1a83476343",
+          "i18n/zh-cn/i18n.conf": "b02fcc0115d0a2ee4532010c890b9d88",
+          "i18n/en/i18n.conf": "7f182abd0fb162d41e2753a9ba0bcc6a",
+          "F203openvpn-server.fw": "401e35b523d66dbbb00293241ff4725a",
+          "S901openvpn.init": "35297c3a46fc332f02cce40806e08706",
+          "openvpn_lib.sh": "0098fd8a432bda3ac8f4f258e24c88e2",
+          "openvpn_extra.conf": "0a01ddbca767c1cac92247b5b9869b42"
+        },
+        "i18n": {
+          "zh-cn": {
+            "name": "OpenVPN",
+            "desc": "OpenVPN 服务",
+            "detail": "OpenVPN 服务程序",
+            "type": "网络"
+          },
+          "en": {
+            "name": "OpenVPN",
+            "desc": "OpenVPN server",
+            "detail": "OpenVPN server program",
+            "type": "Network"
+          }
+        }
+      },
       "brand-info": {
         "version": "0.1",
         "size": "44K",
