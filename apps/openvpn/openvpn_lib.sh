@@ -466,6 +466,13 @@ client_ssl_edit
 fi
 }
 
+fix_conf_key_size()
+{
+get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
+echo $key_size >/tmp/1
+sed -i "s/dh[0-9]*.pem/dh${key_size}.pem/g" /etc/openvpn/openvpn.conf
+}
+
 do_crt()
 {
 [ -z "$1" ] && return 1
@@ -521,19 +528,26 @@ fi
 }
 build()
 {
+([ -n "$FORM_SSL_C" ] && [ $(expr length $(echo "$FORM_SSL_C")) -eq 2 ] || echo "$_LANG_Country""$_LANG_Need""2""$_LANG_Characters" | main.sbin output_json 1) || exit 1
+([ -n "$FORM_SSL_C" ] && echo "$FORM_SSL_C" | main.sbin regx_str islang_en || echo "$_LANG_Country""$_LANG_Need""$_LANG_In_english" | main.sbin output_json 1) || exit 1
+
 tar_get=`echo $FORM_file | sed 's/\.crt$//'`
 do_crt $tar_get || (echo "Fail" | main.sbin output_json 1) || exit 1
 
 }
 build_new()
 {
-[ "$FORM_SSL_CN" = "`echo "$FORM_SSL_CN" | grep -Po "[a-zA-Z0-9-_]*"`" ] || (echo "CN Fail" | main.sbin output_json 1) || exit 1
+([ -n "$FORM_SSL_C" ] && [ $(expr length $(echo "$FORM_SSL_C")) -eq 2 ] || echo "$_LANG_Country""$_LANG_Need""2""$_LANG_Characters" | main.sbin output_json 1) || exit 1
+([ -n "$FORM_SSL_C" ] && echo "$FORM_SSL_C" | main.sbin regx_str islang_en || echo "$_LANG_Country""$_LANG_Need""$_LANG_In_english" | main.sbin output_json 1) || exit 1
+
+[ "$FORM_SSL_CN" = "`echo "$FORM_SSL_CN" | grep -Po "[a-zA-Z0-9-_]*"`" ] || (echo "Common Name Fail" | main.sbin output_json 1) || exit 1
 do_crt $FORM_SSL_CN || (echo "Fail" | main.sbin output_json 1) || exit 1
 
 }
 save_openvpn_conf()
 {
 echo "$FORM_openvpn_conf_str" > /etc/openvpn/openvpn.conf
+(fix_conf_key_size)
 (echo "Success" | main.sbin output_json 0) || exit 0
 }
 del_ssl()
@@ -548,22 +562,29 @@ rm -f /etc/openvpn/easy-rsa/keys/$tar_get.key
 }
 download()
 {
+get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
 tar_get=`echo $FORM_crt_file | sed 's/\.crt$//'`
 rm -rf /tmp/openvpn_ssl
 mkdir /tmp/openvpn_ssl
-cp /etc/openvpn/easy-rsa/keys/{ca.crt,dh1024.pem,$tar_get.crt,$tar_get.key} /tmp/openvpn_ssl
+cp /etc/openvpn/easy-rsa/keys/ca.crt /tmp/openvpn_ssl
+cp /etc/openvpn/easy-rsa/keys/$tar_get.crt /tmp/openvpn_ssl
+cp /etc/openvpn/easy-rsa/keys/$tar_get.key /tmp/openvpn_ssl
+cp /etc/openvpn/easy-rsa/keys/dh$key_size.pem /tmp/openvpn_ssl
+
+port=`grep -E "^port[ ]*[0-9][0-9]*" /etc/openvpn/openvpn.conf | grep -Po '[0-9]*'`
+proto=`grep "^proto" /etc/openvpn/openvpn.conf | awk {'print $2'}`
 cat <<EOF > /tmp/openvpn_ssl/$tar_get.ovpn
 client
 tls-client
 dev tun
-proto udp
-remote $SERVER_NAME 1194 # Change to your router's External IP
+proto $proto
+remote $SERVER_NAME $port # Change to your router's External IP
 resolv-retry infinite
 nobind
 ca ca.crt
 cert client.crt
 key client.key
-dh dh1024.pem
+dh dh$key_size.pem
 #comp-lzo
 
 persist-tun
@@ -571,8 +592,12 @@ persist-key
 verb 3
 EOF
 cd /tmp
-tar czf openvpn_ssl.tar.gz openvpn_ssl
-main.sbin http_download /tmp/openvpn_ssl.tar.gz "openvpn_ssl_"$tar_get.tar.gz
+
+Server_IP=`echo $SERVER_NAME | sed 's/\./_/g'`
+rm -rf $Server_IP"_"$tar_get"_openvpn_ssl"
+mv openvpn_ssl $Server_IP"_"$tar_get"_openvpn_ssl"
+tar czf openvpn_ssl.tar.gz $Server_IP"_"$tar_get"_openvpn_ssl"
+main.sbin http_download /tmp/openvpn_ssl.tar.gz $Server_IP"_"$tar_get"_openvpn_ssl".tar.gz
 }
 wan_dest()
 {
@@ -592,6 +617,7 @@ sed -i '/push \"dhcp-option DNS /d' /etc/openvpn/openvpn.conf
 [ -n "$FORM_dns1" ] && echo "push \"dhcp-option DNS $FORM_dns1\"" >> /etc/openvpn/openvpn.conf
 [ -n "$FORM_dns2" ] && echo "push \"dhcp-option DNS $FORM_dns2\"" >> /etc/openvpn/openvpn.conf
 
+(fix_conf_key_size)
 (echo "Success" | main.sbin output_json 0) || exit 0
 }
 

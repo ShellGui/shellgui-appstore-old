@@ -3,7 +3,7 @@ enable=1
 start()
 {
 [ -z "$DOCUMENT_ROOT" ] && export DOCUMENT_ROOT=`main.sbin where_DOCUMENT_ROOT`
-
+mkdir -p /var/log/openvpn/
 if
 [ ! -x /usr/local/openvpn/sbin/openvpn ]
 then

@@ -59,7 +59,7 @@ status_icon="<span class=\"glyphicon glyphicon-pause\"></span>"
 fi
 eval `main.sbin pid_uptime $openvpn_pid`
 if
-ls /etc/rc?.d | grep -q "S.*openvpn-fpm$"
+grep -q "enable=1" $DOCUMENT_ROOT/apps/openvpn/S901openvpn.init
 then
 on_selected="selected=\"selected\""
 else
