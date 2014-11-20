@@ -1,7 +1,7 @@
 #!/bin/sh
 
 eval `cat $DOCUMENT_ROOT/apps/vsftpd/vsftpd_extra.conf`
-
+port=`grep -E "^port[ ]*[0-9][0-9]*" /etc/openvpn/openvpn.conf | grep -Po '[0-9]*'`
 do_raw_extra()
 {
 echo "openvpn-server] raw_extra do nothing"
@@ -21,8 +21,8 @@ do_filter_zone_wan_input()
 # echo "filter_zone_wan_input do nothing"
 echo "openvpn-server] filter_zone_wan_input"
 
-echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t filter -A input_${wan_zone}_rule -p tcp --dport 1194 -m comment --comment "Allow-OpenVpn" -j ACCEPT
-echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t filter -A input_${wan_zone}_rule -p udp --dport 1194 -m comment --comment "Allow-OpenVpn" -j ACCEPT
+echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t filter -A input_${wan_zone}_rule -p tcp --dport $port -m comment --comment "Allow-OpenVpn" -j ACCEPT
+echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t filter -A input_${wan_zone}_rule -p udp --dport $port -m comment --comment "Allow-OpenVpn" -j ACCEPT
 iptables -t filter -A input_rule -i tun+ -j ACCEPT
 }
 
@@ -53,8 +53,8 @@ do_nat_zone_wan_zone_postrouting()
 # echo "nat_zone_wan_zone_postrouting do nothing"
 echo "openvpn-server] nat_zone_wan_zone_postrouting"
 
-echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t nat -A zone_${wan_zone}_prerouting -p tcp --dport 1194 -m comment --comment "Allow-OpenVpn" -j ACCEPT
-echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t nat -A zone_${wan_zone}_prerouting -p udp --dport 1194 -m comment --comment "Allow-OpenVpn" -j ACCEPT
+echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t nat -A zone_${wan_zone}_prerouting -p tcp --dport $port -m comment --comment "Allow-OpenVpn" -j ACCEPT
+echo "$l2tp_wan_dest" | grep -qE "[ ]*${wan_zone}[ ]*" && iptables -t nat -A zone_${wan_zone}_prerouting -p udp --dport $port -m comment --comment "Allow-OpenVpn" -j ACCEPT
 }
 
 do_nat_zone_lan_zone_postrouting()

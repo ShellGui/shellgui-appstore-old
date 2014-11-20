@@ -884,7 +884,7 @@
           "index.sh": "5fdd48d6528379beb973572a335f4077",
           "i18n/zh-cn/i18n.conf": "bf24aca3208016d8a2006268a8d1ab1f",
           "i18n/en/i18n.conf": "013b40bb2e5a8e0ddff864c329bcbbd0",
-          "F203openvpn-server.fw": "401e35b523d66dbbb00293241ff4725a",
+          "F203openvpn-server.fw": "8d6dff20d2b787ddcc6d20756c8f7edc",
           "S901openvpn.init": "73c5f2ebfafa1a2dafb00d2836fa59f1",
           "openvpn_lib.sh": "ee95a182b586ceeca503158ac144e16e",
           "openvpn_extra.conf": "0a01ddbca767c1cac92247b5b9869b42"
