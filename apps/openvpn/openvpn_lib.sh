@@ -103,7 +103,12 @@ keepalive 10 120
 log-append /var/log/openvpn/openvpn.log
 
 EOF
-
+cd /etc/openvpn/easy-rsa
+. ./vars
+./clean-all
+./pkitool --batch --initca 2>&1
+./pkitool --batch --server server 2>&1
+./build-dh 2>&1
 }
 
 do_install_openvpn()
@@ -211,6 +216,9 @@ fi
 }
 get_ssl_detail_html()
 {
+
+client_ssl_edit()
+{
 cat <<'EOF'
 <script>
 $(function(){
@@ -223,8 +231,6 @@ $(function(){
 });
 </script>
 EOF
-client_ssl_edit()
-{
 cat <<EOF
 
 <p class="bg-$color">$_LANG_Build_on $V_START
@@ -331,7 +337,20 @@ EOF
 ca_server_ssl_edit()
 {
 eval `grep -E "^export PKCS11_PIN=|^export KEY_SIZE=|^export KEY_EXPIRE=" /etc/openvpn/easy-rsa/vars`
-
+cat <<'EOF'
+<script>
+$(function(){
+  $('#build').on('submit', function(e){
+    e.preventDefault();
+	if (confirm("Rebuild ca&server crt will del all clients crt,continue?")) {
+    var data = "app=openvpn&"+$(this).serialize();
+    var url = 'index.cgi';
+    Ha.common.ajax(url, 'json', data, 'post', 'ajax-proxy');
+	}
+  });
+});
+</script>
+EOF
 cat <<EOF
 
 <p class="bg-$color">$_LANG_Build_on $V_START
@@ -469,7 +488,6 @@ fi
 fix_conf_key_size()
 {
 get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
-echo $key_size >/tmp/1
 sed -i "s/dh[0-9]*.pem/dh${key_size}.pem/g" /etc/openvpn/openvpn.conf
 }
 
@@ -482,6 +500,7 @@ cd /etc/openvpn/easy-rsa/
 if
 [ "$1" = "ca" ] ||[ "$1" = "server" ]
 then
+
 sed -i -e '/export PKCS11_MODULE_PATH=/d' \
 		-e '/export PKCS11_PIN=/d' \
 		-e '/export KEY_SIZE=/d' \
@@ -506,8 +525,9 @@ export KEY_OU="$FORM_SSL_OU"
 EOF
 . ./vars
 export KEY_EMAIL=$FORM_KEY_EMAIL
-rm -f /etc/openvpn/easy-rsa/keys/{ca.crt,ca.csr,ca.key,server.crt,server.csr,server.key,index.txt}
-touch ./keys/index.txt
+#rm -f /etc/openvpn/easy-rsa/keys/{ca.crt,ca.csr,ca.key,server.crt,server.csr,server.key,index.txt}
+./clean-all
+#touch ./keys/index.txt
 ./pkitool --batch --initca >/dev/null 2>&1
 ./pkitool --batch --server server >/dev/null 2>&1
 ./build-dh >/dev/null 2>&1 &
@@ -612,6 +632,7 @@ config_str=`cat /etc/openvpn/openvpn.conf`
 [ -n "$FORM_port" ] && config_str=`echo "$config_str" | sed "s/^port[ ]*.*/port $FORM_port/" `
 [ -n "$FORM_proto" ] && config_str=`echo "$config_str" | sed "s/^proto[ ]*.*/proto $FORM_proto/"`
 [ -n "$FORM_server_ip" ] && [ -n "$FORM_server_mask" ] && config_str=`echo "$config_str" | sed "s/^server[ ]*.*/server $FORM_server_ip $FORM_server_mask/"`
+[ -n "$FORM_push_route" ] && config_str=`echo "$config_str" | sed "s/^push \"route[ ]*.*/push \"route $FORM_push_route\"/"`
 [ -n "$config_str" ] && echo "$config_str" > /etc/openvpn/openvpn.conf
 sed -i '/push \"dhcp-option DNS /d' /etc/openvpn/openvpn.conf
 [ -n "$FORM_dns1" ] && echo "push \"dhcp-option DNS $FORM_dns1\"" >> /etc/openvpn/openvpn.conf
