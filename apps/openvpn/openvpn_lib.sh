@@ -184,7 +184,7 @@ echo "$_LANG_Ready_to_Install"
 get_ssl_detail()
 {
 [ -f $1 ] || return 1
-decode_str=`openssl x509 -in $1 -inform pem -noout -text -nameopt multiline,-esc_msb | sed '/Issuer:/,/emailAddress/d'| grep -E "Public-Key:|emailAddress.*=|countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq |sed 's/^[ ][ ]*//g'`
+decode_str=`openssl x509 -in $1 -inform pem -noout -text -nameopt multiline,-esc_msb | sed '/Issuer:/,/emailAddress/d'| grep -E "RSA Public Key:|Public-Key:|emailAddress.*=|countryName.*=|stateOrProvinceName.*=|localityName.*=|organizationName.*=|organizationalUnitName.*=|commonName.*=|Not After|Not Before" | sort -n | uniq |sed 's/^[ ][ ]*//g'`
 V_START=`echo "$decode_str" | grep "Not Before" | sed 's/Not Before[ ]*:[ ]*//'`
 V_END=`echo "$decode_str" | grep "Not After" | sed 's/Not After[ ]*:[ ]*//'`
 I_DN_C=`echo "$decode_str" | grep "countryName" | awk -F " = " {'print $2'}`
@@ -195,7 +195,7 @@ S_DN_OU=`echo "$decode_str" | grep "organizationalUnitName" | awk -F " = " {'pri
 S_DN_CN=`echo "$decode_str" | grep "commonName" | awk -F " = " {'print $2'}`
 KEY_EMAIL=`echo "$decode_str" | grep "emailAddress" | awk -F " = " {'print $2'}`
 remaining_day=$(expr $(expr $(date -d "$V_END" +%s) - $(date +%s)) / 86400)
-key_size=`echo "$decode_str" | grep "Public-Key:" | grep -Po '[0-9]*'`
+key_size=`echo "$decode_str" | grep -E "RSA Public Key:|Public-Key:" | sed -n 1p | grep -Po '[0-9]*'`
 if
 [ $remaining_day -gt 90 ]
 then
@@ -536,8 +536,8 @@ export KEY_EMAIL=$FORM_KEY_EMAIL
 ./build-dh >/dev/null 2>&1
 (echo "Edit Success" | main.sbin output_json 0) || exit 0
 else
-(get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
-[ -f /etc/openvpn/easy-rsa/keys/dh${key_size}.pem ] || (echo "dh${key_size}.pem no exist." | main.sbin output_json 1) || exit 1 ) || exit 1
+#(get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
+#[ -f /etc/openvpn/easy-rsa/keys/dh${key_size}.pem ] || (echo "dh${key_size}.pem no exist." | main.sbin output_json 1) || exit 1 ) || exit 1
 
 export KEY_EXPIRE=$FORM_SSL_Guarantee
 export KEY_COUNTRY=$FORM_SSL_C

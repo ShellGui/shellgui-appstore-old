@@ -670,7 +670,7 @@
         }
       },
       "pptp-l2tp-server": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "100K",
         "files": {
           "pptp-l2tp-server.json": "4329d1d8673c5b2baecbad101629c7e9",
@@ -678,7 +678,7 @@
           "S230xl2tpd.init": "34480faabe556ea6cfc864dc4b9ad8d9",
           "S210pptpd.init": "2924c00c2178d90568b673e010b531bc",
           "icon.png": "2d051e68ed158947f251b7e6d1735785",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "config.conf": "3b79ad8e25d51eaa9d3ec851c62ae608",
           "index.sh": "e22e7cc74de9dff8831798530911a70d",
           "i18n/zh-cn/i18n.conf": "84689324157f64f8691bdb2ca15c8774",
           "i18n/en/i18n.conf": "4f493785d40904659c69eb166303c13a",
@@ -876,17 +876,17 @@
         }
       },
       "openvpn": {
-        "version": "0.11",
+        "version": "0.12",
         "size": "80K",
         "files": {
           "icon.png": "09becf955738a591429ecc0a15b13f5b",
-          "config.conf": "3b79ad8e25d51eaa9d3ec851c62ae608",
+          "config.conf": "180ffb2261e896fbb371abd57336e9f1",
           "index.sh": "06592851f3645caab1edfe2c2e377b02",
           "i18n/zh-cn/i18n.conf": "bf24aca3208016d8a2006268a8d1ab1f",
           "i18n/en/i18n.conf": "013b40bb2e5a8e0ddff864c329bcbbd0",
           "F203openvpn-server.fw": "8d6dff20d2b787ddcc6d20756c8f7edc",
-          "S901openvpn.init": "73c5f2ebfafa1a2dafb00d2836fa59f1",
-          "openvpn_lib.sh": "e688725af3d25fdf4bf030ff99517f1c",
+          "S901openvpn.init": "38dc7ef5cd35d69b3471bd0d20a7b48f",
+          "openvpn_lib.sh": "879b50a2d693d2afce71e2f1969ed961",
           "openvpn_extra.conf": "0a01ddbca767c1cac92247b5b9869b42"
         },
         "i18n": {
