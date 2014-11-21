@@ -649,6 +649,7 @@ if
 then
 sed -i "s/^enable=.*/enable=$FORM_openvpn_enable/g" $DOCUMENT_ROOT/apps/openvpn/S901openvpn.init
 $DOCUMENT_ROOT/apps/openvpn/S901openvpn.init start
+main.sbin fw_init >/dev/null 2>&1
 main.sbin notice option="add" \
 				read="0" \
 				desc="_NOTICE_openvpn_service_enable" \
@@ -662,7 +663,7 @@ main.sbin notice option="add" \
 else
 sed -i "s/^enable=.*/enable=$FORM_openvpn_enable/g" $DOCUMENT_ROOT/apps/openvpn/S901openvpn.init
 $DOCUMENT_ROOT/apps/openvpn/S901openvpn.init stop
-service openvpn stop >/dev/null 2>&1
+main.sbin fw_init >/dev/null 2>&1
 main.sbin notice option="add" \
 				read="0" \
 				desc="_NOTICE_openvpn_service_disable" \
