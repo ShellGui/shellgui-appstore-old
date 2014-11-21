@@ -110,7 +110,7 @@ server_mask=`echo "$server_str" | awk {'print $3'}`
 dns_str=`grep "^push \"dhcp-option " /etc/openvpn/openvpn.conf | grep -Po '((25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.){3}(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|[1-9])'`
 dns1=`echo "$dns_str" | sed -n 1p`
 dns2=`echo "$dns_str" | sed -n 2p`
-
+push_route=`grep "^push \"route " /etc/openvpn/openvpn.conf | grep -Po '\".*\"' | grep -Po '[0-9].*[0-9]'`
 cat <<EOF
 <form id="base_setting">
 <table class="table">
@@ -152,6 +152,12 @@ cat <<EOF
 <td>dns2</td>
 <td>
 <input class="form-control" placeholder="114.114.114.114" name="dns2" value="$dns2">
+</td>
+</tr>
+<tr>
+<td>push_route</td>
+<td>
+<input class="form-control" placeholder="192.168.2.0 255.255.255.0" name="push_route" value="$push_route">
 </td>
 </tr>
 <tr>
@@ -210,6 +216,7 @@ $(function(){
     var data = "app=openvpn&"+$(this).serialize();
     var url = 'index.cgi';
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-proxy');
+	setTimeout("window.location.reload();", 3000);
   });
 });
 </script>

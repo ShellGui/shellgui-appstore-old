@@ -343,9 +343,12 @@ $(function(){
   $('#build').on('submit', function(e){
     e.preventDefault();
 	if (confirm("Rebuild ca&server crt will del all clients crt,And Need a long time to build dhxxxx.pem file.continue?")) {
-    var data = "app=openvpn&"+$(this).serialize();
+	var $btn = $('#build_ca');
+	$btn.attr('disabled', 'disabled').html("Loading a long time...");
+	var data = "app=openvpn&"+$(this).serialize();
     var url = 'index.cgi';
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-proxy');
+	//$btn.removeAttr('disabled').html('Finish');
 	}
   });
 });
@@ -466,7 +469,7 @@ $_LANG_Option
 <td>
 <input type="hidden" name="action" value="build">
 <input type="hidden" name="file" value="$FORM_file">
-<button class="btn btn-primary" id="_submit" type="submit">$_LANG_Save</button>
+<button class="btn btn-primary" id="build_ca" type="submit">$_LANG_Save</button>
 </td>
 </tr>
 </table>
@@ -533,6 +536,9 @@ export KEY_EMAIL=$FORM_KEY_EMAIL
 ./build-dh >/dev/null 2>&1
 (echo "Edit Success" | main.sbin output_json 0) || exit 0
 else
+(get_ssl_detail /etc/openvpn/easy-rsa/keys/server.crt
+[ -f /etc/openvpn/easy-rsa/keys/dh${key_size}.pem ] || (echo "dh${key_size}.pem no exist." | main.sbin output_json 1) || exit 1 ) || exit 1
+
 export KEY_EXPIRE=$FORM_SSL_Guarantee
 export KEY_COUNTRY=$FORM_SSL_C
 export KEY_PROVINCE=$FORM_SSL_ST
