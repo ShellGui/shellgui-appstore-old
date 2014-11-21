@@ -101,6 +101,7 @@ persist-tun
 verb 3
 keepalive 10 120
 log-append /var/log/openvpn/openvpn.log
+status /var/log/openvpn/openvpn-status.log
 
 EOF
 cd /etc/openvpn/easy-rsa
@@ -623,6 +624,7 @@ Server_IP=`echo $SERVER_NAME | sed 's/\./_/g'`
 rm -rf $Server_IP"_"$tar_get"_openvpn_ssl"
 mv openvpn_ssl $Server_IP"_"$tar_get"_openvpn_ssl"
 tar czf openvpn_ssl.tar.gz $Server_IP"_"$tar_get"_openvpn_ssl"
+rm -rf $Server_IP"_"$tar_get"_openvpn_ssl"
 main.sbin http_download /tmp/openvpn_ssl.tar.gz $Server_IP"_"$tar_get"_openvpn_ssl".tar.gz
 }
 wan_dest()
@@ -681,6 +683,12 @@ main.sbin notice option="add" \
 				dest_type="app" >/dev/null 2>&1
 (echo "Success turn off" | main.sbin output_json 0) || exit 0
 fi
+}
+openvpn_status()
+{
+echo '<pre>'
+cat /var/log/openvpn/openvpn-status.log 2>&1
+echo '</pre>'
 }
 
 . $DOCUMENT_ROOT/apps/sysinfo/sysinfo_lib.sh

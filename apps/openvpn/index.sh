@@ -94,6 +94,7 @@ cat <<EOF
 		<td>
 			<input type="hidden" name="action" value="openvpn_service">
 			<button class="btn btn-primary" id="_submit" type="submit">$_LANG_Save</button>
+			<a class="btn btn-info" href="javascript:;" id="openvpn_status"><span class="glyphicon glyphicon-th"></span>Status</a>
 		</td>
 		</tr>
 		</table>
@@ -210,6 +211,13 @@ EOF
 eval `grep -vE "^$|^#|^;" /etc/openvpn/easy-rsa/vars | grep "="`
 cat <<'EOF'
 <script>
+$('#openvpn_status').on('click', function(){
+	var url = 'index.cgi?app=openvpn&action=openvpn_status';
+	Ha.common.ajax(url, 'html', '', 'get', 'applist', function(data){
+		$('#ssl_detail_content').html(data);
+		$('#ssl_detail_Modal').modal('show');
+	}, 1);
+});
 $(function(){
   $('#build_new').on('submit', function(e){
     e.preventDefault();
@@ -317,9 +325,6 @@ $_LANG_Option
 </form>
 
 <script>
-\$(function () { 
-    \$("[data-toggle='popover']").popover(); 
-});
 function get_ssl_detail_html(file)
 {
 	var url = 'index.cgi?app=openvpn&action=get_ssl_detail_html&file=' + file;
