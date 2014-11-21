@@ -342,7 +342,7 @@ cat <<'EOF'
 $(function(){
   $('#build').on('submit', function(e){
     e.preventDefault();
-	if (confirm("Rebuild ca&server crt will del all clients crt,continue?")) {
+	if (confirm("Rebuild ca&server crt will del all clients crt,And Need a long time to build dhxxxx.pem file.continue?")) {
     var data = "app=openvpn&"+$(this).serialize();
     var url = 'index.cgi';
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-proxy');
@@ -530,7 +530,7 @@ export KEY_EMAIL=$FORM_KEY_EMAIL
 #touch ./keys/index.txt
 ./pkitool --batch --initca >/dev/null 2>&1
 ./pkitool --batch --server server >/dev/null 2>&1
-./build-dh >/dev/null 2>&1 &
+./build-dh >/dev/null 2>&1
 (echo "Edit Success" | main.sbin output_json 0) || exit 0
 else
 export KEY_EXPIRE=$FORM_SSL_Guarantee
@@ -602,8 +602,8 @@ remote $SERVER_NAME $port # Change to your router's External IP
 resolv-retry infinite
 nobind
 ca ca.crt
-cert client.crt
-key client.key
+cert $tar_get.crt
+key $tar_get.key
 dh dh$key_size.pem
 #comp-lzo
 
