@@ -262,7 +262,6 @@ shadowsocks_libev_server_basesetting()
 server_config_str=`cat /usr/local/shadowsocks-libev/etc/server.json`
 server_config_str=`echo "$server_config_str" | jq '.["server"] = "'$FORM_server'"'`
 server_config_str=`echo "$server_config_str" | jq '.["server_port"] = '"$FORM_server_port"''`
-server_config_str=`echo "$server_config_str" | jq '.["local_port"] = '"$FORM_local_port"''`
 server_config_str=`echo "$server_config_str" | jq '.["timeout"] = '"$FORM_timeout"''`
 server_config_str=`echo "$server_config_str" | jq '.["password"] = "'$FORM_password'"'`
 server_config_str=`echo "$server_config_str" | jq '.["method"] = "'$FORM_method'"'`
