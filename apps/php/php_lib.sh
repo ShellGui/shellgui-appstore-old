@@ -269,7 +269,7 @@ make && make install
 if
 [ $? -ne 0 ]
 then
-cat <<'EOF' srclib/stdio.in.h
+cat <<'EOF' > srclib/stdio.in.h
 /* A GNU-like <stdio.h>.
 
    Copyright (C) 2004, 2007-2011 Free Software Foundation, Inc.

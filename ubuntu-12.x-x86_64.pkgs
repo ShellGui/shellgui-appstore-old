@@ -347,7 +347,7 @@
         "version": "0.1",
         "size": "120K",
         "files": {
-          "php_lib.sh": "8e4ae366cfbf411a9f222884c38207e5",
+          "php_lib.sh": "3de643efccff07a9cb80ccb8a0ca80e4",
           "icon.png": "89a5ea28e8c0fc32b701f0716a71a4b4",
           "config.conf": "2c8b24050e76758f403875c16f0efb01",
           "index.sh": "d2b2b0031e89441c8b50d39718280dbe",
