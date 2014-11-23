@@ -88,6 +88,7 @@ echo "\n\n\n\n" | /usr/local/tinc/sbin/tincd -n default -K 4096 2>&1
 
 do_install_tinc()
 {
+[ ! +x /usr/local/sbin/dnsmasq ] && echo "Please install dnsmasq First." && exit 1
 check_tinc_installed && echo "tinc binary installed" && exit 1
 touch $DOCUMENT_ROOT/../tmp/tinc_ins_detail.log
 main.sbin pregress_schedule option="add" task="_PS_Install_tinc" schedule="{\"_PS_1_Download_Sources\":\"0\",\"_PS_2_Make_install_Tinc_Dependence\":\"0\",\"_PS_3_Make_install_Tinc\":\"0\",\"_PS_4_Config_Tinc\":\"0\",\"_PS_5_Tinc_finished_Installtion\":\"0\"}" detail_file="$DOCUMENT_ROOT/../tmp/tinc_ins_detail.log" app="tinc" status="working"
@@ -191,7 +192,7 @@ echo "\n\n\n\n" | /usr/local/tinc/sbin/tincd -n gen_test_new -K 4096 >/dev/null 
 mv /data/tinc/etc/tinc/gen_test_new/rsa_key.priv /data/tinc/priv/$FORM_new_client_name"_rsa_key".priv
 mv /data/tinc/etc/tinc/gen_test_new/hosts/$FORM_new_client_name /data/tinc/etc/tinc/default/hosts/
 rm -rf /data/tinc/etc/tinc/gen_test_new
-
+(echo "Success" | main.sbin output_json 0) || exit 0
 }
 
 del_client_file()

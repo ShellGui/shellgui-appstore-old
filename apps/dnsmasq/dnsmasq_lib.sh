@@ -76,7 +76,6 @@ main.sbin pregress_schedule option="now" task="_PS_Install_dnsmasq" schedule_now
 main.sbin pregress_schedule option="now" task="_PS_Install_dnsmasq" schedule_now="_PS_5_DNSmasq_finished_Installtion"
 main.sbin pregress_schedule option="change_pregress" task="_PS_Install_dnsmasq" pregress_now="100"
 main.sbin pregress_schedule option="change_status" task="_PS_Install_dnsmasq" status_now="success"
-main.sbin notice option="unmark_uniq" uniqid="dnsmasq_binary_need_install" >/dev/null 2>&1
 }
 
 check_dnsmasq_installed()

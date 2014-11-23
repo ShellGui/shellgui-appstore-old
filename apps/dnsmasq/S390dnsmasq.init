@@ -15,6 +15,8 @@ main.sbin notice option="add" \
 				ergen="red" \
 				dest="dnsmasq" \
 				dest_type="app" >/dev/null 2>&1
+else
+main.sbin notice option="unmark_uniq" uniqid="dnsmasq_binary_need_install" > /dev/null 2>&1
 fi
 if
 [ $enable -eq 1 ]

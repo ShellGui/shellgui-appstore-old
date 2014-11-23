@@ -16,6 +16,7 @@ main.sbin notice option="add" \
 				dest="tinc" \
 				dest_type="app" >/dev/null 2>&1
 fi
+echo 1 > /proc/sys/net/ipv4/ip_forward
 /usr/local/tinc/sbin/tincd -n default
 }
 stop()

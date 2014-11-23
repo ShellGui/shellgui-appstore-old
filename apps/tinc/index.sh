@@ -182,6 +182,7 @@ $(function(){
     var data = "app=tinc&"+$(this).serialize();
     var url = 'index.cgi';
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-fluid');
+	setTimeout("window.location.reload();", 1000);
   });
 });
 </script>
