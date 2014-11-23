@@ -12,6 +12,7 @@ export download_json='{
 	"download_urls":{
 	"skysql":"http://downloads.skysql.com/archives/mysql-5.6/mysql-5.6.14.tar.gz",
 	"mysql":"http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.14.tar.gz",
+	"mariadb":"https://downloads.mariadb.com/archives/mysql-5.6/mysql-5.6.14.tar.gz",
 	"freebsd":"ftp://ftp.tw.freebsd.org/pub/distfiles/mysql-5.6.14.tar.gz"
 	}
 }'

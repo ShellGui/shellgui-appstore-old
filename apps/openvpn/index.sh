@@ -136,7 +136,6 @@ cat <<EOF
 <input class="form-control" placeholder="10.0.0.0" name="server_ip" value="$server_ip">
 </td>
 </tr>
-</tr>
 <tr>
 <td>server_mask</td>
 <td>
