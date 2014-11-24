@@ -48,6 +48,16 @@ $(function(){
     Ha.common.ajax(url, 'json', data, 'post', 'ajax-proxy');
   });
 });
+$(function(){
+  $('#mysql_passwd_default').on('click', function(e){
+    e.preventDefault();
+    if (confirm('Do you want to change mysql password to root?')) {
+      var data = "app=mysql&action=mysql_passwd_default";
+      var url = 'index.cgi';
+      Ha.common.ajax(url, 'json', data, 'post', 'ajax-fluid');
+    }
+  });
+});
 </script>
 EOF
 
@@ -156,7 +166,12 @@ cat <<EOF
 	</tr>
 	</table>
 	</form>
+	
+	<label>Change MySQL password to "root"</label>
+	<button type="button" id="mysql_passwd_default" class="btn btn-primary">$_LANG_Change</button>
+	
 	</div>
+
 	<div class="col-md-6">
 	
 EOF

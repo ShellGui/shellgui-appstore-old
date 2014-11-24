@@ -53,7 +53,7 @@ tar zxvf mysql-5.6.14.tar.gz
 
 cd $DOCUMENT_ROOT/../sources/mysql-5.6.14
 eval `cat $DOCUMENT_ROOT/../tmp/mysql.config.tmp`
-[ -n "$use_jemalloc" ] || jemalloc_used="-DCMAKE_EXE_LINKER_FLAGS=\"-ljemalloc\" -DWITH_SAFEMALLOC=OFF"
+[ -n "$use_jemalloc" ] && jemalloc_used="-DCMAKE_EXE_LINKER_FLAGS=\"-ljemalloc\" -DWITH_SAFEMALLOC=OFF"
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql/ \
 	-DMYSQL_DATADIR=$datadir \
 	-DSYSCONFDIR=/usr/local/mysql/etc -DWITH_MYISAM_STORAGE_ENGINE=1 \
@@ -121,6 +121,11 @@ chmod +x /etc/init.d/mysqld
 echo "$OS" | grep -i "centos" && chkconfig --add mysqld && chkconfig mysqld on
 echo "$OS" | grep -i "ubuntu" && update-rc.d -f mysqld defaults #remove
 echo "$OS" | grep -i "debian" && update-rc.d -f mysqld defaults
+ln -s /usr/local/mysql/bin/mysql /usr/bin/mysql
+ln -s /usr/local/mysql/bin/mysqld /usr/bin/mysqld
+ln -s /usr/local/mysql/bin/mysqldump /usr/bin/mysqldump
+ln -s /usr/local/mysql/bin/myisamchk /usr/bin/myisamchk
+ln -s /usr/local/mysql/bin/mysqld_safe /usr/bin/mysqld_safe
 service mysqld start
 }
 do_install_mysql()
@@ -330,7 +335,7 @@ change_pass()
 {
 [ "$FORM_my_new_passwd" = "$FORM_my_new_passwd_cf" ] || (echo "两次输入的密码不一致" | main.sbin output_json 1) || exit 1
 
-/usr/local/mysql/bin/mysqladmin -u $FORM_my_username password "$FORM_my_new_passwd_cf" || /usr/local/mysql/bin/mysqladmin -u $FORM_my_username -p"$FORM_my_password" password "$FORM_my_new_passwd_cf"
+result=`/usr/local/mysql/bin/mysqladmin -u $FORM_my_username password "$FORM_my_new_passwd_cf" 2>&1 || /usr/local/mysql/bin/mysqladmin -u $FORM_my_username -p"$FORM_my_password" password "$FORM_my_new_passwd_cf" 2>&1`
 if
 [ $? -eq 0 ]
 then
@@ -348,7 +353,8 @@ main.sbin notice option="add" \
 					}" >/dev/null 2>&1
 (echo "Change password success" | main.sbin output_json 0) || exit 0
 else
-(echo "Change password fail" | main.sbin output_json 1) || exit 1
+result=`echo $result | sed 's/"//g' | tr -d "\'" | tr -d '\n' | tr -d '\a'`
+(echo "$result" | main.sbin output_json 1) || exit 1
 fi
 }
 mysql_service()
@@ -369,7 +375,7 @@ main.sbin notice option="add" \
 				ergen="green" \
 				dest="mysql" \
 				dest_type="app" >/dev/null 2>&1
-(echo "Success turn on" | main.sbin output_json 0) || exit 0
+(echo "Success turn on." | main.sbin output_json 0) || return 0
 else
 echo "$OS" | grep -iq "centos" && chkconfig --add mysqld && chkconfig mysqld off >/dev/null 2>&1
 echo "$OS" | grep -iq "ubuntu" && update-rc.d -f mysqld remove >/dev/null 2>&1
@@ -384,9 +390,10 @@ main.sbin notice option="add" \
 				ergen="red" \
 				dest="mysql" \
 				dest_type="app" >/dev/null 2>&1
-(echo "Success turn off" | main.sbin output_json 0) || exit 0
+(echo "Success turn off." | main.sbin output_json 0) || return 0
 fi
 }
+
 save_my_cnf()
 {
 [ -n "$FORM_my_cnf_str" ] || (echo "不能为空" | main.sbin output_json 1) || exit 1
@@ -404,5 +411,25 @@ main.sbin notice option="add" \
 				dest_type="app" >/dev/null 2>&1
 (echo "保存成功" | main.sbin output_json 0) || exit 0
 }
+
+
+mysql_passwd_default()
+{
+sed -i "/\[mysqld\]/a\skip-grant-tables" /usr/local/mysql/etc/my.cnf
+service mysqld stop >/dev/null 2>&1
+export FORM_mysql_enable=1
+mysql_service >/dev/null 2>&1
+
+/usr/local/mysql/bin/mysql -uroot <<EOF
+use mysql;
+UPDATE mysql.user SET Password=PASSWORD('root') WHERE User='root';
+flush privileges;
+EOF
+
+sed -i '/^skip-grant-tables/d' /usr/local/mysql/etc/my.cnf
+mysql_service >/dev/null 2>&1
+(echo "MySQL Password change to root Success" | main.sbin output_json 0) || return 0
+}
+
 . $DOCUMENT_ROOT/apps/sysinfo/sysinfo_lib.sh
 
