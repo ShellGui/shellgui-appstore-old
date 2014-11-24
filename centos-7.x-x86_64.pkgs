@@ -509,7 +509,7 @@
         "files": {
           "icon.png": "ac34719ae397713f1ef629861255cdee",
           "config.conf": "d0889bd0e2e9f928fffea5cca12cc93f",
-          "mysql_lib.sh": "89af0c1547c7405ed3ede19b1b187e64",
+          "mysql_lib.sh": "9e4cfae0204a06bc443529232364d491",
           "index.sh": "9b99cb28a032494878f3c895364a74a0",
           "i18n/zh-cn/i18n.conf": "af5a7d03df1cbafce09ed59b07ced2a6",
           "i18n/en/i18n.conf": "420ae5bf4270618ada6d15b58844bc62",
