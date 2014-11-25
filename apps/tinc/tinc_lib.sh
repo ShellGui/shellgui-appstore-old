@@ -284,11 +284,11 @@ echo ip配置成功!
 
 REM CD %START_DIR%
 
-cd ..\
+cd ..
 tincd -k --net=default
 tincd -n default
 ping %SERVER_GTW%
-route add %SERVER_IP% %DEFAULT_GATEWAY%
+rem route add %SERVER_IP% %DEFAULT_GATEWAY%
 route add 0.0.0.0 mask 0.0.0.0 %SERVER_GTW%
 pause
 EOF
@@ -303,7 +303,7 @@ sed -i 's/$/\r/g' /tmp/gen_test_new/default/stop-default.bat
 cd /tmp/gen_test_new/
 rm -rf /tmp/tinc_ssl.tar.gz
 tar czf /tmp/tinc_ssl.tar.gz default
-main.sbin http_download /tmp/tinc_ssl.tar.gz $Server_Address"_tinc_ssl".tar.gz
+main.sbin http_download /tmp/tinc_ssl.tar.gz $Server_Address"_"$FORM_client_file"_tinc_ssl.tar.gz"
 }
 
 wan_dest()

@@ -618,6 +618,7 @@ persist-tun
 persist-key
 verb 3
 EOF
+sed -i 's/$/\r/g' /tmp/openvpn_ssl/$tar_get.ovpn
 cd /tmp
 
 Server_IP=`echo $SERVER_NAME | sed 's/\./_/g'`
