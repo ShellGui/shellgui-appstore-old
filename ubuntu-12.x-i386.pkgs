@@ -645,12 +645,12 @@
         }
       },
       "tinc": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "68K",
         "files": {
-          "tinc_lib.sh": "bba1f8a8b99c20da8e801220c42fab8a",
+          "tinc_lib.sh": "0cd7da6b056047c50bba6ff438700230",
           "icon.png": "6d56a86ad7349f7402297aea407d1d93",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "config.conf": "e0ce69e3b3df94ef5b9ad72af0b20e42",
           "F204tinc-server.fw": "6bcefc26e0de57cb10802d2f1667679b",
           "tinc_extra.conf": "0a01ddbca767c1cac92247b5b9869b42",
           "index.sh": "8eec37f7261e7a85c8a5ed555334ab1f",

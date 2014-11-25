@@ -223,29 +223,68 @@ Port = $port
 EOF
 sed -i 's/$/\r/g' /tmp/gen_test_new/default/tinc.conf
 cat <<EOF > /tmp/gen_test_new/default/start-default.bat
-@echo OFF
+@echo ON
+SET START_DIR=%~dp0
+SET TINC_INTERFACE_NAME="tinc-user"
+SET TINC_INTERFACE_ADDR="$Client_ip"
+SET TINC_INTERFACE_MASK="255.255.255.0"
+SET TINC_INTERFACE_GATEWAY="$VPN_GATEWAY"
+SET TINC_INTERFACE_DNS="8.8.8.8"
+SET TINC_INTERFACE_DNS2="$VPN_GATEWAY"
 
-SET TINC_INTERFACE_NAME= "tinc-user"
-SET TINC_INTERFACE_ADDR= "$Client_ip"
-SET TINC_INTERFACE_MASK= "255.255.255.0"
-SET TINC_INTERFACE_GATEWAY= "$VPN_GATEWAY"
-SET TINC_INTERFACE_DNS= "$VPN_GATEWAY"
-SET TINC_INTERFACE_DNS2= "8.8.8.8"
 
-for /f "tokens=*" %%i in ('netsh interface ip show interface') do set str=%%i
-for /f "tokens=5 delims= " %%a in ("%str%") do (
-set name=%%a
+if exist "%windir%\SysWOW64" (
+SET SYS_ARC=64
+)else (
+SET SYS_ARC=32
 )
 
-netsh interface set interface name= %name% newname = %TINC_INTERFACE_NAME%
-netsh interface ip set address name = %TINC_INTERFACE_NAME% source=static addr=%TINC_INTERFACE_ADDR% mask=%TINC_INTERFACE_MASK% gateway = %TINC_INTERFACE_GATEWAY%
-netsh interface ip set dns name = %TINC_INTERFACE_NAME% static %TINC_INTERFACE_DNS% primary
-netsh interface ip add dns %TINC_INTERFACE_NAME% %TINC_INTERFACE_DNS2% index=2
+REM 判断是否安装tinc TAP
 
-cd ..
+for /f  %%i in ('ipconfig /all^|findstr /i "tinc-user:"') do set TINC_INTERFACE_INSTALLED=%%i
+
+IF "%TINC_INTERFACE_INSTALLED%" == "" (
+IF  "%SYS_ARC%" == "64" (
+	ECHO ".............64................"
+	copy /y ..\tap-win64\* .
+	tapinstall.exe install OemWin2k.inf tap0901
+)ELSE  (
+	ECHO ".............32................"
+	copy /y ..\tap-win32\* .
+   	tapinstall.exe install OemWin2k.inf tap0901
+)
+)
+
+
+
+REM 查找新增网络连接名称
+
+for /f "tokens=*" %%a in ('wmic path Win32_NetworkAdapter get NetConnectionID ^| findstr .') do SET name2=%%a
+for /f "delims=" %%i in ("%name2%") do SET name=%%~nxi
+
+ECHO "name->[%name%]"
+
+
+REM 设置网络参数
+netsh interface set interface name="%name%" newname=%TINC_INTERFACE_NAME%
+
+
+echo 正在配置%name%,请稍等...  
+echo 正在配置首选DNS:%dns%...
+netsh interface ip set dns name=%TINC_INTERFACE_NAME% source=static addr=%TINC_INTERFACE_DNS%
+
+echo 正在配置ip、mask和gateway：%ipaddress% %mask% %gateway%...
+netsh interface ip set address name=%TINC_INTERFACE_NAME% source=static addr=%TINC_INTERFACE_ADDR% mask=%TINC_INTERFACE_MASK% gateway=%TINC_INTERFACE_GATEWAY%
+netsh interface ip set address name=%TINC_INTERFACE_NAME% static  %TINC_INTERFACE_ADDR%  %TINC_INTERFACE_MASK% %TINC_INTERFACE_GATEWAY% 1
+echo ip配置成功!
+
+REM CD %START_DIR%
+
+cd ..\
 tincd -k --net=default
 tincd -n default
-route add $Server_Address 192.168.2.1
+ping $VPN_GATEWAY
+rem route add $Server_Address 220.160.142.190
 route add 0.0.0.0 mask 0.0.0.0 $VPN_GATEWAY
 pause
 EOF
