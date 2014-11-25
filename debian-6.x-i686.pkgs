@@ -905,17 +905,17 @@
         }
       },
       "openvpn": {
-        "version": "0.13",
+        "version": "0.14",
         "size": "80K",
         "files": {
           "icon.png": "09becf955738a591429ecc0a15b13f5b",
-          "config.conf": "8e514db73579e0bf9a3158a9a9f229d8",
+          "config.conf": "d044233a2969d8b05674b25b3bb2b1a2",
           "index.sh": "89a029fb4217ee426c014a29c4bfed16",
           "i18n/zh-cn/i18n.conf": "fd42ce0e77a1d921071c3818bd800416",
           "i18n/en/i18n.conf": "3d38fd7a67a7069cc708dbf0f46de94e",
           "F203openvpn-server.fw": "8d6dff20d2b787ddcc6d20756c8f7edc",
           "S901openvpn.init": "38dc7ef5cd35d69b3471bd0d20a7b48f",
-          "openvpn_lib.sh": "338d7f317be7a874cce93cbed1f26806",
+          "openvpn_lib.sh": "2fa537418a5111ed9b0bccdb08145b87",
           "openvpn_extra.conf": "0a01ddbca767c1cac92247b5b9869b42"
         },
         "i18n": {

@@ -548,7 +548,10 @@ export KEY_ORG=$FORM_SSL_O
 export KEY_OU=$FORM_SSL_OU
 export KEY_CN=$FORM_SSL_CN
 export KEY_EMAIL=$FORM_KEY_EMAIL
-rm -f /etc/openvpn/easy-rsa/keys/{$tar_get.crt,$tar_get.csr,$tar_get.key}
+rm -f /etc/openvpn/easy-rsa/keys/$tar_get.crt
+rm -f /etc/openvpn/easy-rsa/keys/$tar_get.csr
+rm -f /etc/openvpn/easy-rsa/keys/$tar_get.key
+sed -i "#/CN=$tar_get/#d" /etc/openvpn/easy-rsa/keys/index.txt
 ./pkitool $1 >/dev/null 2>&1
 (echo "Edit Success" | main.sbin output_json 0) || exit 0
 fi
@@ -584,7 +587,7 @@ tar_get=`echo $FORM_crt_file | sed 's/\.crt$//'`
 rm -f /etc/openvpn/easy-rsa/keys/$tar_get.crt
 rm -f /etc/openvpn/easy-rsa/keys/$tar_get.csr
 rm -f /etc/openvpn/easy-rsa/keys/$tar_get.key
-
+sed -i "#/CN=$tar_get/#d" /etc/openvpn/easy-rsa/keys/index.txt
 (echo "Success" | main.sbin output_json 0) || exit 0
 }
 download()
