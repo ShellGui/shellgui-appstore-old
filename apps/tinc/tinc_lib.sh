@@ -226,11 +226,15 @@ cat <<EOF > /tmp/gen_test_new/default/start-default.bat
 @echo ON
 SET START_DIR=%~dp0
 SET TINC_INTERFACE_NAME="tinc-user"
-SET TINC_INTERFACE_ADDR="$Client_ip"
-SET TINC_INTERFACE_MASK="255.255.255.0"
-SET TINC_INTERFACE_GATEWAY="$VPN_GATEWAY"
-SET TINC_INTERFACE_DNS="8.8.8.8"
-SET TINC_INTERFACE_DNS2="$VPN_GATEWAY"
+SET TINC_INTERFACE_ADDR=$Client_ip
+SET TINC_INTERFACE_MASK=255.255.255.0
+SET TINC_INTERFACE_GATEWAY=$VPN_GATEWAY
+SET TINC_INTERFACE_DNS=8.8.8.8
+SET TINC_INTERFACE_DNS2=$VPN_GATEWAY
+SET SERVER_IP=$Server_Address
+SET SERVER_GTW=$VPN_GATEWAY
+setlocal enableextensions enabledelayedexpansion
+for /f "tokens=4" %%a in ('route print 0.0.0.0 ^| findstr 0.0.0.0') do (IF "!DEFAULT_GATEWAY!"=="" set DEFAULT_GATEWAY=%%a)
 
 
 if exist "%windir%\SysWOW64" (
@@ -283,9 +287,9 @@ REM CD %START_DIR%
 cd ..\
 tincd -k --net=default
 tincd -n default
-ping $VPN_GATEWAY
-rem route add $Server_Address 220.160.142.190
-route add 0.0.0.0 mask 0.0.0.0 $VPN_GATEWAY
+ping %SERVER_GTW%
+route add %SERVER_IP% %DEFAULT_GATEWAY%
+route add 0.0.0.0 mask 0.0.0.0 %SERVER_GTW%
 pause
 EOF
 sed -i 's/$/\r/g' /tmp/gen_test_new/default/start-default.bat
