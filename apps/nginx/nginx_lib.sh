@@ -400,6 +400,7 @@ echo "$OS" | grep -i "centos" && centos_init && chkconfig --add nginx && chkconf
 echo "$OS" | grep -i "ubuntu" && debian_ubuntu_init && update-rc.d -f nginx defaults #remove
 echo "$OS" | grep -i "debian" && debian_ubuntu_init && update-rc.d -f nginx defaults
 mkdir -p /data/htdocs/www && chown www /data/htdocs/
+mkdir -p /var/run/nginx/
 service nginx start
 }
 
