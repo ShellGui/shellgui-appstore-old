@@ -67,27 +67,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql/ \
 	-DEXTRA_CHARSETS=all \
 	-DDEFAULT_CHARSET=utf8 \
 	-DDEFAULT_COLLATION=utf8_general_ci $jemalloc_used && make install
-if
-[ $? -ne 0 ]
-then
-if
-echo "$OS" | grep -iq "centos"
-then
-(yum update -y && yum install -y jemalloc-devel 2>&1) || exit 1
-fi
-if
-echo "$OS" | grep -iq "ubuntu"
-then
-(apt-get update --fix-missing && apt-get install -y libjemalloc-dev 2>&1) || exit 1
-fi
-if
-echo "$OS" | grep -iq "debian"
-then
-(apt-get update --fix-missing && apt-get install -y libjemalloc-dev 2>&1) || exit 1
-fi
-make_mysql
-return 0
-fi
+
 cd /usr/local/mysql
 mkdir -p /usr/local/mysql/etc
 cp support-files/my-default.cnf /usr/local/mysql/etc/my.cnf

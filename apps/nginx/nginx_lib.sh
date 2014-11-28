@@ -403,6 +403,7 @@ echo "$OS" | grep -i "debian" && debian_ubuntu_init && update-rc.d -f nginx defa
 mkdir -p /data/htdocs/www && chown www /data/htdocs/
 mkdir -p /var/run/nginx/
 service nginx start
+check_nginx_installed
 }
 
 config_nginx_default()

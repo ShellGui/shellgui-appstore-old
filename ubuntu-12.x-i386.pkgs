@@ -509,7 +509,7 @@
         "files": {
           "icon.png": "ac34719ae397713f1ef629861255cdee",
           "config.conf": "e24795ff85046cf8a5b4435ba64e9a01",
-          "mysql_lib.sh": "8679a9df3bbf8bb002ac5e5c0a2a1297",
+          "mysql_lib.sh": "63dad7f58ffcc9f35e59ac6ec6ef110f",
           "index.sh": "bfda261e5802b478e7ec3ee7357b3618",
           "i18n/zh-cn/i18n.conf": "af5a7d03df1cbafce09ed59b07ced2a6",
           "i18n/en/i18n.conf": "420ae5bf4270618ada6d15b58844bc62",
@@ -596,7 +596,7 @@
         "files": {
           "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
           "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
-          "nginx_lib.sh": "573968802d5875870d30d3a00d30efac",
+          "nginx_lib.sh": "fe6d3f92feaa3a0f752ab48cf12963e7",
           "icon.png": "3638d6ba14ca423d449295b34effcf37",
           "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
           "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",
