@@ -13,6 +13,7 @@ index=`echo "$vhost_str" | jq -r '.["index"]'`
 root=`echo "$vhost_str" | jq -r '.["root"]'`
 [ "$root" = "null" ] && root=""
 ssl=`echo "$vhost_str" | jq -r '.["ssl"]'`
+spdy=`echo "$vhost_str" | jq -r '.["spdy"]'`
 ssl_certificate=`echo "$vhost_str" | jq -r '.["ssl_certificate"]'`
 [ "$ssl_certificate" = "null" ] && ssl_certificate=""
 ssl_certificate_key=`echo "$vhost_str" | jq -r '.["ssl_certificate_key"]'`
@@ -146,10 +147,17 @@ cat <<EOF
 		ssl
 		</div>
 		<div class="col-md-4">
-			<select class="form-control" name="ssl">
-				<option `[ "$ssl" = "off" ] && echo "selected"`>off</option>
-				<option `[ "$ssl" = "on" ] && echo "selected"`>on</option>
-			</select>
+			<div class="row">
+				<div class="col-md-6">
+					<select class="form-control" name="ssl">
+						<option `[ "$ssl" = "off" ] && echo "selected"`>off</option>
+						<option `[ "$ssl" = "on" ] && echo "selected"`>on</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					spdy<input type="checkbox" `[ "$spdy" = "1" ] && echo "checked"` name="spdy" value="1">
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 		$_LANG_Set_ssl
@@ -269,7 +277,7 @@ echo "$FORM_root" | main.sbin regx_str ispath || (echo "vhost must be a path" | 
 [ -d $FORM_root ] || mkdir -p $FORM_root
 
 config_str=`cat $DOCUMENT_ROOT/apps/nginx/nginx_vhost.json`
-
+[ -z "$config_str" ] && config_str="{}"
 if
 [ -z "$FORM_oldvhost" ]
 then
@@ -294,16 +302,22 @@ fi
 [ -n "$FORM_ip" ] && [ "$FORM_ip" != "null" ]  && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["listen"]["ip"] = "'"$FORM_ip"'"'`
 [ -n "$FORM_port" ] && [ "$FORM_port" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["listen"]["port"] = "'"$FORM_port"'"'`
 
-[ -n "$FORM_server_name" ] && [ "$FORM_server_name" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["server_name"] = "'"$FORM_server_name"'"'`
+[ "$FORM_server_name" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["server_name"] = "'"$FORM_server_name"'"'`
 [ -n "$create_time" ] && [ "$create_time" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["create_time"] = "'"$create_time"'"'`
 [ -n "$FORM_index" ] && [ "$FORM_index" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["index"] = "'"$FORM_index"'"'`
 [ -n "$FORM_root" ] && [ "$FORM_root" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["root"] = "'"$FORM_root"'"'`
 [ -n "$FORM_ssl" ] && [ "$FORM_ssl" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["ssl"] = "'"$FORM_ssl"'"'`
+if
+[ "$FORM_spdy" = "1" ]
+then
+config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["spdy"] = "1"'`
+else
+config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["spdy"] = "0"'`
+fi
 [ "$FORM_ssl_certificate" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["ssl_certificate"] = "'"$FORM_ssl_certificate"'"'`
 [ "$FORM_ssl_certificate_key" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["ssl_certificate_key"] = "'"$FORM_ssl_certificate_key"'"'`
-
-
-echo "$config_str" | jq '.' >/dev/null 2>&1 && echo "$config_str" > $DOCUMENT_ROOT/apps/nginx/nginx_vhost.json
+echo "$config_str"  >/tmp/1
+echo "$config_str" | jq '.' | grep -q "}" && echo "$config_str" > $DOCUMENT_ROOT/apps/nginx/nginx_vhost.json
 [ -n "$FORM_vhost_extra" ] && echo "$FORM_vhost_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/$FORM_oldvhost.config
 
 if

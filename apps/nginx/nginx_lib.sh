@@ -393,6 +393,7 @@ useradd www
 --with-http_realip_module \
 --with-http_gzip_static_module \
 --with-file-aio \
+--with-http_spdy_module \
 --with-ipv6 $jemalloc_used && make && make install
 
 
@@ -426,9 +427,9 @@ echo "{}" | jq '.["default"] = {"listen":{"ip":"","port":"80"},"server_name":"",
 generate_nginx_config()
 {
 config_str=`cat $DOCUMENT_ROOT/apps/nginx/nginx_config.json`
-echo "$config_str" | jq '.' >/dev/null 2>1 || exit 1
+echo "$config_str" | jq '.' | grep -q "{" || exit 1
 vhost_str=`cat $DOCUMENT_ROOT/apps/nginx/nginx_vhost.json`
-echo "$vhost_str" | jq '.' >/dev/null 2>1 || exit 1
+echo "$vhost_str" | jq '.' | grep -q "{" || exit 1
 cat <<EOF >/usr/local/nginx/conf/nginx.conf
 user  `echo "$config_str" | jq -r '.["system"]["user"]["username"]'` `echo "$config_str" | jq -r '.["system"]["user"]["groupname"]'`;
 worker_processes `echo "$config_str" | jq -r '.["system"]["worker_processes"]'`;
@@ -503,10 +504,12 @@ for vhost in `echo "$vhost_str"  | jq '. | keys' | grep -Po '[\w].*[\w]'`
 do
 ip=`echo "$vhost_str"  | jq -r '.["'${vhost}'"]["listen"]["ip"]'`
 [ -n "$ip" ] && [ "$ip" != "null" ] && ip="$ip:" || ip=""
+ssl=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["ssl"]'`
+spdy=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["spdy"]'`
 cat <<EOF >>/usr/local/nginx/conf/nginx.conf
 server
 {
-listen $ip`echo "$vhost_str"  | jq -r '.["'${vhost}'"]["listen"]["port"]'`;
+listen $ip`echo "$vhost_str"  | jq -r '.["'${vhost}'"]["listen"]["port"]'`$([ -n "$ssl" ] && [ "$ssl" != "null" ] && [ "$ssl" != "off" ] && [ $spdy -eq 1 ] && echo " ssl spdy");
 EOF
 server_name=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["server_name"]'`
 [ -n "$server_name" ] && [ "$server_name" != "null" ] && echo "server_name $server_name;" >>/usr/local/nginx/conf/nginx.conf
@@ -518,7 +521,6 @@ root=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["root"]'`
 disabled_option=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["disabled_option"]'`
 [ -n "$disabled_option" ] && [ "$disabled_option" != "null" ] && echo "$disabled_option;" >>/usr/local/nginx/conf/nginx.conf && echo '}' >>/usr/local/nginx/conf/nginx.conf  && continue
 
-ssl=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["ssl"]'`
 [ -n "$ssl" ] && [ "$ssl" != "null" ] && [ "$ssl" != "off" ] && echo "ssl $ssl;" >>/usr/local/nginx/conf/nginx.conf
 ssl_certificate=`echo "$vhost_str" | jq -r '.["'${vhost}'"]["ssl_certificate"]'`
 [ -n "$ssl_certificate" ] && [ "$ssl_certificate" != "null" ] && echo "ssl_certificate $ssl_certificate;" >>/usr/local/nginx/conf/nginx.conf

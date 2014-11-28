@@ -591,12 +591,12 @@
         }
       },
       "nginx": {
-        "version": "0.11",
+        "version": "0.12",
         "size": "288K",
         "files": {
           "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
           "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
-          "nginx_lib.sh": "d4cca02de6308f0d1bd7900f23e27e4f",
+          "nginx_lib.sh": "573968802d5875870d30d3a00d30efac",
           "icon.png": "3638d6ba14ca423d449295b34effcf37",
           "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
           "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",
@@ -612,7 +612,7 @@
           "rewrite/typecho.conf": "342b2ae297957184fce72ffc0613a4dc",
           "rewrite/anwsion.conf": "2ea18ac92a4f8bf7dedee9d4dcadade0",
           "rewrite/phpwind.conf": "c80593ad98ed35d09197ddeff4c0fb10",
-          "config.conf": "3b79ad8e25d51eaa9d3ec851c62ae608",
+          "config.conf": "180ffb2261e896fbb371abd57336e9f1",
           "imgs/lang_jsp.png": "5973f12aae45af35e573992ee146e67f",
           "imgs/lang_pl.png": "9abb8de994f4e1f2f4b5e09d3571fb04",
           "imgs/lang_html.png": "0c9f6bf0c68cda7cca9286704d62791f",
@@ -627,7 +627,7 @@
           "index.sh": "88ebf4739beae6e39eb1d5c451d6b598",
           "i18n/zh-cn/i18n.conf": "12234d93862b2751e37ba902ebff4239",
           "i18n/en/i18n.conf": "3803fd9e5ea23c6c00d63877ac06bf2d",
-          "vhost.sh": "9b36fc24451cdf94ece490745b2a25de"
+          "vhost.sh": "a87b560c3521bad82c8e08700f4935a7"
         },
         "i18n": {
           "zh-cn": {
