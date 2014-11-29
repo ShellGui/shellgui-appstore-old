@@ -530,6 +530,32 @@
           }
         }
       },
+      "php-tz": {
+        "version": "0.1",
+        "size": "56K",
+        "files": {
+          "php_tz.conf": "eb93f12315e14a1a27af9ed45168e83f",
+          "icon.png": "18dd969a429e86077be3314baa760500",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
+          "index.sh": "4e4d60d8c1508f77b8af4986f46b8414",
+          "i18n/zh-cn/i18n.conf": "e789051e46d322f357ffd5e758a6f5b9",
+          "i18n/en/i18n.conf": "18bbd362cbcdce48bff30c25b2846171"
+        },
+        "i18n": {
+          "zh-cn": {
+            "name": "雅黑探针",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "应用程序"
+          },
+          "en": {
+            "name": "yahei tz phpinfo-tool",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Application"
+          }
+        }
+      },
       "net-diagnostics": {
         "version": "0.1",
         "size": "48K",
