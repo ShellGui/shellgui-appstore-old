@@ -581,6 +581,32 @@
             "type": "Application"
           }
         }
+      },
+      "phpsysinfo": {
+        "version": "0.1",
+        "size": "44K",
+        "files": {
+          "icon.png": "b08daab5322e104e59f1e33ea02925fc",
+          "config.conf": "2c8b24050e76758f403875c16f0efb01",
+          "index.sh": "969235882066d5ffe82456d7169805c0",
+          "i18n/zh-cn/i18n.conf": "d5be0eb7006108e6bad29d8317140a0c",
+          "i18n/en/i18n.conf": "f557f067277e615e0d7a930c4831f08d",
+          "phpsysinfo.conf": "f41743918cea451022f78f0e513c2618"
+        },
+        "i18n": {
+          "zh-cn": {
+            "name": "PHPsysinfo",
+            "desc": "测试描述",
+            "detail": "测试详尽",
+            "type": "应用程序"
+          },
+          "en": {
+            "name": "PHPsysinfo",
+            "desc": "test desc",
+            "detail": "test detail",
+            "type": "Application"
+          }
+        }
       }
     },
     "Network": {
