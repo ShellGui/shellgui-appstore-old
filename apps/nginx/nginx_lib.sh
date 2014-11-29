@@ -402,7 +402,7 @@ echo "$OS" | grep -i "ubuntu" && debian_ubuntu_init && update-rc.d -f nginx defa
 echo "$OS" | grep -i "debian" && debian_ubuntu_init && update-rc.d -f nginx defaults
 mkdir -p /data/htdocs/www && chown www /data/htdocs/
 mkdir -p /var/run/nginx/
-service nginx start
+service nginx start &
 check_nginx_installed
 }
 
@@ -706,10 +706,10 @@ nginx_service()
 if
 [ "$FORM_nginx_enable" = "1" ]
 then
-echo "$OS" | grep -iq "centos" && chkconfig --add nginx && chkconfig nginx on >/dev/null 2>&1
-echo "$OS" | grep -iq "ubuntu" && update-rc.d -f nginx defaults >/dev/null 2>&1
-echo "$OS" | grep -iq "debian" && update-rc.d -f nginx defaults >/dev/null 2>&1
-service nginx start >/dev/null 2>&1
+# echo "$OS" | grep -iq "centos" && chkconfig --add nginx && chkconfig nginx on >/dev/null 2>&1
+# echo "$OS" | grep -iq "ubuntu" && update-rc.d -f nginx defaults >/dev/null 2>&1
+# echo "$OS" | grep -iq "debian" && update-rc.d -f nginx defaults >/dev/null 2>&1
+main.sbin system_service nginx enable >/dev/null 2>&1
 main.sbin notice option="add" \
 				read="0" \
 				desc="_NOTICE_nginx_service_enable" \
@@ -721,10 +721,8 @@ main.sbin notice option="add" \
 				dest_type="app" >/dev/null 2>&1
 (echo "Success turn on" | main.sbin output_json 0) || exit 0
 else
-echo "$OS" | grep -iq "centos" && chkconfig --add nginx && chkconfig nginx off >/dev/null 2>&1
-echo "$OS" | grep -iq "ubuntu" && update-rc.d -f nginx remove >/dev/null 2>&1
-echo "$OS" | grep -iq "debian" && update-rc.d -f nginx remove >/dev/null 2>&1
-service nginx stop >/dev/null 2>&1
+main.sbin system_service nginx disable >/dev/null 2>&1
+ps aux | grep -v grep | grep nginx && pkill nginx && killall nginx >/dev/null 2>&1
 main.sbin notice option="add" \
 				read="0" \
 				desc="_NOTICE_nginx_service_disable" \

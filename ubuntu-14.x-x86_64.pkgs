@@ -172,13 +172,13 @@
         }
       },
       "home": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "152K",
         "files": {
           "base.httpd_others": "4d53adf254912564927e7aea3d0f9313",
           "home.conf": "6d3397a4009a75e6afe3747b541a7ffe",
           "icon.png": "4a5b40cc1f5ead6a8f44b1939e3ba3d5",
-          "config.conf": "00d884be97a2b09099203f6e065db0e8",
+          "config.conf": "297120d2eef8d8d242a3413623999b5f",
           "imgs/eth-down.png": "a7374527a3504c4d055ae3944c7a4719",
           "imgs/eth-10.png": "ba060586c2c3022403a50a4ceac8f3c5",
           "imgs/mem.png": "801fa44fe63c4d29f0dde72e81190a6d",
@@ -188,7 +188,7 @@
           "imgs/wifi.png": "33b595e5e146810409e6bcc0adc75e3d",
           "base.httpd_modules": "8777f0e5c65513456a3d4d603764a756",
           "brandwidth.tpl.sh": "9338dc3229454b14626e3a7b43ee1a3d",
-          "main.sbin": "b6cbbb8cd96097598b36885bbbb2a704",
+          "main.sbin": "82d7e89ebd9f31cfcd46cd8065baf495",
           "index.sh": "b39866a492e221126d2ab2babff220da",
           "i18n/zh-cn/i18n.conf": "bde5ec1083dc11ea59bb3f25e1bb42a9",
           "i18n/en/i18n.conf": "3fff85ffa97aef8e128e8db2043435aa",
@@ -510,7 +510,7 @@
           "icon.png": "ac34719ae397713f1ef629861255cdee",
           "config.conf": "e24795ff85046cf8a5b4435ba64e9a01",
           "mysql_lib.sh": "63dad7f58ffcc9f35e59ac6ec6ef110f",
-          "index.sh": "bfda261e5802b478e7ec3ee7357b3618",
+          "index.sh": "972340be4c4ffbd452203429a31ffc58",
           "i18n/zh-cn/i18n.conf": "af5a7d03df1cbafce09ed59b07ced2a6",
           "i18n/en/i18n.conf": "420ae5bf4270618ada6d15b58844bc62",
           "S101mysql.init": "5f51feabe0d0a44db2637acea05a3717"
@@ -596,7 +596,7 @@
         "files": {
           "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
           "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
-          "nginx_lib.sh": "fe6d3f92feaa3a0f752ab48cf12963e7",
+          "nginx_lib.sh": "f1ca592712d80e40b19a483dda15ac2c",
           "icon.png": "3638d6ba14ca423d449295b34effcf37",
           "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
           "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",

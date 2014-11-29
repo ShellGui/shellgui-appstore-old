@@ -167,7 +167,7 @@ cat <<EOF
 	</table>
 	</form>
 	
-	<label>Change MySQL password to "root"</label>
+	<label>Reset MySQL root's password to "root"</label>
 	<button type="button" id="mysql_passwd_default" class="btn btn-primary">$_LANG_Change</button>
 	
 	</div>
