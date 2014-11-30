@@ -4,7 +4,7 @@ start()
 {
 [ -z "$DOCUMENT_ROOT" ] && export DOCUMENT_ROOT=`main.sbin where_DOCUMENT_ROOT`
 if
-[ -x /usr/local/shadowsocks-libev/bin/ss-server ]
+[ ! -x /usr/local/shadowsocks-libev/bin/ss-server ]
 then
 main.sbin notice option="add" \
 				read="0" \

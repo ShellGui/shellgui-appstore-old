@@ -429,8 +429,8 @@
           "files/ocp.php.file": "8595bd2c4e9d141dff12e00acd0c6588",
           "php_opcache_control_panel.conf": "a53c1d9ce930693e997b835cf489aa36",
           "index.sh": "8af5463d6e0277532cf8a793c59f2971",
-          "i18n/zh-cn/i18n.conf": "bec41788043efddfc35303aa612fb2ac",
-          "i18n/en/i18n.conf": "a387e638f34b65cd14dcd1a2c80163cd"
+          "i18n/zh-cn/i18n.conf": "301d663c80ff5362ad9cfcada6c56d53",
+          "i18n/en/i18n.conf": "ebe96e4bd3c5807b906897f1dea5eea3"
         },
         "i18n": {
           "zh-cn": {
@@ -638,20 +638,20 @@
     },
     "Network": {
       "shadowsocks-libev": {
-        "version": "0.1",
+        "version": "0.11",
         "size": "100K",
         "files": {
           "transparent_proxy_dest.conf": "694ea1d720d960a7b0885a5d3928eeae",
           "icon.png": "d7cb733603d0864041d6b36eae2ff7e7",
           "F250shadowsocks_server.fw": "f5d0028a50a0ec378cb2d7dc8ef89e73",
-          "config.conf": "de7797d52b6b763f0e5250692cc8b9db",
+          "config.conf": "e0ce69e3b3df94ef5b9ad72af0b20e42",
           "index.sh": "1d2a7d8d8ca4f6e0a960ef55aaa54fc7",
-          "i18n/zh-cn/i18n.conf": "f7f3f07f5642fb93ea3ac3cc3d9be167",
+          "i18n/zh-cn/i18n.conf": "61bf1da9ebbe3fa707de414c38b0abd9",
           "i18n/en/i18n.conf": "bc7c7be95f0e124be37f20a37b68e3c4",
           "shadowsocks_libev_lib.sh": "e0f4da17b766c60d1ae5ca4d8a827ac9",
-          "S702shadowsocks_redir.init": "8c2e6e92b9039aa797e0b27e9f4daf88",
-          "S700shadowsocks_server.init": "b7eb9548323b7581f0364feff12b58b7",
-          "S701shadowsocks_local.init": "fc43fef8feb3f680982d9f3ed3413814",
+          "S702shadowsocks_redir.init": "5add9b5ad9ec3440b0e3a80f362b6212",
+          "S700shadowsocks_server.init": "594e11413fd18f82946cdea99dd793bb",
+          "S701shadowsocks_local.init": "677d4f97ec654edb609e25cc890b3ca9",
           "shadowsocks_libev.json": "e7a2893616b299c6c50f74f3d8ceb3f6"
         },
         "i18n": {
@@ -659,7 +659,7 @@
             "name": "Shadowsocks-libev",
             "desc": "测试描述",
             "detail": "测试详尽",
-            "type": "Network"
+            "type": "网络"
           },
           "en": {
             "name": "Shadowsocks-libev",
@@ -675,7 +675,7 @@
         "files": {
           "cron_log_split.sh": "925e5bcb2b425bdba8fdbbe0ca478195",
           "cron_log_split.conf": "14f74f1156901e3f8823f20161cfcbc3",
-          "nginx_lib.sh": "f1ca592712d80e40b19a483dda15ac2c",
+          "nginx_lib.sh": "30cf87b841f14cc03162989a8752b1b5",
           "icon.png": "3638d6ba14ca423d449295b34effcf37",
           "log_tpl.sh": "3851e1816d927bcc66df7f83d357f859",
           "base_setting.sh": "ee75feb329a7d9f20f35db13b163ff3a",

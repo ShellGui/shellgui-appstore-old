@@ -694,9 +694,29 @@ main.sbin pregress_schedule option="change_status" task="_PS_Install_nginx" stat
 }
 config_nginx()
 {
+if
+which systemd
+then
+cat <<EOF > /etc/systemd/system/nginx.service
+[Unit]
+Description=The Nginx HTTP Server (prefork MPM)
+After=network.target
+[Service]
+Type=forking
+PIDFile=/var/run/nginx/nginx.pid
+EnvironmentFile=/usr/local/nginx/conf/nginx.conf
+ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+ExecReload=kill -HUP `cat $PIDFILE`
+ExecStop=kill -INT `cat $PIDFILE`
+PrivateTmp=true
+[Install]
+WantedBy=default.target
+EOF
+else
 echo "$OS" | grep -i "centos" && centos_init && chkconfig --add nginx && chkconfig nginx on
 echo "$OS" | grep -i "ubuntu" && debian_ubuntu_init && update-rc.d -f nginx defaults #remove
 echo "$OS" | grep -i "debian" && debian_ubuntu_init && update-rc.d -f nginx defaults
+fi
 config_nginx_default
 config_vhost_default
 generate_nginx_config
