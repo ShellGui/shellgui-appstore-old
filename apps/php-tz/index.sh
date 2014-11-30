@@ -106,9 +106,9 @@ old_tz_file="$old_tz_dir""/tz.php"
 rm -f $old_tz_e_file
 rm -f $old_tz_tw_file
 rm -f $old_tz_file
-ls -a $old_tz_e_dir | grep -E "[\w]" || rm -rf $old_tz_e_dir
-ls -a $old_tz_tw_dir | grep -E "[\w]" || rm -rf $old_tz_tw_dir
-ls -a $old_tz_dir | grep -E "[\w]" || rm -rf $old_tz_dir
+ls -a $old_tz_e_dir | grep -qE "[\w]" || rm -rf $old_tz_e_dir
+ls -a $old_tz_tw_dir | grep -qE "[\w]" || rm -rf $old_tz_tw_dir
+ls -a $old_tz_dir | grep -qE "[\w]" || rm -rf $old_tz_dir
 config_str=`echo "$config_str" | jq '.["tz_e"]["tz_e_dir"] = "'"$FORM_tz_e_dir"'"'`
 config_str=`echo "$config_str" | jq '.["tz_tw"]["tz_tw_dir"] = "'"$FORM_tz_tw_dir"'"'`
 config_str=`echo "$config_str" | jq '.["tz"]["tz_dir"] = "'"$FORM_tz_dir"'"'`
