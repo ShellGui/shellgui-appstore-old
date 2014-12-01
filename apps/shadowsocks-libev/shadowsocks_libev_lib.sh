@@ -280,7 +280,7 @@ shadowsocks_libev_local_basesetting()
 local_config_str=`cat /usr/local/shadowsocks-libev/etc/local.json`
 local_config_str=`echo "$local_config_str" | jq '.["server"] = "'$FORM_server'"'`
 local_config_str=`echo "$local_config_str" | jq '.["server_port"] = '"$FORM_server_port"''`
-# local_config_str=`echo "$local_config_str" | jq '.["local_port"] = '"$FORM_local_port"''`
+local_config_str=`echo "$local_config_str" | jq '.["local_port"] = '"$FORM_local_port"''`
 local_config_str=`echo "$local_config_str" | jq '.["timeout"] = '"$FORM_timeout"''`
 local_config_str=`echo "$local_config_str" | jq '.["password"] = "'$FORM_password'"'`
 local_config_str=`echo "$local_config_str" | jq '.["method"] = "'$FORM_method'"'`

@@ -648,7 +648,7 @@
           "index.sh": "1d2a7d8d8ca4f6e0a960ef55aaa54fc7",
           "i18n/zh-cn/i18n.conf": "61bf1da9ebbe3fa707de414c38b0abd9",
           "i18n/en/i18n.conf": "bc7c7be95f0e124be37f20a37b68e3c4",
-          "shadowsocks_libev_lib.sh": "e0f4da17b766c60d1ae5ca4d8a827ac9",
+          "shadowsocks_libev_lib.sh": "c0efd63ab4db879e7b304cdd2498464b",
           "S702shadowsocks_redir.init": "5add9b5ad9ec3440b0e3a80f362b6212",
           "S700shadowsocks_server.init": "594e11413fd18f82946cdea99dd793bb",
           "S701shadowsocks_local.init": "677d4f97ec654edb609e25cc890b3ca9",
@@ -911,7 +911,7 @@
           "i18n/zh-cn/i18n.conf": "6e9227ffef1c9927eb4014e145f79b54",
           "i18n/en/i18n.conf": "174bf660cb93f9b3ddd84fb497931747",
           "dnsmasq_base.conf": "a2773835c648a61fb509e743508e52d1",
-          "S390dnsmasq.init": "06539b7a8cd43f1d89b072132b655358"
+          "S390dnsmasq.init": "de4a3fd6d46d683b1410266c2dd42fd1"
         },
         "i18n": {
           "zh-cn": {
