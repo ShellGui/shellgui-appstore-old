@@ -170,7 +170,11 @@ done
 
 new_client()
 {
-[ -n "$FORM_new_client_name" ] || [ -n "$FORM_new_client_subnet" ] || (echo "Username & Subnet Can not be empty." | main.sbin output_json 1) || exit 1
+if
+[ -z "$FORM_new_client_name" ] && [ -z "$FORM_new_client_subnet" ]
+then
+(echo "Username & Subnet Can not be empty." | main.sbin output_json 1) || exit 1
+fi
 port=`grep -E "^Port[ ]*=[ ]*[0-9]*" /data/tinc/etc/tinc/default/tinc.conf | grep -Po '[0-9]*'`
 
 rm -rf /data/tinc/etc/tinc/gen_test_new/
