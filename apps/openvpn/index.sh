@@ -204,7 +204,7 @@ cat <<EOF
 	</div>
 
 	<div class="col-md-6">
-	<legend>添加新用户证书</legend>
+	<legend>Add New Uer Certificate</legend>
 EOF
 
 eval `grep -vE "^$|^#|^;" /etc/openvpn/easy-rsa/vars | grep "="`

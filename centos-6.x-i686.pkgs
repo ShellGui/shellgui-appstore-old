@@ -989,7 +989,7 @@
         "files": {
           "icon.png": "09becf955738a591429ecc0a15b13f5b",
           "config.conf": "ab35bb051ad5fa853309f5c7fab26e61",
-          "index.sh": "87ea77f9638152428b13d479afe8d783",
+          "index.sh": "12ba315111aaf89352a62dde901808bf",
           "i18n/zh-cn/i18n.conf": "e5e2f0d6fdc582b02c8e79a1c25f624e",
           "i18n/en/i18n.conf": "2d6245ed8a016f10be5dd11d8ec76ab5",
           "F203openvpn-server.fw": "8d6dff20d2b787ddcc6d20756c8f7edc",
