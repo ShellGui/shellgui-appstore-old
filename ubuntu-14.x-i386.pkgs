@@ -724,12 +724,12 @@
         }
       },
       "tinc": {
-        "version": "0.11",
+        "version": "0.12",
         "size": "68K",
         "files": {
           "tinc_lib.sh": "f0f2f92120c7a870d0b600ce4cca14e6",
           "icon.png": "6d56a86ad7349f7402297aea407d1d93",
-          "config.conf": "e0ce69e3b3df94ef5b9ad72af0b20e42",
+          "config.conf": "b8b97a6cd0ab58f3069aa1ffbda3bb27",
           "F204tinc-server.fw": "6bcefc26e0de57cb10802d2f1667679b",
           "tinc_extra.conf": "0a01ddbca767c1cac92247b5b9869b42",
           "index.sh": "8eec37f7261e7a85c8a5ed555334ab1f",
@@ -984,12 +984,12 @@
         }
       },
       "openvpn": {
-        "version": "0.14",
+        "version": "0.15",
         "size": "80K",
         "files": {
           "icon.png": "09becf955738a591429ecc0a15b13f5b",
-          "config.conf": "d044233a2969d8b05674b25b3bb2b1a2",
-          "index.sh": "89a029fb4217ee426c014a29c4bfed16",
+          "config.conf": "ab35bb051ad5fa853309f5c7fab26e61",
+          "index.sh": "87ea77f9638152428b13d479afe8d783",
           "i18n/zh-cn/i18n.conf": "e5e2f0d6fdc582b02c8e79a1c25f624e",
           "i18n/en/i18n.conf": "2d6245ed8a016f10be5dd11d8ec76ab5",
           "F203openvpn-server.fw": "8d6dff20d2b787ddcc6d20756c8f7edc",

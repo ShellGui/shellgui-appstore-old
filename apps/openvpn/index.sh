@@ -204,7 +204,7 @@ cat <<EOF
 	</div>
 
 	<div class="col-md-6">
-	<legend>证书管理</legend>
+	<legend>添加新用户证书</legend>
 EOF
 
 eval `grep -vE "^$|^#|^;" /etc/openvpn/easy-rsa/vars | grep "="`
@@ -305,7 +305,7 @@ $_LANG_Guarantee
 </tr>
 <tr>
 <td>
-当前证书大小
+Current Certificate Size
 </td>
 <td>
 $key_size
@@ -348,7 +348,7 @@ if (confirm("Do you wan to del " + crt_file)) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">SSL 信息</h4>
+        <h4 class="modal-title">SSL Info</h4>
       </div>
       <div class="modal-body" style="overflow-y: auto;height: 480px;">
 		<div id="ssl_detail_content"></div>
