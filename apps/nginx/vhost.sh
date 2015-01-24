@@ -318,7 +318,7 @@ fi
 [ "$FORM_ssl_certificate_key" != "null" ] && config_str=`echo "$config_str" | jq '.["'$FORM_oldvhost'"]["ssl_certificate_key"] = "'"$FORM_ssl_certificate_key"'"'`
 echo "$config_str"  >/tmp/1
 echo "$config_str" | jq '.' | grep -q "}" && echo "$config_str" > $DOCUMENT_ROOT/apps/nginx/nginx_vhost.json
-[ -n "$FORM_vhost_extra" ] && echo "$FORM_vhost_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/$FORM_oldvhost.config
+[ -n "$FORM_vhost_extra" ] && echo "$FORM_vhost_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/$FORM_oldvhost.config || rm -f $DOCUMENT_ROOT/apps/nginx/extra_config/$FORM_oldvhost.config
 
 if
 [ $new_vhost -eq 1 ]

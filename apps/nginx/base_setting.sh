@@ -666,9 +666,9 @@ config_str=`cat $DOCUMENT_ROOT/apps/nginx/nginx_config.json`
 [ -n "$FORM_gzip_vary" ] && config_str=`echo "$config_str" | jq '.["http"]["gzip_vary"] = "'"$FORM_gzip_vary"'"'`
 
 echo "$config_str" | jq '.' >/dev/null 2>&1 && echo "$config_str" > $DOCUMENT_ROOT/apps/nginx/nginx_config.json
-[ -n "$FORM_sys_extra" ] && echo "$FORM_sys_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/sys_extra.config
-[ -n "$FORM_http_extra" ] && echo "$FORM_http_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/http_extra.config
-[ -n "$FORM_events_extra" ] && echo "$FORM_events_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/events_extra.config
+[ -n "$FORM_sys_extra" ] && echo "$FORM_sys_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/sys_extra.config || rm -f $DOCUMENT_ROOT/apps/nginx/extra_config/sys_extra.config
+[ -n "$FORM_http_extra" ] && echo "$FORM_http_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/http_extra.config || rm -f $DOCUMENT_ROOT/apps/nginx/extra_config/http_extra.config
+[ -n "$FORM_events_extra" ] && echo "$FORM_events_extra" > $DOCUMENT_ROOT/apps/nginx/extra_config/events_extra.config || rm -f $DOCUMENT_ROOT/apps/nginx/extra_config/events_extra.config
 generate_nginx_config
 
 main.sbin notice option="add" \

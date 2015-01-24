@@ -67,7 +67,7 @@ cat <<'EOF' > /etc/init.d/nginx
 #                                                                     Variables
 # -----------------------------------------------------------------------------
 
-
+mkdir -p /var/run/nginx
 # The name of the service (must be the first variable).
 NAME="nginx"
 
@@ -237,7 +237,7 @@ cat <<'EOF' > /etc/init.d/nginx
  
 # Check that networking is up.
 [ "$NETWORKING" = "no" ] && exit 0
- 
+ mkdir -p /var/run/nginx
 nginx="/usr/local/nginx/sbin/nginx"
 prog=$(basename $nginx)
  
