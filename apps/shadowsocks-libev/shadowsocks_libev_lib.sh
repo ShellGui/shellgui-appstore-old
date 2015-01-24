@@ -59,6 +59,7 @@ rm -rf shadowsocks-libev-master
 unzip shadowsocks-libev-master.zip
 cd shadowsocks-libev-master
 eval $(cat $DOCUMENT_ROOT/../tmp/shadowsocks_libev.tmp)
+[ -z "$ssl_choise" ] && ssl_choise=openssl
 if
 echo "$OS" | grep -iq "centos"
 then

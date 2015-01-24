@@ -648,7 +648,7 @@
           "index.sh": "10075d156e651257622b9c502f6393fc",
           "i18n/zh-cn/i18n.conf": "141f65695f8e72cfba2d9e8208cb926b",
           "i18n/en/i18n.conf": "d6454d50ec76f989d39a24c9e9528ec5",
-          "shadowsocks_libev_lib.sh": "d87dad446057ea824edbbdfc80082585",
+          "shadowsocks_libev_lib.sh": "8bca80dd3f76c5dd96005195bdb66677",
           "S702shadowsocks_redir.init": "5add9b5ad9ec3440b0e3a80f362b6212",
           "S700shadowsocks_server.init": "594e11413fd18f82946cdea99dd793bb",
           "S701shadowsocks_local.init": "677d4f97ec654edb609e25cc890b3ca9",
