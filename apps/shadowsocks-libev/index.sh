@@ -214,6 +214,8 @@ cat <<EOF
 				<option value="idea-cfb" `[ "$(echo "$server_config_str" | jq -r '.["method"]')" = "idea-cfb" ] && echo selected=\"selected\"`>IDEA-CFB</option>
 				<option value="rc2-cfb" `[ "$(echo "$server_config_str" | jq -r '.["method"]')" = "rc2-cfb" ] && echo selected=\"selected\"`>RC2-CFB</option>
 				<option value="seed-cfb" `[ "$(echo "$server_config_str" | jq -r '.["method"]')" = "seed-cfb" ] && echo selected=\"selected\"`>SEED-CFB</option>
+				<option value="salsa20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "salsa20" ] && echo selected=\"selected\"`>SALSA20</option>
+				<option value="chacha20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "chacha20" ] && echo selected=\"selected\"`>CHACHA20</option>
 			</select>
 		</td>
 	</tr>
@@ -371,6 +373,8 @@ cat <<EOF
 				<option value="idea-cfb" `[ "$(echo "$local_config_str" | jq -r '.["method"]')" = "idea-cfb" ] && echo selected=\"selected\"`>IDEA-CFB</option>
 				<option value="rc2-cfb" `[ "$(echo "$local_config_str" | jq -r '.["method"]')" = "rc2-cfb" ] && echo selected=\"selected\"`>RC2-CFB</option>
 				<option value="seed-cfb" `[ "$(echo "$local_config_str" | jq -r '.["method"]')" = "seed-cfb" ] && echo selected=\"selected\"`>SEED-CFB</option>
+				<option value="salsa20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "salsa20" ] && echo selected=\"selected\"`>SALSA20</option>
+				<option value="chacha20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "chacha20" ] && echo selected=\"selected\"`>CHACHA20</option>
 			</select>
 		</td>
 	</tr>
@@ -527,6 +531,8 @@ cat <<EOF
 				<option value="idea-cfb" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "idea-cfb" ] && echo selected=\"selected\"`>IDEA-CFB</option>
 				<option value="rc2-cfb" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "rc2-cfb" ] && echo selected=\"selected\"`>RC2-CFB</option>
 				<option value="seed-cfb" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "seed-cfb" ] && echo selected=\"selected\"`>SEED-CFB</option>
+				<option value="salsa20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "salsa20" ] && echo selected=\"selected\"`>SALSA20</option>
+				<option value="chacha20" `[ "$(echo "$redir_config_str" | jq -r '.["method"]')" = "chacha20" ] && echo selected=\"selected\"`>CHACHA20</option>
 			</select>
 		</td>
 	</tr>
@@ -552,6 +558,33 @@ cat <<EOF
 
 </div>
 EOF
+cat <<'EOF'
+<script>
+$(function(){
+  $('#del_prog_bin').on('click', function(e){
+    e.preventDefault();
+    if (confirm('Do you confirm to del del prog bin')) {
+      var data = "app=shadowsocks-libev&action=del_prog_bin";
+      var url = 'index.cgi';
+      Ha.common.ajax(url, 'json', data, 'post', 'del_prog_bin');
+	  setTimeout("window.location.reload();", 3000);
+    }
+  });
+});
+</script>
+EOF
+cat <<EOF
+<div class="col-md-6" id="del_prog_bin">
+<legend>$_LANG_Reinstall</legend>
+<p>$_LANG_Del_prog_bin</p>
+<button class="btn btn-primary">$_LANG_Del</button>
+</div>
+EOF
+}
+del_prog_bin()
+{
+rm -f /usr/local/shadowsocks-libev/bin/*
+(echo "$_LANG_Save_success" | main.sbin output_json 0) || exit 0
 }
 warning()
 {

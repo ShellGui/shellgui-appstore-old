@@ -37,6 +37,20 @@ export download_json='{
 	}
 }'
 main.sbin download
+export download_json='{
+"file_name":"polarssl-1.3.9-gpl.tgz",
+"downloader":"aria2 curl wget",
+"save_dest":"$DOCUMENT_ROOT/../sources/polarssl-1.3.9-gpl.tgz",
+"useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
+"timeout":20,
+"md5sum":"48af7d1f0d5de512cbd6dacf5407884c",
+	"download_urls":{
+	"ftp2.za.freebsd.org":"http://ftp2.za.freebsd.org/pub/FreeBSD/ports/distfiles/polarssl-1.3.9-gpl.tgz"
+	"ftp.fr.openbsd.org":"http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/polarssl-1.3.9-gpl.tgz"
+	"enduser.subsignal.org":"http://enduser.subsignal.org/~trondah/source-tree/dl/polarssl-1.3.9-gpl.tgz"
+	}
+}'
+main.sbin download
 }
 make_shadowsocks_libev()
 {
@@ -44,13 +58,26 @@ cd $DOCUMENT_ROOT/../sources/
 rm -rf shadowsocks-libev-master
 unzip shadowsocks-libev-master.zip
 cd shadowsocks-libev-master
-# if
-# echo "$OS" | grep -iq "centos"
-# then
-./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=openssl --with-openssl=/usr/include/openssl/
-# else 
-# ./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=polarssl --with-polarssl=/usr/include/polarssl
-# fi
+eval $(cat $DOCUMENT_ROOT/../tmp/shadowsocks_libev.tmp)
+if
+echo "$OS" | grep -iq "centos"
+then
+	if
+	[ "$ssl_choise" = "polarssl" ]
+	then
+		cd $DOCUMENT_ROOT/../sources/
+		rm -rf polarssl-1.3.9
+		tar zxvf polarssl-1.3.9-gpl.tgz
+		cd polarssl-1.3.9
+		(make && make install) || exit 1
+		cd $DOCUMENT_ROOT/../sources/shadowsocks-libev-master
+	./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=polarssl --with-polarssl=/usr/local/include/polarssl/
+	else
+	./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=openssl
+	fi
+else
+./configure --prefix="/usr/local/shadowsocks-libev" --with-crypto-library=$ssl_choise --with-openssl=/usr/include/$ssl_choise/
+fi
 make && make install
 }
 do_install_shadowsocks_libev()
@@ -146,8 +173,40 @@ get_pregress_schedule_notice_detail
 }
 pre_install_shadowsocks_libev()
 {
-echo "$_LANG_Ready_to_Install"
-
+eval $(cat $DOCUMENT_ROOT/../tmp/shadowsocks_libev.tmp)
+cat <<EOF
+<script>
+\$(function(){
+  \$('#choose_ssl').on('submit', function(e){
+    e.preventDefault();
+    var data = "app=shadowsocks-libev&action=choose_ssl&"+\$(this).serialize();
+    var url = 'index.cgi';
+    Ha.common.ajax(url, 'json', data, 'post', 'choose_ssl');
+  });
+});
+</script>
+	<div class="form-group">
+	  <div class="col-md-6">
+	  <form class="form-inline" id="choose_ssl">
+		<label for="ssl_choise">$_LANG_Choose_your_ssl</label>
+		<select name="ssl_choise" class="form-control" id="ssl_choise">
+				<option `[ "$ssl_choise" = "openssl" ] && echo selected`>openssl</option>
+				<option `[ "$ssl_choise" = "polarssl" ] && echo selected`>polarssl</option>
+		</select>
+		<button class="btn btn-primary" id="_submit" type="submit">$_LANG_Save</button>
+	  </form>
+	  </div>
+	  <div class="col-md-6">
+	  </div>
+	</div>
+EOF
+}
+choose_ssl()
+{
+cat <<EOF > $DOCUMENT_ROOT/../tmp/shadowsocks_libev.tmp
+ssl_choise=$FORM_ssl_choise
+EOF
+(echo "$_LANG_Save_success" | main.sbin output_json 0) || exit 0
 }
 shadowsocks_libev_server_service()
 {
