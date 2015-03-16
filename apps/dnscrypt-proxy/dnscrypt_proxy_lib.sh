@@ -22,16 +22,16 @@ export download_json='{
 }'
 main.sbin download
 export download_json='{
-"file_name":"dnscrypt-proxy-1.4.1.tar.gz",
+"file_name":"dnscrypt-proxy-1.4.3.tar.gz",
 "downloader":"aria2 curl wget",
-"save_dest":"$DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.1.tar.gz",
+"save_dest":"$DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.3.tar.gz",
 "useragent":"Mozilla/4.0 (compatible; MSIE 6.1; Windows XP)",
 "timeout":20,
-"md5sum":"f2bf4195b7264813138e3c6c8da86190",
+"md5sum":"54d172236a8f321fb5689ff81767f1ba",
 	"download_urls":{
-	"entware.dyndns.info":"http://entware.dyndns.info/sources/dnscrypt-proxy-1.4.1.tar.gz",
-	"dnscrypt.org":"http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.1.tar.gz",
-	"ftp.fr.openbsd.org":"http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/dnscrypt-proxy-1.4.1.tar.gz"
+	"entware.dyndns.info":"http://entware.dyndns.info/sources/dnscrypt-proxy-1.4.3.tar.gz",
+	"dnscrypt.org":"http://download.dnscrypt.org/dnscrypt-proxy/dnscrypt-proxy-1.4.3.tar.gz",
+	"ftp.fr.openbsd.org":"http://ftp.fr.openbsd.org/pub/OpenBSD/distfiles/dnscrypt-proxy-1.4.3.tar.gz"
 	}
 }'
 main.sbin download
@@ -46,15 +46,15 @@ rm -rf libsodium-1.0.0
 tar zxvf libsodium-1.0.0.tar.gz
 
 cd $DOCUMENT_ROOT/../sources/
-rm -rf dnscrypt-proxy-1.4.1
-tar zxvf dnscrypt-proxy-1.4.1.tar.gz
+rm -rf dnscrypt-proxy-1.4.3
+tar zxvf dnscrypt-proxy-1.4.3.tar.gz
 
 
 cd $DOCUMENT_ROOT/../sources/libsodium-1.0.0
 ./configure
 make && make install
 
-cd $DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.1
+cd $DOCUMENT_ROOT/../sources/dnscrypt-proxy-1.4.3
 ldconfig
 if
 ldconfig -p | grep "libsodium.so" 

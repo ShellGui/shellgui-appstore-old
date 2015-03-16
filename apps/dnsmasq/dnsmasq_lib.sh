@@ -7,6 +7,24 @@ echo "Nothing to do"
 
 download_dnsmasq()
 {
+if
+echo "$OS" | grep -iq "centos"
+then
+(yum update -y && yum install -y dnsmasq 2>&1) || exit 1
+fi
+if
+echo "$OS" | grep -iq "ubuntu"
+then
+(apt-get update --fix-missing && apt-get install -y dnsmasq 2>&1) || exit 1
+fi
+if
+echo "$OS" | grep -iq "debian"
+then
+(apt-get update --fix-missing && apt-get install -y dnsmasq 2>&1) || exit 1
+fi
+echo "$OS" | grep -i "centos" && chkconfig dnsmasq off
+echo "$OS" | grep -i "ubuntu" && update-rc.d -f dnsmasq remove #defaults
+echo "$OS" | grep -i "debian" && update-rc.d -f dnsmasq remove
 export download_json='{
 "file_name":"dnsmasq-2.72.tar.gz",
 "downloader":"aria2 curl wget",
